@@ -8,7 +8,6 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserRepository;
 @SpringBootApplication
 public class Application {
     static ApplicationContext  ctx = SpringApplication.run(Application.class);
-
     public static void main(String[] args) {
         Service service = ctx.getBean(Service.class);
         service.test();

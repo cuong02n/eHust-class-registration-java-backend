@@ -1,0 +1,67 @@
+{
+  "id": "1",
+  "role": "STUDENT",
+  "courseRegisted": [
+    {
+      "id": 2,
+      "credit": 2,
+      "preRequisiteCourses": [],
+      "preCourse": [],
+      "coreQuisiteCourse": [],
+      "createdById": "1",
+      "updatedById": "1"
+    },
+    {
+      "id": 1,
+      "credit": 2,
+      "preRequisiteCourses": [
+        {
+          "courseId": 1,
+          "courseConstraintId": 2,
+          "relation": "PREREQUISITE",
+          "createdById": "1",
+          "updatedById": "1",
+          "createdTime": "Apr 29, 2024, 9:03:01 AM",
+          "updatedTime": "Apr 29, 2024, 9:03:03 AM"
+        }
+      ],
+      "preCourse": [
+        {
+          "courseId": 1,
+          "courseConstraintId": 5,
+          "relation": "PRECOURSE",
+          "createdById": "1",
+          "updatedById": "1",
+          "createdTime": "Apr 29, 2024, 10:00:33 AM",
+          "updatedTime": "Apr 29, 2024, 10:00:34 AM"
+        },
+        {
+          "courseId": 1,
+          "courseConstraintId": 3,
+          "relation": "PRECOURSE",
+          "createdById": "1",
+          "updatedById": "1",
+          "createdTime": "Apr 29, 2024, 9:02:59 AM",
+          "updatedTime": "Apr 29, 2024, 9:03:02 AM"
+        }
+      ],
+      "coreQuisiteCourse": [
+        {
+          "courseId": 1,
+          "courseConstraintId": 4,
+          "relation": "COREQUISITECOURSE",
+          "createdById": "1",
+          "updatedById": "1",
+          "createdTime": "Apr 29, 2024, 9:03:00 AM",
+          "updatedTime": "Apr 29, 2024, 9:03:03 AM"
+        }
+      ],
+      "createdById": "1",
+      "updatedById": "1",
+      "createdTime": "Apr 29, 2024, 10:02:12 AM",
+      "updatedTime": "Apr 29, 2024, 10:02:13 AM"
+    }
+  ],
+  "createdTime": "Apr 29, 2024, 9:02:45 AM",
+  "updatedTime": "Apr 29, 2024, 9:02:47 AM"
+}

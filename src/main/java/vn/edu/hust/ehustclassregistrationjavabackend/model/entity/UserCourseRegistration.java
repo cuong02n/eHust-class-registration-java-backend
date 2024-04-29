@@ -1,6 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +23,8 @@ public class UserCourseRegistration extends BaseEntity {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id",insertable = false,updatable = false)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @Expose(serialize = false)
     User user;
 
     @Column(name = "course_id")
@@ -30,6 +32,6 @@ public class UserCourseRegistration extends BaseEntity {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "course_id",insertable = false,updatable = false)
+    @JoinColumn(name = "course_id", insertable = false, updatable = false)
     Course course;
 }

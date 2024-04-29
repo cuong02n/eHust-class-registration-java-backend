@@ -1,6 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,31 +13,31 @@ import java.sql.Timestamp;
 @Getter
 public abstract class BaseEntity {
     @Column(name = "createdBy")
-    @JsonIgnore
+    @Expose
     String createdById;
 
     @JoinColumn(name = "createdBy", updatable = false, insertable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @Expose(serialize = false )
     User createdBy;
 
     @Column(name = "updatedBy")
-    @JsonIgnore
+    @Expose
     String updatedById;
 
     @JoinColumn(name = "updatedBy", updatable = false, insertable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @Expose(serialize = false)
     User updatedBy;
 
     @CreationTimestamp
     @Column(name = "createdTime", updatable = false)
-    @JsonIgnore
+    @Expose
     Timestamp createdTime;
 
     @UpdateTimestamp
     @Column(name = "updatedTime")
-    @JsonIgnore
+    @Expose
     Timestamp updatedTime;
 
     public void update(String userId) {
