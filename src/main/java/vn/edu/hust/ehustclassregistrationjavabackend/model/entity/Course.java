@@ -27,6 +27,7 @@ public class Course extends BaseEntity {
     @Expose
     String courseNameE;
     @Expose
+    @Column(columnDefinition = "text")
     String description;
     @Expose
     @Column(columnDefinition = "int not null")

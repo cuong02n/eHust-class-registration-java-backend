@@ -34,9 +34,14 @@ public class Class {
     @Column(nullable = false)
     Status status = Status.NOT_YET_OPEN;
 
+
+    @Column(name = "course_id", nullable = false)
+    @Expose
+    Long courseId;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Expose
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
     Course course;
 
     public enum Status {
