@@ -20,6 +20,7 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Expose
+    @Column(nullable = false)
     Role role;
 
     @Expose
@@ -37,4 +38,5 @@ public class User extends BaseEntity {
     public enum Role {
         STUDENT
     }
+
 }

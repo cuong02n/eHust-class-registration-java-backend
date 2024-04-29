@@ -11,14 +11,16 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "course")
+@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code", "is_active"})})
 @Getter
 public class Course extends BaseEntity {
     @Id
     @SerializedName("id")
     @Expose
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Expose
+    @Column(columnDefinition = "varchar(255) not null")
     String courseCode;
     @Expose
     String courseName;
@@ -27,6 +29,7 @@ public class Course extends BaseEntity {
     @Expose
     String description;
     @Expose
+    @Column(columnDefinition = "int not null")
     Integer credit;
     @Expose
     String creditInfo;
@@ -49,7 +52,11 @@ public class Course extends BaseEntity {
     @Expose
     String schoolName;
     @Expose
+    @Column(columnDefinition = "bit not null default 0")
     boolean needExperiment;
+    @Expose
+    @Column(columnDefinition = "bit not null default 1")
+    boolean isActive;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Where(clause = "relation = 'PREREQUISITE'")

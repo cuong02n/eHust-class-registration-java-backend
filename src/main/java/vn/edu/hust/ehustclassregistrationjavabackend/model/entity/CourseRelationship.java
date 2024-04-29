@@ -14,9 +14,10 @@ import lombok.Getter;
 public class CourseRelationship extends BaseEntity {
     @Id
     @Expose(serialize = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "course_id")
+    @Column(name = "course_id", columnDefinition = "bigint not null")
     @Expose
     Long courseId;
 
@@ -24,7 +25,7 @@ public class CourseRelationship extends BaseEntity {
 //    @JoinColumn(name = "course_id", insertable = false, updatable = false)
 //    Course course;
 
-    @Column(name = "course_constraint_id")
+    @Column(name = "course_constraint_id", columnDefinition = "bigint not null")
     @Expose
     Long courseConstraintId;
 
@@ -34,6 +35,7 @@ public class CourseRelationship extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     @Expose
+    @Column(nullable = false)
     Relation relation;
 
     public enum Relation {

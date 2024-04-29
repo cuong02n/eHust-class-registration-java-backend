@@ -1,6 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
-import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,26 +12,26 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Getter
-@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","course_id"})})
-public class UserCourseRegistration extends BaseEntity {
+@Table(name = "user_class_registration")
+public class UserClassRegistration extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column(name = "user_id",nullable = false)
-    String userId;
+    private String userId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    @Expose(serialize = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     User user;
 
-    @Column(name = "course_id",nullable = false)
-    Long courseId;
+    @Column(name = "class_id",nullable = false)
+    private Long classId;
 
+    @JoinColumn(name = "class_id", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    @Expose(serialize = false)
-    Course course;
+    @SerializedName("class")
+    private Class aClass;
+
 }
