@@ -35,16 +35,29 @@ public abstract class BaseEntity {
     User updatedBy;
 
     @CreationTimestamp
+    @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "createdTime", updatable = false)
     @Expose
     @Nullable
     Timestamp createdTime;
 
     @UpdateTimestamp
+    @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "updatedTime")
     @Expose
     @Nullable
     Timestamp updatedTime;
+
+    @PrePersist
+    protected void onCreate() {
+        createdTime = new Timestamp(System.currentTimeMillis());
+        updatedTime = createdTime;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedTime = new Timestamp(System.currentTimeMillis());
+    }
 
     public void update(String userId) {
         Timestamp now = new Timestamp(System.currentTimeMillis());

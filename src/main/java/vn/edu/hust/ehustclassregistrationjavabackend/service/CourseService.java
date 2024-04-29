@@ -21,9 +21,10 @@ public class CourseService {
     public Course getCourseById(long id){
         return courseRepository.findById(id).orElse(null);
     }
-    public Course addCourse(Course course){
-        return courseRepository.save(course);
+    public void addCourse(Course course){
+        courseRepository.save(course);
     }
+    public void addCourse(List<Course> courses){ courseRepository.saveAll(courses);}
     public Course getActiveCourse(String courseCode){
         return courseRepository.findByActiveTrueAndCourseCode(courseCode);
     }

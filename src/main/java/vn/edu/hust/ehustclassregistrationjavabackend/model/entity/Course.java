@@ -3,16 +3,18 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code", "is_active"})})
+@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code", "active"})})
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Course extends BaseEntity {
     @Id
     @SerializedName("id")
@@ -57,7 +59,7 @@ public class Course extends BaseEntity {
     boolean needExperiment;
     @Expose
     @Column(columnDefinition = "bit not null default 1")
-    boolean isActive;
+    boolean active;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Where(clause = "relation = 'PREREQUISITE'")
