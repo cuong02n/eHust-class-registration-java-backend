@@ -2,16 +2,15 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
 import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Getter
+@Builder
+@AllArgsConstructor
 @Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id"})})
 public class UserCourseRegistration extends BaseEntity {
 
@@ -38,6 +37,5 @@ public class UserCourseRegistration extends BaseEntity {
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
     @Expose(serialize = false)
     Course course;
-
 
 }

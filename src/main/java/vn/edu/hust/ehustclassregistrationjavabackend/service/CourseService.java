@@ -3,7 +3,9 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegistration;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseService {
     private final CourseRepository courseRepository;
+    private final UserCourseRepository userCourseRepository;
     public List<Course> getAllActiveCourse(){
         return courseRepository.findAllByActiveTrue();
     }
@@ -31,5 +34,9 @@ public class CourseService {
 
     public Course insertCourse(Course course){// TODO: must auth
         return courseRepository.save(course);
+    }
+
+    public void insertUserCourseRegistration(List<UserCourseRegistration> registrations){
+        userCourseRepository.saveAll(registrations);
     }
 }

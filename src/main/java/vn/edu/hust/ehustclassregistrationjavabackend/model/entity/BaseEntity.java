@@ -3,6 +3,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 import com.google.gson.annotations.Expose;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 
 @MappedSuperclass
 @Getter
+@Data
 public abstract class BaseEntity {
     @Column(name = "createdBy")
     @Expose
