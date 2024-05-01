@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.Where;
 
 import java.util.List;
@@ -62,17 +63,17 @@ public class Course extends BaseEntity {
     boolean active;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Where(clause = "relation = 'PREREQUISITE'")
+    @SQLRestriction("relation = 'PREREQUISITE'")
     @Expose
     List<CourseRelationship> preRequisiteCourses;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Where(clause = "relation = 'PRECOURSE'")
+    @SQLRestriction("relation = 'PRECOURSE'")
     @Expose
     List<CourseRelationship> preCourse;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Where(clause = "relation = 'COREQUISITECOURSE'")
+    @SQLRestriction("relation = 'COREQUISITECOURSE'")
     @Expose
     List<CourseRelationship> coreQuisiteCourse;
 

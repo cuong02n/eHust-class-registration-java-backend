@@ -1,67 +1,68 @@
-{
-  "id": "1",
-  "role": "STUDENT",
-  "courseRegisted": [
-    {
-      "id": 2,
-      "credit": 2,
-      "preRequisiteCourses": [],
-      "preCourse": [],
-      "coreQuisiteCourse": [],
-      "createdById": "1",
-      "updatedById": "1"
-    },
-    {
-      "id": 1,
-      "credit": 2,
-      "preRequisiteCourses": [
-        {
-          "courseId": 1,
-          "courseConstraintId": 2,
-          "relation": "PREREQUISITE",
-          "createdById": "1",
-          "updatedById": "1",
-          "createdTime": "Apr 29, 2024, 9:03:01 AM",
-          "updatedTime": "Apr 29, 2024, 9:03:03 AM"
-        }
-      ],
-      "preCourse": [
-        {
-          "courseId": 1,
-          "courseConstraintId": 5,
-          "relation": "PRECOURSE",
-          "createdById": "1",
-          "updatedById": "1",
-          "createdTime": "Apr 29, 2024, 10:00:33 AM",
-          "updatedTime": "Apr 29, 2024, 10:00:34 AM"
-        },
-        {
-          "courseId": 1,
-          "courseConstraintId": 3,
-          "relation": "PRECOURSE",
-          "createdById": "1",
-          "updatedById": "1",
-          "createdTime": "Apr 29, 2024, 9:02:59 AM",
-          "updatedTime": "Apr 29, 2024, 9:03:02 AM"
-        }
-      ],
-      "coreQuisiteCourse": [
-        {
-          "courseId": 1,
-          "courseConstraintId": 4,
-          "relation": "COREQUISITECOURSE",
-          "createdById": "1",
-          "updatedById": "1",
-          "createdTime": "Apr 29, 2024, 9:03:00 AM",
-          "updatedTime": "Apr 29, 2024, 9:03:03 AM"
-        }
-      ],
-      "createdById": "1",
-      "updatedById": "1",
-      "createdTime": "Apr 29, 2024, 10:02:12 AM",
-      "updatedTime": "Apr 29, 2024, 10:02:13 AM"
-    }
-  ],
-  "createdTime": "Apr 29, 2024, 9:02:45 AM",
-  "updatedTime": "Apr 29, 2024, 9:02:47 AM"
-}
+[
+  {
+    "name": "close_free_all",
+    "value": "2024-02-17 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "close_official_elitech",
+    "value": "2024-01-18 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "close_official_standard",
+    "value": "2024-01-22 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "close_unofficial_elitech",
+    "value": "2024-01-27 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "close_unofficial_standard",
+    "value": "2024-02-05 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "open_free_all",
+    "value": "2024-02-05 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "open_official_elitech",
+    "value": "2024-01-15 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "open_official_standard",
+    "value": "2024-01-18 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "open_unofficial_elitech",
+    "value": "2024-01-22 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "open_unofficial_standard",
+    "value": "2024-01-27 00:00:00.0",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  },
+  {
+    "name": "this_semester",
+    "value": "20231",
+    "createdTime": "May 1, 2024, 2:56:41 PM",
+    "updatedTime": "May 1, 2024, 2:56:41 PM"
+  }
+]

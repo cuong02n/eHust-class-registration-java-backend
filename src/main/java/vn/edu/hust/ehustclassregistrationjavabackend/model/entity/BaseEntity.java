@@ -8,12 +8,13 @@ import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @MappedSuperclass
 @Getter
-@Data
-public abstract class BaseEntity {
+//@Data
+public abstract class BaseEntity implements Serializable {
     @Column(name = "createdBy")
     @Expose
     @Nullable
@@ -21,7 +22,7 @@ public abstract class BaseEntity {
 
     @JoinColumn(name = "createdBy", updatable = false, insertable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    @Expose(serialize = false)
+    @Expose(deserialize = false,serialize = false)
     @Nullable
     User createdBy;
 
@@ -32,7 +33,7 @@ public abstract class BaseEntity {
 
     @JoinColumn(name = "updatedBy", updatable = false, insertable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    @Expose(serialize = false)
+    @Expose(deserialize = false,serialize = false)
     @Nullable
     User updatedBy;
 
