@@ -25,11 +25,6 @@ public class CourseController {
     private final MetadataService metadataService;
     @GetMapping("/get-all-metadata")
     public ResponseEntity<List<Metadata>> getAllMetadata(){
-        Gson gson =  new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String data = gson.toJson(metadataService.getAllMetadata());
-        System.out.println(data);
-        JsonArray jsonArray = gson.fromJson(data,JsonArray.class);
-        System.out.println(jsonArray);
         return ResponseEntity.ok().body(metadataService.getAllMetadata());
     }
 }

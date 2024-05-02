@@ -32,16 +32,16 @@ public class Application {
 //        courseService.insertUserCourseRegistration(registrationCourses);
 //    }
 
-//    public static void main(String[] args) {
-//        ctx =  SpringApplication.run(Application.class);
-//    }
-
     public static void main(String[] args) {
+        ctx =  SpringApplication.run(Application.class);
+    }
+
+//    public static void main(String[] args) {
 //        Map<String,String > map = new
 //        map.put("123","123");
 //        map.put("123","231");
 //        System.out.println(new Gson().toJson(map));
-    }
+//    }
     static List<User> getListVirtualUser() {
         Vector<User> users = new Vector<>();
         for (int i = 1; i <= 100; i++) {
