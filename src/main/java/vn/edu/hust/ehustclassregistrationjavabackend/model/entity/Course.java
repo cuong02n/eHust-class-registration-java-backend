@@ -20,11 +20,7 @@ public class Course extends BaseEntity {
     @Id
     @SerializedName("id")
     @Expose
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Expose
-    @Column(columnDefinition = "varchar(255) not null")
-    String courseCode;
+    String id;
     @Expose
     String courseName;
     @Expose

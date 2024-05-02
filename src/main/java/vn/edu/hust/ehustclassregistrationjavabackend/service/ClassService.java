@@ -9,16 +9,9 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 @RequiredArgsConstructor
 public class ClassService {
     private final ClassRepository classRepository;
-    public void test(){
-        System.out.println(classRepository.countRegistedByClassId(1L,"20231"));
-    }
 
     public Class getClassById(Long id){
         return classRepository.findById(id).orElse(null);
     }
-    public Class getClassByCode(long code){
-        return classRepository.findClassByClassCode(code).orElse(null);
-    }
-
 
 }

@@ -17,11 +17,4 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserRepository;
 public class Service {
     final CourseRepository courseRepository;
     final UserRepository userRepository;
-    public void test() {
-        Course course = courseRepository.findById(1L).orElseThrow();
-        User user =  userRepository.findById("1").orElseThrow();
-//        System.out.println();
-        System.out.println(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().toJson(user));
-//        System.out.println(new Gson().fromJson(course,));
-    }
 }

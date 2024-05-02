@@ -1,21 +1,17 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/course")
@@ -23,8 +19,15 @@ import java.util.List;
 public class CourseController {
     private final CourseService courseService;
     private final MetadataService metadataService;
-    @GetMapping("/get-all-metadata")
-    public ResponseEntity<List<Metadata>> getAllMetadata(){
-        return ResponseEntity.ok().body(metadataService.getAllMetadata());
+    public void getClassOfCourse(){
+
+    }
+    @GetMapping("/get-course")
+    public ResponseEntity<Course> getCourse(@RequestParam String courseId){
+        var course=  courseService.getActiveCourse(courseId);
+        if(course.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT.value()).body(null);
+        }
+        return ResponseEntity.ok().body(course.get());
     }
 }

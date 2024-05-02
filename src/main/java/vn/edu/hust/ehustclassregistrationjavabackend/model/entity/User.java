@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.lang.annotation.Native;
 import java.util.Set;
 
 @Entity
@@ -24,11 +23,20 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     Role role;
 
+    @Enumerated(EnumType.STRING)
+    @Expose
+    StudentType studentType;
+
     @Expose
     String name;
 
     @Expose
     String email;
+
+    @Expose
+    @Column(columnDefinition = "BIT(1) default 0")
+    boolean active;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -41,6 +49,11 @@ public class User extends BaseEntity {
 
     public enum Role {
         STUDENT
+    }
+
+    public enum StudentType {
+        ELITECH,
+        STANDARD
     }
 
 }

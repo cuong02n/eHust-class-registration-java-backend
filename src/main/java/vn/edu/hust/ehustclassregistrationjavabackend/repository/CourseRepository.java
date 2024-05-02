@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface CourseRepository extends JpaRepository<Course,Long> {
+public interface CourseRepository extends JpaRepository<Course,String> {
     List<Course> findAllByActiveTrue();
-    Course findByActiveTrueAndCourseCode(String courseCode);
+    Optional<Course> findByActiveTrueAndId(String courseId);
 }

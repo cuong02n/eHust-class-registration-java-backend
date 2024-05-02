@@ -9,21 +9,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"class_code", "status", "semester"})})
 public class Class {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @EmbeddedId
     @Expose
-    @Column(nullable = false, columnDefinition = "bigint not null")
-    Long classCode;
-    @Expose
-    Long relatedClassCode;
+    ClassPK classPK;
+
     @Expose
     String semesterType;
-    @Expose
-    @Column(nullable = false)
-    String semester; // 20231
 
     @Expose
     @Column(nullable = false)
@@ -34,10 +26,9 @@ public class Class {
     @Column(nullable = false)
     Status status = Status.NOT_YET_OPEN;
 
-
     @Column(name = "course_id", nullable = false)
     @Expose
-    Long courseId;
+    String courseId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Expose

@@ -31,7 +31,7 @@ public class UserCourseRegistration extends BaseEntity {
     User user;
 
     @Column(name = "course_id", nullable = false)
-    Long courseId;
+    String courseId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id", insertable = false, updatable = false)

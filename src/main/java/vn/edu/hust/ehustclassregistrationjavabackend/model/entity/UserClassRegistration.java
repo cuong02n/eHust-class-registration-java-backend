@@ -26,10 +26,8 @@ public class UserClassRegistration extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     User user;
 
-    @Column(name = "class_id",nullable = false)
-    private Long classId;
-
-    @JoinColumn(name = "class_id", insertable = false, updatable = false)
+    @JoinColumn(name = "class_id",referencedColumnName = "id")
+    @JoinColumn(name = "semester",referencedColumnName = "semester")
     @ManyToOne(fetch = FetchType.EAGER)
     @SerializedName("class")
     private Class aClass;
