@@ -23,7 +23,7 @@ public class CourseService {
     final UserCourseRepository userCourseRepository;
 
     public List<Course> getAllActiveCourse() {
-        return courseRepository.findAllByActiveTrue();
+        return courseRepository.findAll();
     }
 
     public List<Course> getAllCourses() {
@@ -43,7 +43,7 @@ public class CourseService {
     }
 
     public Optional<Course> getActiveCourse(String courseId) {
-        return courseRepository.findByActiveTrueAndId(courseId);
+        return courseRepository.findById(courseId);
 
     }
 

@@ -8,6 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CourseRepository extends JpaRepository<Course,String> {
-    List<Course> findAllByActiveTrue();
-    Optional<Course> findByActiveTrueAndId(String courseId);
+    List<Course> findAllBy();
 }

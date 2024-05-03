@@ -5,13 +5,12 @@ import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
-import org.hibernate.annotations.Where;
 
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code", "active"})})
+@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code","version"})})
 @Getter
 @Builder
 @AllArgsConstructor
@@ -52,11 +51,11 @@ public class Course extends BaseEntity {
     @Expose
     String schoolName;
     @Expose
+    @Column(columnDefinition = "int not null default 0")
+    Integer version;
+    @Expose
     @Column(columnDefinition = "bit not null default 0")
     boolean needExperiment;
-    @Expose
-    @Column(columnDefinition = "bit not null default 1")
-    boolean active;
 
     @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'PREREQUISITE'")
