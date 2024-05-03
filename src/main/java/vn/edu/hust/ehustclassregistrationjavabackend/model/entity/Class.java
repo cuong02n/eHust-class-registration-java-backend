@@ -31,7 +31,7 @@ public class Class {
     String courseId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @Expose
+    @Expose(serialize = false)
     @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
     Course course;
 

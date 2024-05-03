@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CourseRepository extends JpaRepository<Course,String> {
-    List<Course> findAllBy();
+    List<Course> findAllByIdOrderByVersionDesc(String courseId);
 }

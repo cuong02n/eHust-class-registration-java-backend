@@ -2,7 +2,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
@@ -43,13 +42,32 @@ public class CourseService {
     }
 
     public Optional<Course> getActiveCourse(String courseId) {
-        return courseRepository.findById(courseId);
+        List<Course> courses = getCourse(courseId);
+        if (courses.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(courses.get(0));
+    }
 
+    public List<Course> getCourse(String courseId) {
+        return courseRepository.findAllByIdOrderByVersionDesc(courseId);
     }
 
     public Course insertCourse(Course course) {// TODO: must auth
+        String courseId = course.getId();
+        Optional<Course> existingCourse = getActiveCourse(courseId);
+        if (existingCourse.isEmpty()) {
+            course.setVersion(0);
+        } else {
+            course.setVersion(existingCourse.get().getVersion() + 1);
+        }
         return courseRepository.save(course);
     }
+
+    public CourseRelationship insertCourseRelationship(CourseRelationship courseRelationship) {
+        return relationshipRepository.save(courseRelationship);
+    }
+
 
     public void insertUserCourseRegistration(List<UserCourseRegistration> registrations) {
         userCourseRepository.saveAll(registrations);
@@ -57,5 +75,9 @@ public class CourseService {
 
     public void addRelationship(List<CourseRelationship> relationships) {
         relationshipRepository.saveAll(relationships);
+    }
+
+    public Optional<CourseRelationship> getRelationshipById(Long relationshipId) {
+        return relationshipRepository.findById(relationshipId);
     }
 }

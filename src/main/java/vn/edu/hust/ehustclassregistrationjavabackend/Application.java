@@ -20,24 +20,24 @@ public class Application {
     public static void main(String[] args) {
 
         ctx = SpringApplication.run(Application.class);
-
-        List<User> users = getListVirtualUser();
-        UserService userService = ctx.getBean(UserService.class);
-        userService.createUser(users);
-
-        List<Course> courses = getListVirtualCourse();
-        CourseService courseService = ctx.getBean(CourseService.class);
-        courseService.addCourse(courses);
-
-        List<UserCourseRegistration> registrationCourses = getVirtualCourseRegistration(users, courses);
-        courseService.insertUserCourseRegistration(registrationCourses);
-
-        List<CourseRelationship> relationships = getVirtualCourseRelationship(courses);
-        courseService.addRelationship(relationships);
-
-        List<Metadata> metadatas = createMetadata();
-        MetadataService metadataService = ctx.getBean(MetadataService.class);
-        metadataService.saveAll(metadatas);
+//
+//        List<User> users = getListVirtualUser();
+//        UserService userService = ctx.getBean(UserService.class);
+//        userService.createUser(users);
+//
+//        List<Course> courses = getListVirtualCourse();
+//        CourseService courseService = ctx.getBean(CourseService.class);
+//        courseService.addCourse(courses);
+//
+//        List<UserCourseRegistration> registrationCourses = getVirtualCourseRegistration(users, courses);
+//        courseService.insertUserCourseRegistration(registrationCourses);
+//
+//        List<CourseRelationship> relationships = getVirtualCourseRelationship(courses);
+//        courseService.addRelationship(relationships);
+//
+//        List<Metadata> metadatas = createMetadata();
+//        MetadataService metadataService = ctx.getBean(MetadataService.class);
+//        metadataService.saveAll(metadatas);
     }
 
     static List<User> getListVirtualUser() {

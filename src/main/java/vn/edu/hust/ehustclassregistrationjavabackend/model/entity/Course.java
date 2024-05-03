@@ -15,6 +15,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class Course extends BaseEntity {
     @Id
     @SerializedName("id")
