@@ -1,68 +1,35 @@
-[
-  {
-    "name": "close_free_all",
-    "value": "2024-02-17 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "close_official_elitech",
-    "value": "2024-01-18 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "close_official_standard",
-    "value": "2024-01-22 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "close_unofficial_elitech",
-    "value": "2024-01-27 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "close_unofficial_standard",
-    "value": "2024-02-05 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "open_free_all",
-    "value": "2024-02-05 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "open_official_elitech",
-    "value": "2024-01-15 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "open_official_standard",
-    "value": "2024-01-18 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "open_unofficial_elitech",
-    "value": "2024-01-22 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "open_unofficial_standard",
-    "value": "2024-01-27 00:00:00.0",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  },
-  {
-    "name": "this_semester",
-    "value": "20231",
-    "createdTime": "May 1, 2024, 2:56:41 PM",
-    "updatedTime": "May 1, 2024, 2:56:41 PM"
-  }
-]
+{
+  "requests": [
+    {
+      "url": "/me/drive/items/01LNTR4SHXQUWW7OB2TBD352WKRH6GQHPY/workbook/worksheets/Sheet1/range(address='A13:B16')",
+      "method": "PATCH",
+      "id": "1001",
+      "headers": {
+        "content-type": "application/json",
+        "workbook-session-id": "cluster=PSG3&sess16cbf"
+      },
+      "body": {}
+    },
+    {
+      "url": "/me/drive/items/01LNTR4SHXQUWW7OB2TBD352WKRH6GQHPY/workbook/worksheets/Sheet1/range(address='A2:B12')",
+      "method": "PATCH",
+      "id": "1002",
+      "headers": {
+        "content-type": "application/json",
+        "authorization": "Bearer eyasjdasdjaskjd",
+        "workbook-session-id": "cluster=PSG3&sessio"
+      },
+      "body": {}
+    },
+    {
+      "url": "/me/drive/items/01LNTR4SHXQUWW7OB2TBD352WKRH6GQHPY/workbook/worksheets/Sheet1/range(address='A2:B16')",
+      "method": "GET",
+      "id": "1003",
+      "dependsOn": ["1002","1001"],
+      "headers": {},
+      "body": {
+
+      }
+    }
+  ]
+}

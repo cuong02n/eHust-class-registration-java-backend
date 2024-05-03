@@ -9,6 +9,7 @@ import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.util.List;
 
@@ -20,10 +21,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.clear();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         GsonHttpMessageConverter gsonConverter = new GsonHttpMessageConverter();
-        gsonConverter.setGson(gson);
+        gsonConverter.setGson(GsonUtil.gsonExpose);
         converters.add(gsonConverter);
     }
 
