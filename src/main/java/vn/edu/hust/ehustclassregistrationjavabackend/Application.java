@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.Vector;
 
 @SpringBootApplication
+
 public class Application {
     static ApplicationContext ctx;
 

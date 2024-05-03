@@ -31,4 +31,13 @@ public class ClassController {
             return ResponseEntity.status(409).body(e.getCause().getMessage());
         }
     }
+    @PostMapping()
+    public ResponseEntity<?> createClass(@RequestBody Class newClass) {
+        try {
+            classRepository.save(newClass);
+            return ResponseEntity.created(URI.create("/api/class?classId=")).body(newClass);
+        }catch (Exception e){
+            return ResponseEntity.status(400).body(e.getCause().getMessage());
+        }
+    }
 }

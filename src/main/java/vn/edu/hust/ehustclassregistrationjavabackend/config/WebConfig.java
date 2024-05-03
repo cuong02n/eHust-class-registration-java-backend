@@ -1,7 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.config;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
+import io.swagger.v3.core.util.Json;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Configuration
@@ -21,9 +22,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.clear();
+//        converters.clear();
         GsonHttpMessageConverter gsonConverter = new GsonHttpMessageConverter();
         gsonConverter.setGson(GsonUtil.gsonExpose);
+
+//        GsonHttpMessageConverter gsonSwaggerConverter = new GsonHttpMessageConverter();
+//        gsonConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().registerTypeAdapter(Json.class,new SpringfoxJsonToGsonAdapter()).create());
+//        converters.add(gsonSwaggerConverter);
+
+
         converters.add(gsonConverter);
     }
 
@@ -32,4 +39,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(rateLimitInterceptor);
     }
 
+//    static class SpringfoxJsonToGsonAdapter implements JsonSerializer<Json> {
+//        @Override
+//        public JsonElement serialize(Json json, Type type, JsonSerializationContext jsonSerializationContext) {
+//           return GsonUtil.gsonExpose.toJsonTree(json);
+//        }
+//    }
 }
