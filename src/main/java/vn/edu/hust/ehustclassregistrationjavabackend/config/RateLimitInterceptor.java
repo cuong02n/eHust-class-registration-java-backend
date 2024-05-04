@@ -28,9 +28,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
         if (xForwardedForHeader != null) {
             return xForwardedForHeader.split(",")[0].trim();
         }
-        var ip = request.getRemoteAddr();
-        System.out.println(ip);
-        return ip;
+        return request.getRemoteAddr();
     }
 
     @Override
@@ -48,7 +46,6 @@ public class RateLimitInterceptor implements HandlerInterceptor {
                     }
                     requests.poll();
                 }
-                System.out.println(requests.size());
                 if (requests.size() >= MAX_REQUEST) {
                     response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
 

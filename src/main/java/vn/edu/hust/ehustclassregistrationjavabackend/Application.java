@@ -21,7 +21,7 @@ public class Application {
     public static void main(String[] args) {
 
         ctx = SpringApplication.run(Application.class);
-//
+
 //        List<User> users = getListVirtualUser();
 //        UserService userService = ctx.getBean(UserService.class);
 //        userService.createUser(users);

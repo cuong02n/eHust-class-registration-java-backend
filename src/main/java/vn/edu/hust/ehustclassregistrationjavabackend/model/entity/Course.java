@@ -10,7 +10,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_code","version"})})
+@Table(name = "course")
 @Getter
 @Builder
 @AllArgsConstructor
@@ -51,9 +51,9 @@ public class Course extends BaseEntity {
     String departmentName;
     @Expose
     String schoolName;
-    @Expose
-    @Column(columnDefinition = "int not null default 0")
-    Integer version;
+//    @Expose
+//    @Column(columnDefinition = "int not null default 0")
+//    int version;
     @Expose
     @Column(columnDefinition = "bit not null default 0")
     boolean needExperiment;

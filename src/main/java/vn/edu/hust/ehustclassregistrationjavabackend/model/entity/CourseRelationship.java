@@ -18,7 +18,7 @@ public class CourseRelationship extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Expose(serialize = false)
+    @Expose
     @Column(name = "course_id",nullable = false)
     String courseId;
 
@@ -37,7 +37,7 @@ public class CourseRelationship extends BaseEntity {
     Course courseConstraint;
 
     @Enumerated(value = EnumType.STRING)
-    @Expose(serialize = false)
+    @Expose
     @Column(nullable = false)
     Relation relation;
 

@@ -1,17 +1,15 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.config;
 
-import com.google.gson.*;
-import io.swagger.v3.core.util.Json;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Configuration
@@ -19,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
     final RateLimitInterceptor rateLimitInterceptor;
+    final CustomExceptionResolver customExceptionResolver;
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -32,6 +31,12 @@ public class WebConfig implements WebMvcConfigurer {
 
 
         converters.add(gsonConverter);
+    }
+
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.clear();
+        resolvers.add(customExceptionResolver);
     }
 
     @Override

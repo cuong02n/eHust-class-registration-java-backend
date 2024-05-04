@@ -50,18 +50,19 @@ public class CourseService {
     }
 
     public List<Course> getCourse(String courseId) {
-        return courseRepository.findAllByIdOrderByVersionDesc(courseId);
+        return courseRepository.findAllById(courseId);
     }
 
     public Course insertCourse(Course course) {// TODO: must auth
-        String courseId = course.getId();
-        Optional<Course> existingCourse = getActiveCourse(courseId);
-        if (existingCourse.isEmpty()) {
-            course.setVersion(0);
-        } else {
-            course.setVersion(existingCourse.get().getVersion() + 1);
-        }
-        return courseRepository.save(course);
+//        String courseId = course.getId();
+//        Optional<Course> existingCourse = getActiveCourse(courseId);
+//        if (existingCourse.isEmpty()) {
+//            course.setVersion(0);
+//        } else {
+//            course.setVersion(existingCourse.get().getVersion() + 1);
+//        }
+//        return courseRepository.save(course);
+        return course;
     }
 
     public CourseRelationship insertCourseRelationship(CourseRelationship courseRelationship) {
@@ -77,7 +78,7 @@ public class CourseService {
         relationshipRepository.saveAll(relationships);
     }
 
-    public Optional<CourseRelationship> getRelationshipById(Long relationshipId) {
-        return relationshipRepository.findById(relationshipId);
+    public CourseRelationship getRelationshipById(Long relationshipId) {
+        return relationshipRepository.findById(relationshipId).orElse(null);
     }
 }

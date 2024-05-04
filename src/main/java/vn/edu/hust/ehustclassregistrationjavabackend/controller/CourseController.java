@@ -49,6 +49,6 @@ public class CourseController {
 
     @GetMapping("/course-relationship")
     public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
-        return BaseResponse.createResponse(courseService.getRelationshipById(relationshipId), null, 200);
+        return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");
     }
 }

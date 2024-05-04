@@ -2,14 +2,19 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
+
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
 @Data
-public class Class {
+@Builder
+@AllArgsConstructor
+public class Class extends BaseEntity {
     @EmbeddedId
     @Expose
     ClassPK classPK;
@@ -24,7 +29,7 @@ public class Class {
     @Expose
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    Status status = Status.NOT_YET_OPEN;
+    Status status = Status.OPEN;
 
     @Column(name = "course_id", nullable = false)
     @Expose
@@ -35,10 +40,37 @@ public class Class {
     @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
     Course course;
 
+    @Expose
+    @Column(columnDefinition = "json not null")
+    String timetable;
+
     public enum Status {
-        NOT_YET_OPEN,
         OPEN,
         CLOSE,
         CANCEL
     }
+
+    @Data
+    public static class Timetable implements Serializable{
+        @NonNull
+        @SerializedName("week")
+        String week;
+
+        @NonNull
+        @SerializedName("from")
+        Integer from;
+
+        @NonNull
+        @SerializedName("to")
+        Integer to;
+
+        @NonNull
+        @SerializedName("place")
+        String place;
+
+        @NonNull
+        @SerializedName("dayOfWeek")
+        String dayOfWeek; // 2-8
+    }
+
 }
