@@ -73,12 +73,12 @@ public class Class extends BaseEntity {
         @NonNull
         @SerializedName("from")
         @Expose
-        Integer from;
+        String from;
 
         @NonNull
         @Expose
         @SerializedName("to")
-        Integer to;
+        String to;
 
         @NonNull
         @Expose
@@ -88,6 +88,6 @@ public class Class extends BaseEntity {
         @NonNull
         @Expose
         @SerializedName("dayOfWeek")
-        String dayOfWeek; // 2-8
+        Integer dayOfWeek; // 2-8
     }
 }
