@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @MappedSuperclass
-@Getter
 //@Data
 public abstract class BaseEntity implements Serializable {
     @Column(name = "createdBy")

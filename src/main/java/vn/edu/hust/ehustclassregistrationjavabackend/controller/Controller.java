@@ -16,7 +16,7 @@ public class Controller {
     final UserService
      userService;
     @GetMapping()
-    public String test(@RequestParam int x) throws Exception {
+    public String test(@RequestParam int x) {
         return userService.test(x);
     }
     @PostMapping()

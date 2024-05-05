@@ -1,9 +1,10 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
@@ -19,17 +20,26 @@ public class CourseController {
     private final CourseService courseService;
     private final MetadataService metadataService;
 
-
-    @GetMapping("/")
-    public ResponseEntity<Course> getCourse(@RequestParam String courseId) {
-        var course = courseService.getActiveCourse(courseId);
-        if (course.isEmpty()) {
-            return ResponseEntity.status(204).body(null);
-        }
-        return ResponseEntity.ok().body(course.get());
+    @GetMapping("")
+    public ResponseEntity<?> getCourse(@RequestParam String courseId) {
+        return BaseResponse.ok(courseService.getActiveCourse(courseId), "Not found course: ", courseId);
     }
 
-//    @PutMapping("/")
+    @PostMapping("")
+    public ResponseEntity<?> createCourse(@RequestBody Course newCourse) {
+        return BaseResponse.created(courseService.insertCourse(newCourse), "Cannot create course, duplicate id: ", newCourse.getId());
+    }
+
+    @PatchMapping("")
+    public ResponseEntity<?> updateCourse(@RequestBody Course newCourse){
+        return BaseResponse.ok(courseService.updateCourse(newCourse));
+    }
+    @DeleteMapping("")
+    @Operation(description = "Pending",security = @SecurityRequirement(name = "Bearer"))
+    public ResponseEntity<?> deleteCourse(@RequestParam String courseId){
+        // PENDING
+        return BaseResponse.deleted(courseService.deleteCourse(courseId));
+    }
 
     @PostMapping("/course-relationship")
     public ResponseEntity<?> createCourseRelationship(@RequestBody CourseRelationship relationship) {

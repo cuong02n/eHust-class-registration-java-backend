@@ -1,20 +1,20 @@
 package vn.edu.hust.ehustclassregistrationjavabackend;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.HibernateProxyTypeAdapter;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegistration;
-import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.ObjectUtil;
 
+import java.lang.reflect.Method;
+
+@Getter
+@Setter
 @Component
-@RequiredArgsConstructor
-
 public class Service {
-    final CourseRepository courseRepository;
-    final UserRepository userRepository;
+
 }

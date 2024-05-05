@@ -3,8 +3,12 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @Data
@@ -13,7 +17,7 @@ import java.util.Set;
 @Table(name = "user")
 @Builder
 @AllArgsConstructor
-public class User extends BaseEntity {
+public class User extends BaseEntity implements UserDetails {
     @Id
     @Expose
     String id;
@@ -32,20 +36,42 @@ public class User extends BaseEntity {
 
     @Expose
     String email;
+    @Expose(serialize = false)
+    String password;
 
     @Expose
     @Column(columnDefinition = "BIT(1) default 0")
     boolean active;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority(role.name()));
+    }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_course_registration",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id")
-    )
-    @Expose
-    Set<Course> courseRegisted;
+    @Override
+    public String getUsername() {
+        return getId();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
     public enum Role {
         STUDENT

@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.util.List;
 
@@ -51,26 +52,30 @@ public class Course extends BaseEntity {
     String departmentName;
     @Expose
     String schoolName;
-//    @Expose
+    //    @Expose
 //    @Column(columnDefinition = "int not null default 0")
 //    int version;
     @Expose
     @Column(columnDefinition = "bit not null default 0")
-    boolean needExperiment;
+    Boolean needExperiment;
 
-    @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'PREREQUISITE'")
     @Expose
     List<CourseRelationship> preRequisiteCourses;
 
-    @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId",  fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'PRECOURSE'")
     @Expose
     List<CourseRelationship> preCourse;
 
-    @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'COREQUISITECOURSE'")
     @Expose
     List<CourseRelationship> coreQuisiteCourse;
 
+    @Override
+    public String toString() {
+        return GsonUtil.gsonExpose.toJson(this);
+    }
 }

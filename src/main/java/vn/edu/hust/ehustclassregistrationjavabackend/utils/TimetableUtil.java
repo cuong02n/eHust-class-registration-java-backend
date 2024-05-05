@@ -9,13 +9,13 @@ import java.util.List;
 public class TimetableUtil {
     public static List<Class.Timetable> toTimetable(String timetableString){
         TypeToken<List<Class.Timetable>> typeToken = new TypeToken<>(){};
-        return GsonUtil.gson.fromJson(timetableString, typeToken);
+        return GsonUtil.gsonExpose.fromJson(timetableString, typeToken);
     }
     public static String toString(List<Class.Timetable> timetables){
-        return GsonUtil.gson.toJson(timetables);
+        return GsonUtil.gsonExpose.toJson(timetables);
     }
     public static JsonElement toJsonElement(List<Class.Timetable> timetable){
-        return GsonUtil.gson.toJsonTree(timetable);
+        return GsonUtil.gsonExpose.toJsonTree(timetable);
     }
     public static JsonElement toJsonElement(String timetableString){
         return toJsonElement(toTimetable(timetableString));

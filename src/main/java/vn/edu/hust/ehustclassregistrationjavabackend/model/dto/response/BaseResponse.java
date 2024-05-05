@@ -1,6 +1,5 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;
@@ -15,21 +14,27 @@ import java.io.Serializable;
  */
 public class BaseResponse {
 
-
-    public static <T extends Serializable> ResponseEntity<?> createBaseResponse(T value, int statusCodeSuccess, int statusIfError, String messageIfError) {
+    public static <T extends Serializable> ResponseEntity<?> createBaseResponse(T value, int statusCodeSuccess, int statusIfError, String... messageIfError) {
         if (value != null) {
             SuccessResponse response = new SuccessResponse(value);
             return ResponseEntity.status(statusCodeSuccess).body(response);
         }
-        return ResponseEntity.status(statusIfError).body(new ErrorResponse(statusIfError, messageIfError));
+        StringBuilder builder = new StringBuilder();
+        for (String message : messageIfError) {
+            builder.append(message);
+        }
+        return ResponseEntity.status(statusIfError).body(new ErrorResponse(statusIfError, builder.toString()));
     }
 
-    public static <T extends Serializable> ResponseEntity<?> created(T value, String messageIfError) {
-        return createBaseResponse(value, 201, 409, messageIfError);
+    public static <T extends Serializable> ResponseEntity<?> created(T value, String... messageIfError) {
+        return createBaseResponse(value, 201, 204, messageIfError);
     }
 
-    public static <T extends Serializable> ResponseEntity<?> ok(T value, String messageIfError) {
-        return createBaseResponse(value, 200, 204, messageIfError);
+    public static <T extends Serializable> ResponseEntity<?> ok(T value, String... messageIfError) {
+        return createBaseResponse(value, 200, 404, messageIfError);
+    }
+    public static <T extends Serializable> ResponseEntity<?> deleted(T value,String ... messageIfError){
+        return createBaseResponse(value,204,404,messageIfError);
     }
 
     @AllArgsConstructor
@@ -51,7 +56,8 @@ public class BaseResponse {
         public SuccessResponse(JsonElement data) {
             this.data = data;
         }
-        public SuccessResponse(Serializable data){
+
+        public SuccessResponse(Serializable data) {
             this.data = GsonUtil.gsonExpose.toJsonTree(data);
         }
     }

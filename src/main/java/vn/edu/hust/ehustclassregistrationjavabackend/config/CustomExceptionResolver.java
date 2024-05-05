@@ -121,14 +121,14 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         }
         message = message.replace("\"","");
         message = message.replace("'","");
-        response.getWriter().write(GsonUtil.gson.toJson(new BaseResponse.ErrorResponse(400, message)));
+        response.getWriter().write(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(400, message)));
         response.setStatus(400);
     }
 
     @Override
     protected @NonNull ModelAndView handleErrorResponse(ErrorResponse errorResponse, @NonNull HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         response.setStatus(errorResponse.getStatusCode().value());
-        response.getWriter().println(GsonUtil.gson.toJson(new BaseResponse.ErrorResponse(errorResponse.getStatusCode().value(), errorResponse.getBody().getDetail())));
+        response.getWriter().println(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(errorResponse.getStatusCode().value(), errorResponse.getBody().getDetail())));
         return new ModelAndView();
     }
 }
