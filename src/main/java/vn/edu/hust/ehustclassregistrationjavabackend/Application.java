@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
@@ -109,6 +110,10 @@ public class Application {
             }
         }
         return relationships;
+    }
+
+    static List<Class> getVirtualClass(List<Course> courses){
+
     }
 
     static List<Metadata> createMetadata() {

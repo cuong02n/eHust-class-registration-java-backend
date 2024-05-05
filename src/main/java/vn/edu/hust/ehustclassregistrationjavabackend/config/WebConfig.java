@@ -25,11 +25,6 @@ public class WebConfig implements WebMvcConfigurer {
         GsonHttpMessageConverter gsonConverter = new GsonHttpMessageConverter();
         gsonConverter.setGson(GsonUtil.gsonExpose);
 
-//        GsonHttpMessageConverter gsonSwaggerConverter = new GsonHttpMessageConverter();
-//        gsonConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().registerTypeAdapter(Json.class,new SpringfoxJsonToGsonAdapter()).create());
-//        converters.add(gsonSwaggerConverter);
-
-
         converters.add(gsonConverter);
     }
 
@@ -44,10 +39,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(rateLimitInterceptor);
     }
 
-//    static class SpringfoxJsonToGsonAdapter implements JsonSerializer<Json> {
-//        @Override
-//        public JsonElement serialize(Json json, Type type, JsonSerializationContext jsonSerializationContext) {
-//           return GsonUtil.gsonExpose.toJsonTree(json);
-//        }
-//    }
 }

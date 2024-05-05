@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
@@ -25,6 +26,6 @@ public class Metadata extends BaseEntity {
 
     @Override
     public String toString() {
-        return new Gson().toJson(this);
+        return GsonUtil.gsonExpose.toJson(this);
     }
 }
