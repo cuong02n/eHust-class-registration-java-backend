@@ -2,12 +2,11 @@ package vn.edu.hust.ehustclassregistrationjavabackend.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import org.springframework.cglib.core.Local;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 
-import java.time.LocalTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class TimetableUtil {
     public static List<Class.Timetable> toTimetable(String timetableString) {
@@ -52,10 +51,10 @@ public class TimetableUtil {
         int timeStart2 = convertToNumberValue(from2);
         int timeEnd2 = convertToNumberValue(to2);
 
-        if (timeStart2 >= timeEnd1) {
-            return false;
-        }
-        return timeStart1 < timeEnd2;
+//        if (timeStart2 >= timeEnd1) {
+//            return false;
+//        }
+        return timeStart2 < timeEnd1 && timeStart1 < timeEnd2;
 
     }
 
