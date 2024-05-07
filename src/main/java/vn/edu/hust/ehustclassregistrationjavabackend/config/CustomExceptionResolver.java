@@ -110,6 +110,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected void sendServerError(@NonNull Exception ex, @NonNull HttpServletRequest request, @NonNull HttpServletResponse response) throws IOException {
+        ex.printStackTrace(System.err);
         if(response.isCommitted()){
             return;
         }
@@ -121,6 +122,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         }
         message = message.replace("\"","");
         message = message.replace("'","");
+        response.addHeader("content-type", "application/json");
         response.getWriter().write(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(400, message)));
         response.setStatus(400);
     }
@@ -128,6 +130,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
     @Override
     protected @NonNull ModelAndView handleErrorResponse(ErrorResponse errorResponse, @NonNull HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         response.setStatus(errorResponse.getStatusCode().value());
+        response.addHeader("content-type", "application/json");
         response.getWriter().println(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(errorResponse.getStatusCode().value(), errorResponse.getBody().getDetail())));
         return new ModelAndView();
     }

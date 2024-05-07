@@ -16,11 +16,6 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     final UserRepository userRepository;
 
-    public String test(int x) {
-        if (x == 1) return 0 / 0 + "";
-        return x + "";
-    }
-
     public String test2(ClassPK pk) {
         return "";
     }

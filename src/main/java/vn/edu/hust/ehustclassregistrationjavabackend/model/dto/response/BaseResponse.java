@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
@@ -15,13 +16,13 @@ public class BaseResponse {
     public static <T> ResponseEntity<?> createBaseResponse(T value, int statusCodeSuccess, int statusIfError, String... messageIfError) {
         if (value != null) {
             SuccessResponse<T> response = new SuccessResponse<T>(value);
-            return ResponseEntity.status(statusCodeSuccess).body(response);
+            return ResponseEntity.status(statusCodeSuccess).contentType(MediaType.APPLICATION_JSON).body(response);
         }
         StringBuilder builder = new StringBuilder();
         for (String message : messageIfError) {
             builder.append(message);
         }
-        return ResponseEntity.status(statusIfError).body(new ErrorResponse(statusIfError, builder.toString()));
+        return ResponseEntity.status(statusIfError).contentType(MediaType.APPLICATION_JSON).body(new ErrorResponse(statusIfError, builder.toString()));
     }
 
     public static <T> ResponseEntity<?> created(T value, String... messageIfError) {

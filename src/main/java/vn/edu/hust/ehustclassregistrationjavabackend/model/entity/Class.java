@@ -64,6 +64,7 @@ public class Class extends BaseEntity {
     }
 
     @Data
+    @AllArgsConstructor
     public static class Timetable implements Serializable {
         @NonNull
         @SerializedName("week")

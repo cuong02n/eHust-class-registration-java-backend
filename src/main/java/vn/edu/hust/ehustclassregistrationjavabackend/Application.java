@@ -1,15 +1,16 @@
 package vn.edu.hust.ehustclassregistrationjavabackend;
 
+import com.google.gson.Gson;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
-import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
-import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
+import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
@@ -22,7 +23,13 @@ public class Application {
     public static void main(String[] args) {
 
         ctx = SpringApplication.run(Application.class);
-
+//        Class a = Class.builder().classPK(new ClassPK("123123","20231"))
+//                .status(Class.Status.OPEN)
+//                .timetable(new Gson().toJson(List.of(new Class.Timetable("3-10,11-18", "6:45", "9:10", "TC-205", 2))))
+//                .courseId("IT1111").maxStudent(200).build();
+//        ClassRepository classRepository = ctx.getBean(ClassRepository.class);
+//        classRepository.save(a);
+//
 //        List<User> users = getListVirtualUser();
 //        UserService userService = ctx.getBean(UserService.class);
 //        userService.createUser(users);
@@ -48,7 +55,7 @@ public class Application {
             users.add(User.builder()
                     .id(20204500 + i + "")
                     .email("virtual_user" + i + "@gmail.com")
-                    .role(User.Role.STUDENT)
+                    .role(User.Role.ROLE_STUDENT)
                     .name("Cuong Nguyen Manh " + i)
                     .build()
             );
@@ -112,8 +119,8 @@ public class Application {
         return relationships;
     }
 
-    static List<Class> getVirtualClass(List<Course> courses){
-
+    static List<Class> getVirtualClass(List<Course> courses) {
+        return null;
     }
 
     static List<Metadata> createMetadata() {

@@ -25,7 +25,7 @@ public class UserCourseRegistration extends BaseEntity {
     @Column(name = "user_id", nullable = false)
     String userId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @Expose(serialize = false)
     User user;
@@ -33,7 +33,7 @@ public class UserCourseRegistration extends BaseEntity {
     @Column(name = "course_id", nullable = false)
     String courseId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
     @Expose(serialize = false)
     Course course;

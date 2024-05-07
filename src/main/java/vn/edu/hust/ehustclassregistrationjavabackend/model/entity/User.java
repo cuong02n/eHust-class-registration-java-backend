@@ -74,7 +74,8 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     public enum Role {
-        STUDENT
+        ROLE_STUDENT,
+        ROLE_ADMIN
     }
 
     public enum StudentType {

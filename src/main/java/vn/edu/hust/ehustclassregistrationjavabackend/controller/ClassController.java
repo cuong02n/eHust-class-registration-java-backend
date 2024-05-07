@@ -25,7 +25,8 @@ public class ClassController {
 
     @GetMapping()
     public ResponseEntity<?> getClass(@RequestParam String id, @RequestParam String semester) {
-        return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester), "Not found class");
+        System.out.println("ok");
+        return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester).toClassDto(), "Not found class");
     }
 
     @GetMapping("/get-by-course-id")

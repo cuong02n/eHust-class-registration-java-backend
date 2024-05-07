@@ -22,42 +22,6 @@ public class CourseController {
     private final CourseService courseService;
     private final MetadataService metadataService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getCourse(@RequestParam String courseId) {
-        return BaseResponse.ok(courseService.getActiveCourse(courseId), "Not found course: ", courseId);
-    }
-
-    @PostMapping("")
-    public ResponseEntity<?> createCourse(@RequestBody Course newCourse) {
-        return BaseResponse.created(courseService.insertCourse(newCourse), "Cannot create course, duplicate id: ", newCourse.getId());
-    }
-
-    @PatchMapping("")
-    public ResponseEntity<?> updateCourse(@RequestBody Course newCourse){
-        return BaseResponse.ok(courseService.updateCourse(newCourse));
-    }
-    @DeleteMapping("")
-    @Operation(description = "Pending",security = @SecurityRequirement(name = "Bearer"))
-    public ResponseEntity<?> deleteCourse(@RequestParam String courseId){
-        // PENDING
-        return BaseResponse.deleted(courseService.deleteCourse(courseId));
-    }
-
-    @PostMapping("/course-relationship")
-    public ResponseEntity<?> createCourseRelationship(@RequestBody CourseRelationship relationship) {
-        try {
-            CourseRelationship created = courseService.insertCourseRelationship(relationship);
-            return ResponseEntity.created(new URI("/api/course/get-relationship?relationshipId=" + created.getId())).body(created);
-        } catch (Exception e) {
-            return ResponseEntity.status(400).body(e.getLocalizedMessage());
-        }
-    }
-
-    @PutMapping("/update-course-relationship")
-    public ResponseEntity<?> updateCourseRelationship(@RequestBody CourseRelationship relationship) {
-        return null;
-        // Todo
-    }
 
     @GetMapping("/course-relationship")
     public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
