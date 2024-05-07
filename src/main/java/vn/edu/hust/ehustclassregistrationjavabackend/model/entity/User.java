@@ -39,8 +39,11 @@ public class User extends BaseEntity implements UserDetails {
     @Expose(serialize = false)
     String password;
 
+    public String getPassword(){
+        return "";
+    }
     @Expose
-    @Column(columnDefinition = "BIT(1) default 0")
+    @Column(columnDefinition = "BIT(1) default 1")
     boolean active;
 
     @Override

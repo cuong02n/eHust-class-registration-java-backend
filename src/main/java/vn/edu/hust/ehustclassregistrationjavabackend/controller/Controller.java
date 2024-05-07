@@ -13,14 +13,4 @@ import java.security.Signature;
 @RequestMapping
 @RequiredArgsConstructor
 public class Controller {
-    final UserService
-     userService;
-    @GetMapping()
-    public String test(@RequestParam int x) {
-        return userService.test(x);
-    }
-    @PostMapping()
-    public String postTest(@RequestBody ClassPK pk){
-        return userService.test2(pk);
-    }
 }

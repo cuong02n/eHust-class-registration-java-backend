@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 
 import java.sql.Timestamp;
@@ -23,12 +24,7 @@ public class Application {
     public static void main(String[] args) {
 
         ctx = SpringApplication.run(Application.class);
-//        Class a = Class.builder().classPK(new ClassPK("123123","20231"))
-//                .status(Class.Status.OPEN)
-//                .timetable(new Gson().toJson(List.of(new Class.Timetable("3-10,11-18", "6:45", "9:10", "TC-205", 2))))
-//                .courseId("IT1111").maxStudent(200).build();
-//        ClassRepository classRepository = ctx.getBean(ClassRepository.class);
-//        classRepository.save(a);
+
 //
 //        List<User> users = getListVirtualUser();
 //        UserService userService = ctx.getBean(UserService.class);
@@ -43,10 +39,16 @@ public class Application {
 //
 //        List<CourseRelationship> relationships = getVirtualCourseRelationship(courses);
 //        courseService.addRelationship(relationships);
-//
-//        List<Metadata> metadatas = createMetadata();
-//        MetadataService metadataService = ctx.getBean(MetadataService.class);
-//        metadataService.saveAll(metadatas);
+////
+////        List<Metadata> metadatas = createMetadata();
+////        MetadataService metadataService = ctx.getBean(MetadataService.class);
+////        metadataService.saveAll(metadatas);
+//        Class a = Class.builder().classPK(new ClassPK("123123","20231"))
+//                .status(Class.Status.OPEN)
+//                .timetable(new Gson().toJson(List.of(new Class.Timetable("3-10,11-18", "6:45", "9:10", "TC-205", 2))))
+//                .courseId("IT_1").maxStudent(200).build();
+//        ClassRepository classRepository = ctx.getBean(ClassRepository.class);
+//        classRepository.save(a);
     }
 
     static List<User> getListVirtualUser() {
@@ -72,6 +74,7 @@ public class Application {
                             .courseName("Lập trình " + i)
                             .courseNameE("Code " + i)
                             .credit(2)
+                            .needExperiment(false)
                             .build()
             );
         }

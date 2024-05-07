@@ -11,10 +11,13 @@ import org.springframework.stereotype.Component;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ObjectUtil;
 
 import java.lang.reflect.Method;
+import java.util.Random;
 
-@Getter
-@Setter
-@Component
 public class Service {
-
+    public static void main(String[] args) {
+        for (int i = 0; i < 15; i++) {
+            Random r = new Random(15);
+            System.out.println(r.nextInt());
+        }
+    }
 }
