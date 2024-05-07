@@ -15,7 +15,7 @@ public class ClassController {
 
     @PostMapping()
     public ResponseEntity<?> createClass(@RequestBody ClassDto request) {
-        return BaseResponse.created(classService.createClass(request), "Cannot create class, maybe duplicate the primary key: {id,semester}: {", request.getId(), " and ", request.getSemester()," }");
+        return BaseResponse.created(classService.createClass(request), "Cannot create class, maybe duplicate the primary key: {id,semester}: {", request.getId(), " and ", request.getSemester(), " }");
     }
 
 //    @PatchMapping()
@@ -27,4 +27,10 @@ public class ClassController {
     public ResponseEntity<?> getClass(@RequestParam String id, @RequestParam String semester) {
         return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester), "Not found class");
     }
+
+    @GetMapping("/get-by-course-id")
+    public ResponseEntity<?> getClassByCourseId(@RequestParam String courseId, @RequestParam String semester) {
+        return BaseResponse.ok(classService.getClassByCourseId(courseId, semester));
+    }
+
 }

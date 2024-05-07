@@ -7,16 +7,14 @@ import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
-import java.io.Serializable;
-
 /**
  * empty value param meaning error
  */
 public class BaseResponse {
 
-    public static <T extends Serializable> ResponseEntity<?> createBaseResponse(T value, int statusCodeSuccess, int statusIfError, String... messageIfError) {
+    public static <T> ResponseEntity<?> createBaseResponse(T value, int statusCodeSuccess, int statusIfError, String... messageIfError) {
         if (value != null) {
-            SuccessResponse response = new SuccessResponse(value);
+            SuccessResponse<T> response = new SuccessResponse<T>(value);
             return ResponseEntity.status(statusCodeSuccess).body(response);
         }
         StringBuilder builder = new StringBuilder();
@@ -26,15 +24,16 @@ public class BaseResponse {
         return ResponseEntity.status(statusIfError).body(new ErrorResponse(statusIfError, builder.toString()));
     }
 
-    public static <T extends Serializable> ResponseEntity<?> created(T value, String... messageIfError) {
+    public static <T> ResponseEntity<?> created(T value, String... messageIfError) {
         return createBaseResponse(value, 201, 204, messageIfError);
     }
 
-    public static <T extends Serializable> ResponseEntity<?> ok(T value, String... messageIfError) {
+    public static <T> ResponseEntity<?> ok(T value, String... messageIfError) {
         return createBaseResponse(value, 200, 404, messageIfError);
     }
-    public static <T extends Serializable> ResponseEntity<?> deleted(T value,String ... messageIfError){
-        return createBaseResponse(value,204,404,messageIfError);
+
+    public static <T> ResponseEntity<?> deleted(T value, String... messageIfError) {
+        return createBaseResponse(value, 204, 404, messageIfError);
     }
 
     @AllArgsConstructor
@@ -47,7 +46,7 @@ public class BaseResponse {
     }
 
     @Getter
-    public static class SuccessResponse {
+    public static class SuccessResponse<T> {
         @Expose
         int error = 0;
         @Expose
@@ -57,8 +56,8 @@ public class BaseResponse {
             this.data = data;
         }
 
-        public SuccessResponse(Serializable data) {
-            this.data = GsonUtil.gsonExpose.toJsonTree(data);
+        public SuccessResponse(T data) {
+            this(GsonUtil.gsonExpose.toJsonTree(data));
         }
     }
 }

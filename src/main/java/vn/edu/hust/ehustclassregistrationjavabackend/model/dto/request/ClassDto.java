@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,4 +36,16 @@ public class ClassDto implements Serializable {
     @NonNull
     @Expose
     List<Class.Timetable> timetable;
+
+    public Class toClassEntity(){
+        return Class.builder()
+                .classPK(new ClassPK(id,semester))
+                .semesterType(semesterType)
+                .maxStudent(maxStudent)
+                .status(status)
+                .courseId(courseId)
+                .timetable(TimetableUtil.toString(timetable))
+                .build();
+
+    }
 }

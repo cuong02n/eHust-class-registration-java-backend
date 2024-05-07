@@ -11,6 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.util.List;
+import java.util.Vector;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +23,8 @@ public class ClassService {
         return classRepository.findById(id).orElse(null);
     }
 
-    public Class getClassByIdAndSemester(String id,String semester){
-        return classRepository.findByClassPK(new ClassPK(id,semester));
+    public Class getClassByIdAndSemester(String id, String semester) {
+        return classRepository.findByClassPK(new ClassPK(id, semester));
     }
 
     public ClassDto createClass(ClassDto classDTO) {
@@ -40,13 +41,14 @@ public class ClassService {
                 .status(classDTO.getStatus() != null ? classDTO.getStatus() : Class.Status.OPEN)
                 .build();
 
-        var ret=  classRepository.save(newClass).toClassDto();
+        var ret = classRepository.save(newClass).toClassDto();
         System.out.println(GsonUtil.gsonExpose.toJson(ret));
         return ret;
     }
 
-    public List<Class> findClassByCourseId(String courseId) {
-        List<Class> classes = classRepository.findAllByCourseId(courseId);
-        return classes;
+    public List<ClassDto> getClassByCourseId(String courseId, String semester) {
+        List<ClassDto> result = new Vector<>();
+        classRepository.findAllByCourseIdAndClassPK_Semester(courseId, semester).forEach(c -> result.add(c.toClassDto()));
+        return result;
     }
 }

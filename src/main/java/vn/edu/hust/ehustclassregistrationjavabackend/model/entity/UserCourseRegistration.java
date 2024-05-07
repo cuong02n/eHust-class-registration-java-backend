@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Builder
 @AllArgsConstructor
-@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id"})})
+@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id","semester"})})
 public class UserCourseRegistration extends BaseEntity {
 
     @Id
