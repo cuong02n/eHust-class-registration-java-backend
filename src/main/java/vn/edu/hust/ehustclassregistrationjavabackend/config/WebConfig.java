@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
-        resolvers.clear();
+//        resolvers.clear();
         resolvers.add(customExceptionResolver);
     }
 

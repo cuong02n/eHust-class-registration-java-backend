@@ -37,6 +37,7 @@ public class BaseResponse {
         return createBaseResponse(value, 204, 404, messageIfError);
     }
 
+
     @AllArgsConstructor
     @Getter
     public static class ErrorResponse {
@@ -44,6 +45,11 @@ public class BaseResponse {
         int error;
         @Expose
         String message;
+
+        @Override
+        public String toString() {
+            return GsonUtil.gsonExpose.toJson(this);
+        }
     }
 
     @Getter
