@@ -35,6 +35,10 @@ public class MetadataService {
         return GsonUtil.gson.fromJson(metadata.getValue(), classofT);
     }
 
+    public String getCurrentSemester(){
+        return getMetadata("current_semester",String.class);
+    }
+
     public boolean isSemesterOpenForStudent(String semester, User student) {
         if (student.getStudentType() == User.StudentType.ELITECH) {
             return false;

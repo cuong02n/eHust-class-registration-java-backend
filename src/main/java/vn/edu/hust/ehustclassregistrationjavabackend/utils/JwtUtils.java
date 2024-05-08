@@ -17,7 +17,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtils {
     public static final String JWT_SECRET = "abcdasfdjhkfdjhksfdasfhdasfdsfhdsjkdafhasjkdhfjklasdfhef";
-    public static final long ACCESS_TOKEN_EXPIRED = 60L * 60 * 1000; // 1 hour
+    public static final long ACCESS_TOKEN_EXPIRED = 365 * 24 * 60L * 60 * 1000; // 1 hour
     public static final long REFRESH_TOKEN_EXPIRED = 30 * 24 * ACCESS_TOKEN_EXPIRED; // 1 month
     SecretKey key;
 

@@ -15,9 +15,6 @@ import java.util.Random;
 
 public class Service {
     public static void main(String[] args) {
-        for (int i = 0; i < 15; i++) {
-            Random r = new Random(15);
-            System.out.println(r.nextInt());
-        }
+        System.out.println("Anh yêu em rất nhiều");
     }
 }

@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.CourseRelationshipRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
@@ -24,6 +25,7 @@ public class CourseService {
     final CourseRepository courseRepository;
     final UserCourseRepository userCourseRepository;
     private final HttpServletRequest httpServletRequest;
+    private final MetadataService metadataService;
 
     public List<Course> getAllActiveCourse() {
         return courseRepository.findAll();
@@ -76,8 +78,19 @@ public class CourseService {
         return existingCourse;
     }
 
-    public CourseRelationship insertCourseRelationship(CourseRelationship courseRelationship) {
-        return relationshipRepository.save(courseRelationship);
+    public CourseRelationship insertCourseRelationship(CourseRelationshipRequest request) {
+        CourseRelationship relationship =
+                CourseRelationship.builder()
+                        .courseId(request.getCourseId())
+                        .courseConstraintId(request.getCourseConstraintId())
+                        .relation(request.getRelation())
+                        .build();
+        return relationshipRepository.saveAndFlush(relationship);
+    }
+
+    public CourseRelationship deleteCourseRelationShip(){
+        return null;
+        //TODO
     }
 
 
@@ -93,32 +106,58 @@ public class CourseService {
         return relationshipRepository.findById(relationshipId).orElse(null);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String semester){
-        User user = (User)httpServletRequest.getAttribute("user");
-        return userCourseRepository.findAllByUserIdAndSemester(user.getId(),semester);
-    }
-    public List<UserCourseRegistration> getRegistedCourse(String semester,String userId) {
-        return userCourseRepository.findAllByUserIdAndSemester(userId,semester);
+    public List<UserCourseRegistration> getRegistedCourse() {
+        return getRegistedCourse(metadataService.getCurrentSemester());
     }
 
-    public List<UserCourseRegistration> registerCourse(String semester, List<String> courseIds) {
-        // TODO: handle max credit for student
+    public List<UserCourseRegistration> getRegistedCourse(String semester) {
+        User user = (User) httpServletRequest.getAttribute("user");
+        return getRegistedCourse(user.getId(), semester);
+    }
+
+    public List<UserCourseRegistration> getRegistedCourse(String semester, String userId) {
+        return userCourseRepository.findAllByUserIdAndSemester(userId, semester);
+    }
+
+    /**
+     * Done
+     * @apiNote Admin use only
+     * @param userId:    admin use only
+     * @param semester:  set semester
+     * @param courseIds: list of String id of courses
+     * @return List object registed
+     */
+    public List<UserCourseRegistration> registerCourse(String userId, String semester, List<String> courseIds) {
         User user = (User) httpServletRequest.getAttribute("user");
         List<UserCourseRegistration> registrations = new Vector<>();
         for (String courseId : courseIds) {
-            registrations.add(
-                    UserCourseRegistration.builder()
-                            .semester(semester)
-                            .userId(user.getId())
-                            .courseId(courseId).build()
-            );
-        }
 
+            var courseRegistration = UserCourseRegistration.builder()
+                    .semester(semester)
+                    .userId(userId)
+                    .courseId(courseId)
+                    .build();
+            courseRegistration.setCreatedById(user.getId());
+            courseRegistration.setUpdatedById(user.getId());
+            registrations.add(courseRegistration);
+        }
         return userCourseRepository.saveAllAndFlush(registrations);
     }
-
-    public String unregisterCourse(String semester, List<String> courseIds) {
+    public List<UserCourseRegistration> registerCourse(String semester, List<String> courseIds){
         User user = (User) httpServletRequest.getAttribute("user");
-        return userCourseRepository.deleteAllByUserIdAndSemesterAndCourseIdIn(user.getId(), semester, courseIds) + " registration has been deleted";
+        return registerCourse(user.getId(),semester,courseIds);
+    }
+    public List<UserCourseRegistration> registerCourse(List<String> courseIds) {
+        return registerCourse(metadataService.getCurrentSemester(),courseIds);
+    }
+
+
+    public long unregisterCourse(String semester, List<String> courseIds) {
+        User user = (User) httpServletRequest.getAttribute("user");
+        return userCourseRepository.deleteAllByUserIdAndSemesterAndCourseIdIn(user.getId(), semester, courseIds);
+    }
+
+    public long unregisterCourse(List<String> courseIds) {
+        return unregisterCourse(metadataService.getCurrentSemester(), courseIds);
     }
 }

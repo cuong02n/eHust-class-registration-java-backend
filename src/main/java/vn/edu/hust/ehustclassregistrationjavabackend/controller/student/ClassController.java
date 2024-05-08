@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 public class ClassController {
     final ClassService classService;
 
-    @PostMapping()
-    public ResponseEntity<?> createClass(@RequestBody ClassDto request) {
-        return BaseResponse.created(classService.createClass(request), "Cannot create class, maybe duplicate the primary key: {id,semester}: {", request.getId(), " and ", request.getSemester(), " }");
-    }
+//    @PostMapping()
+//    public ResponseEntity<?> createClass(@RequestBody ClassDto request) {
+//        return BaseResponse.created(classService.createClass(request), "Cannot create class, maybe duplicate the primary key: {id,semester}: {", request.getId(), " and ", request.getSemester(), " }");
+//    }
 
 //    @PatchMapping()
 //    public ResponseEntity<?> updateClass(@RequestBody ClassDto request){
@@ -31,7 +31,7 @@ public class ClassController {
 
     @GetMapping("/get-by-course-id")
     public ResponseEntity<?> getClassByCourseId(@RequestParam String courseId, @RequestParam String semester) {
-        return BaseResponse.ok(classService.getClassByCourseId(courseId, semester));
+        return BaseResponse.created(classService.getClassByCourseId(courseId, semester));
     }
 
 }

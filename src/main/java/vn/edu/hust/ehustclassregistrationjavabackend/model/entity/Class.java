@@ -45,6 +45,13 @@ public class Class extends BaseEntity {
     @Column(columnDefinition = "json not null")
     String timetable;
 
+    @Expose
+    String theoryClassId;
+
+    @Expose
+    @Enumerated(EnumType.STRING)
+    ClassType classType;
+
     public ClassDto toClassDto() {
         return ClassDto.builder()
                 .id(classPK.id)
@@ -54,6 +61,8 @@ public class Class extends BaseEntity {
                 .status(status)
                 .courseId(courseId)
                 .timetable(GsonUtil.gsonExpose.fromJson(timetable, timetableListTypetoken))
+                .theoryClassId(theoryClassId)
+                .classType(classType)
                 .build();
     }
 
@@ -61,6 +70,12 @@ public class Class extends BaseEntity {
         OPEN,
         CLOSE,
         CANCEL
+    }
+
+    public enum ClassType {
+        THEORY,
+        EXERCISE,
+        EXPERIMENT
     }
 
     @Data

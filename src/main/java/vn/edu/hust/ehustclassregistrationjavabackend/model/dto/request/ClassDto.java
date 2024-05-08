@@ -27,6 +27,13 @@ public class ClassDto implements Serializable {
     @NonNull
     @Expose
     Integer maxStudent;
+
+    @Expose
+    String theoryClassId;
+
+    @Expose
+    Class.ClassType classType;
+
     @Nullable
     @Expose
     Class.Status status;
@@ -37,14 +44,16 @@ public class ClassDto implements Serializable {
     @Expose
     List<Class.Timetable> timetable;
 
-    public Class toClassEntity(){
+    public Class toClassEntity() {
         return Class.builder()
-                .classPK(new ClassPK(id,semester))
+                .classPK(new ClassPK(id, semester))
                 .semesterType(semesterType)
                 .maxStudent(maxStudent)
                 .status(status)
                 .courseId(courseId)
                 .timetable(TimetableUtil.toString(timetable))
+                .theoryClassId(theoryClassId)
+                .classType(classType)
                 .build();
 
     }

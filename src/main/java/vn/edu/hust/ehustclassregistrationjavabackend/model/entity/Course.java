@@ -31,27 +31,27 @@ public class Course extends BaseEntity {
     String description;
     @Expose
     @Column(columnDefinition = "int not null")
-    Integer credit;
+    Integer credit; // 3
     @Expose
-    String creditInfo;
+    String creditInfo; // (3-0-3-6)
     @Expose
-    String gdCreditInfo;
-    @Expose
-    Integer courseType;
-    @Expose
-    Integer theoryHour;
-    @Expose
-    Integer assignmentHour;
-    @Expose
-    Integer practiceHour;
-    @Expose
-    Integer selfStudyHour;
-    @Expose
-    Integer internHour;
-    @Expose
-    String departmentName;
+    @Enumerated(EnumType.STRING)
+    CourseType courseType;
+    //    @Expose
+//    Integer theoryHour;
+//    @Expose
+//    Integer assignmentHour;
+//    @Expose
+//    Integer practiceHour;
+//    @Expose
+//    Integer selfStudyHour;
+//    @Expose
+//    Integer internHour;
+//    @Expose
+//    String departmentName;
     @Expose
     String schoolName;
+
     //    @Expose
 //    @Column(columnDefinition = "int not null default 0")
 //    int version;
@@ -64,7 +64,7 @@ public class Course extends BaseEntity {
     @Expose
     List<CourseRelationship> preRequisiteCourses;
 
-    @OneToMany(mappedBy = "courseId",  fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'PRECOURSE'")
     @Expose
     List<CourseRelationship> preCourse;
@@ -77,5 +77,10 @@ public class Course extends BaseEntity {
     @Override
     public String toString() {
         return GsonUtil.gsonExpose.toJson(this);
+    }
+
+    public enum CourseType {
+        STANDARD,
+        ELITECH
     }
 }

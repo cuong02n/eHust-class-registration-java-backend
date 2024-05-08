@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class JwtConfig {
+public class OpenApiConfig {
     @Bean
     public SecurityScheme createAPIKeyScheme() {
         return new SecurityScheme().type(SecurityScheme.Type.HTTP)
