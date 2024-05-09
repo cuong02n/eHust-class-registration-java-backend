@@ -60,7 +60,7 @@ public class Class extends BaseEntity {
                 .maxStudent(maxStudent)
                 .status(status)
                 .courseId(courseId)
-                .timetable(GsonUtil.gsonExpose.fromJson(timetable, timetableListTypetoken))
+                .timetables(GsonUtil.gsonExpose.fromJson(timetable, timetableListTypetoken))
                 .theoryClassId(theoryClassId)
                 .classType(classType)
                 .build();
@@ -73,6 +73,7 @@ public class Class extends BaseEntity {
     }
 
     public enum ClassType {
+        THEORY_EXERCISE,
         THEORY,
         EXERCISE,
         EXPERIMENT

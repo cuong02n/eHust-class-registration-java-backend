@@ -3,18 +3,25 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Vector;
 
 @Service
 @RequiredArgsConstructor
 public class ClassService {
+
+
+
     private final ClassRepository classRepository;
     private final HttpServletResponse response;
     private final MetadataService metadataService;
@@ -27,22 +34,17 @@ public class ClassService {
         return classRepository.findByClassPK(new ClassPK(id, metadataService.getCurrentSemester()));
     }
 
-//    public ClassDto createClass(ClassDto classDTO) {
-//        if (classRepository.existsByClassPK(new ClassPK(classDTO.getId(), classDTO.getSemester()))) {
-//            return null;
-//        }
-//
-//        Class newClass = Class.builder()
-//                .classPK(new ClassPK(classDTO.getId(), classDTO.getSemester()))
-//                .semesterType(classDTO.getSemesterType())
-//                .maxStudent(classDTO.getMaxStudent())
-//                .timetable(TimetableUtil.toString(classDTO.getTimetable()))
-//                .courseId(classDTO.getCourseId())
-//                .status(classDTO.getStatus() != null ? classDTO.getStatus() : Class.Status.OPEN)
-//                .build();
-//
-//        return classRepository.save(newClass).toClassDto();
-//    }
+    public List<ClassDto> getClasses(MultipartFile file){
+        try(InputStream stream = file.getInputStream()){
+            return createClass(ExcelUtil.getClassDtoRequest(stream));
+//            for(ClassDto dto: ret){
+//                System.out.println(GsonUtil.gsonExpose.toJson(dto));
+//                createClass(List.of(dto));
+//            }
+        }catch(Exception e){
+            return null;
+        }
+    }
 
     public List<ClassDto> createClass(List<ClassDto> classDtos){
         List<ClassPK> classPKS = new Vector<>(classDtos.stream().map(classDto -> new ClassPK(classDto.getId(), classDto.getSemester())).toList());

@@ -3,6 +3,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.controller.admin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.ClassCreateRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
@@ -19,6 +20,11 @@ public class AdminClassController {
     @PostMapping()
     public ResponseEntity<?> createClass(@RequestBody ClassCreateRequest request){
         return BaseResponse.ok(classService.createClass(request.getClasses()));
+    }
+
+    @PostMapping("/post-class-by-file")
+    public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file){
+        return BaseResponse.ok(classService.getClasses(file));
     }
 
     @PostMapping("/cancel-class")

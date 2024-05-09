@@ -58,7 +58,7 @@ public class TimetableUtil {
 
     }
 
-    public static int convertToNumberValue(String hourMinute) {
+    private static int convertToNumberValue(String hourMinute) {
         String[] a = hourMinute.trim().split(":");
         return Integer.parseInt(a[0]) * 60 + Integer.parseInt(a[1]);
     }
