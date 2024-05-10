@@ -24,7 +24,7 @@ public class AdminClassController {
 
     @PostMapping("/post-class-by-file")
     public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file){
-        return BaseResponse.ok(classService.getClasses(file));
+        return BaseResponse.ok(classService.updateClasses(file));
     }
 
     @PostMapping("/cancel-class")

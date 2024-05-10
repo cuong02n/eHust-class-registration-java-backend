@@ -37,27 +37,13 @@ public class Course extends BaseEntity {
     @Expose
     @Enumerated(EnumType.STRING)
     CourseType courseType;
-    //    @Expose
-//    Integer theoryHour;
-//    @Expose
-//    Integer assignmentHour;
-//    @Expose
-//    Integer practiceHour;
-//    @Expose
-//    Integer selfStudyHour;
-//    @Expose
-//    Integer internHour;
-//    @Expose
-//    String departmentName;
     @Expose
     String schoolName;
 
-    //    @Expose
-//    @Column(columnDefinition = "int not null default 0")
-//    int version;
     @Expose
     @Column(columnDefinition = "bit not null default 0")
-    Boolean needExperiment;
+    @Builder.Default
+    Boolean needExperiment = false;
 
     @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
     @SQLRestriction("relation = 'PREREQUISITE'")

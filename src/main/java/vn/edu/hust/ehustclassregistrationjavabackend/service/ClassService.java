@@ -7,10 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
-import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.io.InputStream;
 import java.util.List;
@@ -34,13 +32,9 @@ public class ClassService {
         return classRepository.findByClassPK(new ClassPK(id, metadataService.getCurrentSemester()));
     }
 
-    public List<ClassDto> getClasses(MultipartFile file){
+    public List<ClassDto> updateClasses(MultipartFile file){
         try(InputStream stream = file.getInputStream()){
             return createClass(ExcelUtil.getClassDtoRequest(stream));
-//            for(ClassDto dto: ret){
-//                System.out.println(GsonUtil.gsonExpose.toJson(dto));
-//                createClass(List.of(dto));
-//            }
         }catch(Exception e){
             return null;
         }

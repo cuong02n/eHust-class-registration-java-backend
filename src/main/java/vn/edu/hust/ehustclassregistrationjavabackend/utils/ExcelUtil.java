@@ -4,9 +4,12 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -85,21 +88,65 @@ public class ExcelUtil {
                     Class.Timetable timetable = new Class.Timetable(week, from, to, place, dayOfWeek);
                     builder.timetable(timetable);
                 } catch (Exception e) {
-                    System.out.println("This class "+classId+" doesnot have timetable");
+                    System.out.println("This class " + classId + " doesnot have timetable");
                 }
                 builderMap.put(classId, builder);
             }
 
 
             Set<String> ids = new HashSet<>();
-            for(int i = 4;i<sheet.getLastRowNum();i++){
+            for (int i = 4; i < sheet.getLastRowNum(); i++) {
                 ids.add(sheet.getRow(i).getCell(2).getStringCellValue());
             }
-            System.out.println("number of ids: "+ids.size());
+            System.out.println("number of ids: " + ids.size());
 
             return builderMap.values().stream().map(ClassDto.ClassDtoBuilder::build).toList();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static List<Course> getCourseRequest(MultipartFile file) {
+        int i = 4;
+        Map<String, Course.CourseBuilder> builderMap = new HashMap<>();
+        try (Workbook workbook = new XSSFWorkbook(file.getInputStream())) {
+            Sheet sheet = workbook.getSheetAt(0);
+            for (; i < sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                String courseId = row.getCell(COURSE_ID_POSITION).getStringCellValue();
+                String courseName = row.getCell(COURSE_NAME_POSITION).getStringCellValue();
+                String courseNameE = row.getCell(COURSE_NAME_ENGLISH_POSITION).getStringCellValue();
+                String ordinalCreditInfo = row.getCell(COURSE_CREDIT_INFO_POSITION).getStringCellValue();
+                System.out.println(ordinalCreditInfo);
+                System.out.println("Line: " + i);
+                int indexOfOpenRoundBracket = ordinalCreditInfo.indexOf("(");
+                int credit = Integer.parseInt(ordinalCreditInfo.substring(0, indexOfOpenRoundBracket));
+                String creditInfo = ordinalCreditInfo.substring(indexOfOpenRoundBracket);
+                Course.CourseType courseType = row.getCell(COURSE_TYPE_POSITION).getStringCellValue().equals("ELITECH") ? Course.CourseType.ELITECH : Course.CourseType.STANDARD;
+                String schoolName = row.getCell(SCHOOL_NAME_POSITION).getStringCellValue();
+                Course.CourseBuilder builder = builderMap.get(courseId);
+                if (builder == null) {
+                    builder = Course.builder()
+                            .id(courseId)
+                            .courseName(courseName)
+                            .courseNameE(courseNameE)
+                            .credit(credit)
+                            .creditInfo(creditInfo)
+                            .courseType(courseType)
+                            .schoolName(schoolName);
+                }
+                String needExperimentString = row.getCell(NEED_EXPERIMENT_POSITION).getStringCellValue();
+                if (needExperimentString != null && needExperimentString.equals("TN")) {
+                    builder.needExperiment(true);
+                }
+                builderMap.put(courseId, builder);
+            }
+            return builderMap.values().stream().map(Course.CourseBuilder::build).toList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException("ERROR LINE " + i + ": " + e.getMessage());
+        }
+
     }
 }

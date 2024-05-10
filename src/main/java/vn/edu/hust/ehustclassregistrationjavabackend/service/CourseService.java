@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.CourseRelationshipRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
@@ -12,6 +13,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegi
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRelationshipRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ObjectUtil;
 
 import java.util.List;
@@ -67,6 +69,19 @@ public class CourseService {
         return courseRepository.save(existingCourse);
     }
 
+    public List<Course> insertCourses(List<Course> courses) {
+        List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
+        if (!duplicateCourses.isEmpty()) {
+            return null;
+        }
+        return courseRepository.saveAll(courses);
+    }
+
+    public List<Course> insertCourses(MultipartFile file) {
+        return insertCourses(ExcelUtil.getCourseRequest(file));
+
+    }
+
     public Course deleteCourse(String courseId) {
         Course existingCourse = courseRepository.findById(courseId).orElse(null);
         if (existingCourse == null) {
@@ -88,7 +103,7 @@ public class CourseService {
         return relationshipRepository.saveAndFlush(relationship);
     }
 
-    public CourseRelationship deleteCourseRelationShip(){
+    public CourseRelationship deleteCourseRelationShip() {
         return null;
         //TODO
     }
@@ -121,11 +136,12 @@ public class CourseService {
 
     /**
      * Done
-     * @apiNote Admin use only
+     *
      * @param userId:    admin use only
      * @param semester:  set semester
      * @param courseIds: list of String id of courses
      * @return List object registed
+     * @apiNote Admin use only
      */
     public List<UserCourseRegistration> registerCourse(String userId, String semester, List<String> courseIds) {
         User user = (User) httpServletRequest.getAttribute("user");
@@ -143,12 +159,14 @@ public class CourseService {
         }
         return userCourseRepository.saveAllAndFlush(registrations);
     }
-    public List<UserCourseRegistration> registerCourse(String semester, List<String> courseIds){
+
+    public List<UserCourseRegistration> registerCourse(String semester, List<String> courseIds) {
         User user = (User) httpServletRequest.getAttribute("user");
-        return registerCourse(user.getId(),semester,courseIds);
+        return registerCourse(user.getId(), semester, courseIds);
     }
+
     public List<UserCourseRegistration> registerCourse(List<String> courseIds) {
-        return registerCourse(metadataService.getCurrentSemester(),courseIds);
+        return registerCourse(metadataService.getCurrentSemester(), courseIds);
     }
 
 
