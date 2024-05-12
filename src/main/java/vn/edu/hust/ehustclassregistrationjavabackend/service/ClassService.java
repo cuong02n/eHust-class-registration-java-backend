@@ -3,7 +3,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
@@ -28,6 +27,7 @@ public class ClassService {
     private final HttpServletResponse response;
     private final MetadataService metadataService;
     private final ServletRequest httpServletRequest;
+    private final CourseService courseService;
 
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester));
@@ -38,15 +38,11 @@ public class ClassService {
     }
 
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
-        try {
-            List<ClassDto> response = classRepository.saveAll(
-                            classDtos.stream().map(ClassDto::toClassEntity).toList() // Make entity for update database
-                    )
-                    .stream().map(Class::toClassDto).toList();
-            return response;
-        } catch (DataIntegrityViolationException e) {
-            throw new RuntimeException("Cannot update in database because there is 1 or more Course Id not present, insert course first");
-        }// make Dto for reponse
+        return classRepository.saveAll(
+                        classDtos.stream().map(ClassDto::toClassEntity).toList() // Make entity for update database
+                )
+                .stream().map(Class::toClassDto).toList();
+
     }
 
     public ClassDto cancelClass(ClassPK classPK) {
@@ -72,7 +68,7 @@ public class ClassService {
             throw new RuntimeException("Bạn đã đăng kí lớp nay rồi " + existingRegistration.get());
         }
         Class registedClass = classRepository.findByClassPK(classPK);
-        String statusClass = metadataService.isClassOpenForStudent(user,registedClass);
+        String statusClass = isClassOpenForStudent(user, registedClass);
         if (statusClass.isEmpty()) {
             return insertUserClassRegistration(user, registedClass);
         }
@@ -87,5 +83,60 @@ public class ClassService {
                         .semester(registedClass.getClassPK().getSemester())
                         .build()
         );
+    }
+
+    private int getNumberOfRegistedClass(Class registedClass) {
+        return userClassRepository.countRegistedByClassIdAndSemester(registedClass.getClassPK().getId(), registedClass.getClassPK().getSemester());
+    }
+
+    private boolean isFullSlotClass(Class registedClass) {
+        return getNumberOfRegistedClass(registedClass) >= registedClass.getMaxStudent();
+    }
+
+    public int getCreditRegisted(User user, String semester) {
+        return userClassRepository.sumCreditByUserIdAndSemester(user.getId(), semester);
+    }
+
+    public boolean classNotExceedMaximumCredit(User student, String semester, Class registerClass) {
+        return getCreditRegisted(student, semester) + registerClass.getCourse().getCredit() <= student.getMaxCredit();
+    }
+
+    public String isClassOpenForStudent(User student, Class registerClass) {
+        String semester = registerClass.getClassPK().getSemester();
+        if (!classNotExceedMaximumCredit(student, semester, registerClass)) {
+            return "You cannot register for more than your maximum credit";
+        }
+
+        if (isFullSlotClass(registerClass)) {
+            return "The class is full, wait or contact admin";
+        }
+
+        if (!courseService.studentMatchedAllCourseBefore(student, registerClass)) {
+            return "This course require some pre-course, prequisite-course, or corequisite-course";
+        }
+
+        if (metadataService.isFreeClassRegister(semester)) {
+            return "";
+        }
+
+        if (courseService.isStudentRegisterCourseBefore(student, registerClass.getCourseId(), semester)) {// đã đăng kí học phần rồi->
+            if (student.getStudentType() == User.StudentType.ELITECH) {
+                return (metadataService.isElitechOfficialRegisterClass(semester)
+                        || metadataService.isElitechUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+            }
+            if (student.getStudentType() == User.StudentType.STANDARD) {
+                return (metadataService.isStandardOfficialRegisterClass(semester)
+                        || metadataService.isStandardUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+            }
+        } else {
+            if (student.getStudentType() == User.StudentType.ELITECH) { // chưa đăng kí học phần
+                return metadataService.isElitechUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+            }
+            if (student.getStudentType() == User.StudentType.STANDARD) {
+                return metadataService.isStandardUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+            }
+        }
+
+        return "";
     }
 }

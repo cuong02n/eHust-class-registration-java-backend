@@ -128,23 +128,23 @@ public class Application {
 
     static List<Metadata> createMetadata() {
         return List.of(
-                new Metadata("this_semester", "20231"),
-
-                new Metadata("open_official_elitech", String.valueOf(Timestamp.valueOf("2024-01-15 00:00:00").getTime())),
-                new Metadata("close_official_elitech", String.valueOf(Timestamp.valueOf("2024-01-18 00:00:00").getTime())),
-
-                new Metadata("open_official_standard", String.valueOf(Timestamp.valueOf("2024-01-18 00:00:00").getTime())),
-                new Metadata("close_official_standard", String.valueOf(Timestamp.valueOf("2024-01-22 00:00:00").getTime())),
-
-                new Metadata("open_unofficial_elitech", String.valueOf(Timestamp.valueOf("2024-01-22 00:00:00").getTime())),
-                new Metadata("close_unofficial_elitech", String.valueOf(Timestamp.valueOf("2024-01-27 00:00:00").getTime())),
-
-                new Metadata("open_unofficial_standard", String.valueOf(Timestamp.valueOf("2024-01-27 00:00:00").getTime())),
-                new Metadata("close_unofficial_standard", String.valueOf(Timestamp.valueOf("2024-02-05 00:00:00").getTime())),
-
-                new Metadata("open_free_all", String.valueOf(Timestamp.valueOf("2024-02-05 00:00:00").getTime())),
-                new Metadata("close_free_all", String.valueOf(Timestamp.valueOf("2024-05-17 00:00:00").getTime()))
-                // TODO: metadata Etag or another v.v
+//                new Metadata("this_semester", "20231"),
+//
+//                new Metadata("open_official_elitech", String.valueOf(Timestamp.valueOf("2024-01-15 00:00:00").getTime())),
+//                new Metadata("close_official_elitech", String.valueOf(Timestamp.valueOf("2024-01-18 00:00:00").getTime())),
+//
+//                new Metadata("open_official_standard", String.valueOf(Timestamp.valueOf("2024-01-18 00:00:00").getTime())),
+//                new Metadata("close_official_standard", String.valueOf(Timestamp.valueOf("2024-01-22 00:00:00").getTime())),
+//
+//                new Metadata("open_unofficial_elitech", String.valueOf(Timestamp.valueOf("2024-01-22 00:00:00").getTime())),
+//                new Metadata("close_unofficial_elitech", String.valueOf(Timestamp.valueOf("2024-01-27 00:00:00").getTime())),
+//
+//                new Metadata("open_unofficial_standard", String.valueOf(Timestamp.valueOf("2024-01-27 00:00:00").getTime())),
+//                new Metadata("close_unofficial_standard", String.valueOf(Timestamp.valueOf("2024-02-05 00:00:00").getTime())),
+//
+//                new Metadata("open_free_all", String.valueOf(Timestamp.valueOf("2024-02-05 00:00:00").getTime())),
+//                new Metadata("close_free_all", String.valueOf(Timestamp.valueOf("2024-05-17 00:00:00").getTime()))
+//                // TODO: metadata Etag or another v.v
         );
     }
 }

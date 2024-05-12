@@ -101,14 +101,16 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         if (response.isCommitted()) {
             return;
         }
-        String message = ex.getMessage();
+        String message;
         if (ex instanceof ErrorResponse errorResponse) {
             message = errorResponse.getDetailMessageCode();
         } else if (ex instanceof DataIntegrityViolationException d) {
-            message = "Cannot process your requests, maybe there is one of your requests not exist! "+d.getLocalizedMessage();
-        }
+            message = "Cannot process your requests, maybe there is one of your requests not exist! ";
+        } else if (ex instanceof MessageException me) {
+            message = me.getMessage();
+        } else message = null;
 
-        int statusCode = (message.equals(ex.getMessage())) ? 500 : 400;
+        int statusCode = (message == null) ? 500 : 400;
 
         response.addHeader("content-type", "application/json");
         response.getWriter().write(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString());

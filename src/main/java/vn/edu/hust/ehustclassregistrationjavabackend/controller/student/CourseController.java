@@ -8,6 +8,8 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResp
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/course")
 @RequiredArgsConstructor
@@ -16,6 +18,10 @@ public class CourseController {
     private final MetadataService metadataService;
 
 
+    @GetMapping("/test")
+    public void count(){
+        System.out.println(courseService.countCourseCreditByCourseIds(List.of("AC2020","AC2040")));
+    }
     @GetMapping("/course-relationship")
     public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
         return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");
@@ -28,7 +34,7 @@ public class CourseController {
 
     @PostMapping("/register-course")
     public ResponseEntity<?> registerCourse(@RequestBody StudentCourseRegistrationRequest request) {
-        return BaseResponse.created(courseService.registerCourse(request.getCourseIds()));
+        return BaseResponse.created(courseService.registerCourse(request));
     }
 
     @DeleteMapping("/register-course")

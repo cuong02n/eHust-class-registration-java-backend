@@ -18,7 +18,7 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
     final RateLimitInterceptor rateLimitInterceptor;
     final CustomExceptionResolver customExceptionResolver;
-
+    final RestApiInterceptor restApiInterceptor;
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 //        converters.clear();
@@ -37,6 +37,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(rateLimitInterceptor);
+        registry.addInterceptor(restApiInterceptor);
     }
 
 }
