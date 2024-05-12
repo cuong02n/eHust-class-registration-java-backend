@@ -39,6 +39,8 @@ public class User extends BaseEntity implements UserDetails {
     @Expose(serialize = false)
     String password;
 
+    @Expose
+    int maxCredit;
     public String getPassword(){
         return "";
     }

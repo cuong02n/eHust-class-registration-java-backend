@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Builder
 @AllArgsConstructor
-@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id","semester"})})
+@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id", "semester"})})
 public class UserCourseRegistration extends BaseEntity {
 
     @Id
@@ -31,6 +31,7 @@ public class UserCourseRegistration extends BaseEntity {
     User user;
 
     @Column(name = "course_id", nullable = false)
+    @Expose
     String courseId;
 
     @ManyToOne(fetch = FetchType.LAZY)

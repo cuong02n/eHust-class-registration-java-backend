@@ -3,31 +3,22 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.annotation.Nonnull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.MetadataRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassRepository;
+import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class MetadataService {
     private final MetadataRepository metadataRepository;
+    private final UserClassRepository userClassRepository;
+    private final UserCourseRepository userCourseRepository;
 
-    public void saveAll(List<Metadata> metadatas) {
-        metadataRepository.saveAll(metadatas);
-    }
-
-    public void save(String name, Object value) {
-        metadataRepository.save(new Metadata(name, value.toString()));
-    }
-
-    public List<Metadata> getAllMetadata() {
-        return metadataRepository.findAll();
-    }
-
-    public <T> T getMetadata(String name, Class<T> classofT) {
+    public <T> T getMetadata(String name, java.lang.Class<T> classofT) {
         Metadata metadata = metadataRepository.findById(name).orElse(null);
         if (metadata == null) {
             return null;
@@ -35,35 +26,96 @@ public class MetadataService {
         return GsonUtil.gson.fromJson(metadata.getValue(), classofT);
     }
 
-    public String getCurrentSemester(){
-        return getMetadata("current_semester",String.class);
+    public String getCurrentSemester() {
+        return getMetadata("current_semester", String.class);
     }
 
-    public boolean isSemesterOpenForStudent(String semester, User student) {
-        if (student.getStudentType() == User.StudentType.ELITECH) {
-            return false;
+    /**
+     * @param student       student to register
+     * @param registerClass class
+     * @return a String:
+     * - Empty String corresponding to true: available for this student
+     * - Non empty String represent Error message
+     */
+    public String isClassOpenForStudent(User student, Class registerClass) {
+        String semester = registerClass.getClassPK().getSemester();
+        if (!satisfyMaximumCredit(student, semester, registerClass)) {
+            return "You cannot register for more than your maximum credit";
         }
-        return true;// TODO:
+
+        if (isFullSlotClass(registerClass)) {
+            return "The class is full, wait or contact admin";
+        }
+
+        if (!studentMatchedAllCourseBefore(student, registerClass)) {
+            return "This course require some pre-course, prequisite-course, or corequisite-course";
+        }
+
+        if (isFreeRegister(semester)) {
+            return "";
+        }
+
+        if (isStudentRegisterCourseBefore(student, registerClass.getCourseId(), semester)) {// đã đăng kí học phần rồi->
+            if (student.getStudentType() == User.StudentType.ELITECH) {
+                return (isElitechOfficialRegisterClass(semester) || isElitechUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+            }
+            if (student.getStudentType() == User.StudentType.STANDARD) {
+                return (isStandardOfficialRegisterClass(semester) || isStandardUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+            }
+        } else {
+            if (student.getStudentType() == User.StudentType.ELITECH) { // chưa đăng kí học phần
+                return isElitechUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+            }
+            if (student.getStudentType() == User.StudentType.STANDARD) {
+                return isStandardUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+            }
+        }
+
+        return "";
     }
 
-    public boolean isElitechOfficialRegisterClass(String semester, long timeInMillis) {
-        return timeBetweenMetadata("open_official_elitech_" + semester, "close_official_elitech_" + semester, timeInMillis);
+    private boolean isFullSlotClass(Class registedClass) {
+        return getNumberOfRegistedClass(registedClass) >= registedClass.getMaxStudent();
     }
 
-    public boolean isStandardOfficialRegisterClass(String semester, long timeInMillis) {
-        return timeBetweenMetadata("open_official_standard_" + semester, "close_official_standard_" + semester, timeInMillis);
+    private int getNumberOfRegistedClass(Class registedClass) {
+        return userClassRepository.countRegistedByClassIdAndSemester(registedClass.getClassPK().getId(), registedClass.getClassPK().getSemester());
     }
 
-    public boolean isElitechUnofficialRegisterClass(String semester, long timeInMillis) {
-        return timeBetweenMetadata("open_unofficial_elitech_" + semester, "close_unofficial_elitech_" + semester, timeInMillis);
+    public boolean studentMatchedAllCourseBefore(User student, Class registerClass) {
+        return true;
     }
 
-    public boolean isStandardUnofficialRegisterClass(String semester, long timeInMillis) {
-        return timeBetweenMetadata("open_unofficial_standard_" + semester, "close_unofficial_standard_" + semester, timeInMillis);
+    public boolean satisfyMaximumCredit(User student, String semester, Class registerClass) {
+        return getCreditRegisted(student, semester) + registerClass.getCourse().getCredit() <= student.getMaxCredit();
     }
 
-    public boolean isFreeRegister(String semester, long timeInMillis) {
-        return timeBetweenMetadata("open_free_all_" + semester, "close_free_all_" + semester, timeInMillis);
+    public int getCreditRegisted(User user, String semester) {
+        return userClassRepository.sumCreditByUserIdAndSemester(user.getId(), semester);
+    }
+
+    public boolean isStudentRegisterCourseBefore(User student, String courseId, String semester) {
+        return userCourseRepository.findByCourseIdAndSemesterAndUserId(courseId, semester, student.getId()).isPresent();
+    }
+
+    public boolean isElitechOfficialRegisterClass(String semester) {
+        return timeBetweenMetadata("open_official_elitech_" + semester, "close_official_elitech_" + semester, System.currentTimeMillis());
+    }
+
+    public boolean isStandardOfficialRegisterClass(String semester) {
+        return timeBetweenMetadata("open_official_standard_" + semester, "close_official_standard_" + semester, System.currentTimeMillis());
+    }
+
+    public boolean isElitechUnofficialRegisterClass(String semester) {
+        return timeBetweenMetadata("open_unofficial_elitech_" + semester, "close_unofficial_elitech_" + semester, System.currentTimeMillis());
+    }
+
+    public boolean isStandardUnofficialRegisterClass(String semester) {
+        return timeBetweenMetadata("open_unofficial_standard_" + semester, "close_unofficial_standard_" + semester, System.currentTimeMillis());
+    }
+
+    public boolean isFreeRegister(String semester) {
+        return timeBetweenMetadata("open_free_all_" + semester, "close_free_all_" + semester, System.currentTimeMillis());
     }
 
     private boolean timeBetweenMetadata(@Nonnull String metadataKeyStart, @Nonnull String metadataKeyEnd, long timeInMillis) {

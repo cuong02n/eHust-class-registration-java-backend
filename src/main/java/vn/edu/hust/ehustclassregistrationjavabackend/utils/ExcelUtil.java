@@ -52,7 +52,6 @@ public class ExcelUtil {
 
                 String week = row.getCell(WEEK_POSITION).getStringCellValue();
 
-
                 Class.ClassType classType = switch (classTypeString) {
                     case "LT" -> Class.ClassType.THEORY;
                     case "LT+BT" -> Class.ClassType.THEORY_EXERCISE;

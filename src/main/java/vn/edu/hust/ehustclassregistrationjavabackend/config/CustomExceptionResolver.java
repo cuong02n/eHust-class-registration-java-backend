@@ -3,22 +3,11 @@ package vn.edu.hust.ehustclassregistrationjavabackend.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.ErrorResponse;
-import org.springframework.web.HttpMediaTypeNotAcceptableException;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.MissingPathVariableException;
-import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.ServletRequestBindingException;
-import org.springframework.web.context.request.async.AsyncRequestTimeoutException;
-import org.springframework.web.method.annotation.HandlerMethodValidationException;
-import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
@@ -49,35 +38,34 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
-                ModelAndView mav = null;
-                if (ex instanceof HttpRequestMethodNotSupportedException theEx) {
-                    mav = handleHttpRequestMethodNotSupported(theEx, request, response, handler);
-                } else if (ex instanceof HttpMediaTypeNotSupportedException theEx) {
-                    mav = handleHttpMediaTypeNotSupported(theEx, request, response, handler);
-                } else if (ex instanceof HttpMediaTypeNotAcceptableException theEx) {
-                    mav = handleHttpMediaTypeNotAcceptable(theEx, request, response, handler);
-                } else if (ex instanceof MissingPathVariableException theEx) {
-                    mav = handleMissingPathVariable(theEx, request, response, handler);
-                } else if (ex instanceof MissingServletRequestParameterException theEx) {
-                    mav = handleMissingServletRequestParameter(theEx, request, response, handler);
-                } else if (ex instanceof MissingServletRequestPartException theEx) {
-                    mav = handleMissingServletRequestPartException(theEx, request, response, handler);
-                } else if (ex instanceof ServletRequestBindingException theEx) {
-                    mav = handleServletRequestBindingException(theEx, request, response, handler);
-                } else if (ex instanceof MethodArgumentNotValidException theEx) {
-                    mav = handleMethodArgumentNotValidException(theEx, request, response, handler);
-                } else if (ex instanceof HandlerMethodValidationException theEx) {
-                    mav = handleHandlerMethodValidationException(theEx, request, response, handler);
-                } else if (ex instanceof NoHandlerFoundException theEx) {
-                    mav = handleNoHandlerFoundException(theEx, request, response, handler);
-                } else if (ex instanceof NoResourceFoundException theEx) {
-                    mav = handleNoResourceFoundException(theEx, request, response, handler);
-                } else if (ex instanceof AsyncRequestTimeoutException theEx) {
-                    mav = handleAsyncRequestTimeoutException(theEx, request, response, handler);
-                }
-
-                return (mav != null ? mav :
-                        this.handleErrorResponse(errorResponse, request, response, handler));
+//                ModelAndView mav = null;
+//                if (ex instanceof HttpRequestMethodNotSupportedException theEx) {
+//                    mav = handleHttpRequestMethodNotSupported(theEx, request, response, handler);
+//                } else if (ex instanceof HttpMediaTypeNotSupportedException theEx) {
+//                    mav = handleHttpMediaTypeNotSupported(theEx, request, response, handler);
+//                } else if (ex instanceof HttpMediaTypeNotAcceptableException theEx) {
+//                    mav = handleHttpMediaTypeNotAcceptable(theEx, request, response, handler);
+//                } else if (ex instanceof MissingPathVariableException theEx) {
+//                    mav = handleMissingPathVariable(theEx, request, response, handler);
+//                } else if (ex instanceof MissingServletRequestParameterException theEx) {
+//                    mav = handleMissingServletRequestParameter(theEx, request, response, handler);
+//                } else if (ex instanceof MissingServletRequestPartException theEx) {
+//                    mav = handleMissingServletRequestPartException(theEx, request, response, handler);
+//                } else if (ex instanceof ServletRequestBindingException theEx) {
+//                    mav = handleServletRequestBindingException(theEx, request, response, handler);
+//                } else if (ex instanceof MethodArgumentNotValidException theEx) {
+//                    mav = handleMethodArgumentNotValidException(theEx, request, response, handler);
+//                } else if (ex instanceof HandlerMethodValidationException theEx) {
+//                    mav = handleHandlerMethodValidationException(theEx, request, response, handler);
+//                } else if (ex instanceof NoHandlerFoundException theEx) {
+//                    mav = handleNoHandlerFoundException(theEx, request, response, handler);
+//                } else if (ex instanceof NoResourceFoundException theEx) {
+//                    mav = handleNoResourceFoundException(theEx, request, response, handler);
+//                } else if (ex instanceof AsyncRequestTimeoutException theEx) {
+//                    mav = handleAsyncRequestTimeoutException(theEx, request, response, handler);
+//                }
+                System.out.println("Error Response");
+                return this.handleErrorResponse(errorResponse, request, response, handler);
             }
 
             // Other, lower level exceptions
@@ -110,21 +98,21 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected void sendServerError(@NonNull Exception ex, @NonNull HttpServletRequest request, @NonNull HttpServletResponse response) throws IOException {
-        ex.printStackTrace(System.err);
-        if(response.isCommitted()){
+        if (response.isCommitted()) {
             return;
         }
-        String message;
+        String message = ex.getMessage();
         if (ex instanceof ErrorResponse errorResponse) {
             message = errorResponse.getDetailMessageCode();
-        } else {
-            message = ex.getMessage();
+        } else if (ex instanceof DataIntegrityViolationException d) {
+            message = "Cannot process your requests, maybe there is one of your requests not exist! "+d.getLocalizedMessage();
         }
-        message = message.replace("\"","");
-        message = message.replace("'","");
+
+        int statusCode = (message.equals(ex.getMessage())) ? 500 : 400;
+
         response.addHeader("content-type", "application/json");
-        response.getWriter().write(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(400, message)));
-        response.setStatus(400);
+        response.getWriter().write(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString());
+        response.setStatus(statusCode);
     }
 
     @Override

@@ -10,6 +10,8 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/admin/class")
 @RequiredArgsConstructor
@@ -23,7 +25,7 @@ public class AdminClassController {
     }
 
     @PostMapping("/post-class-by-file")
-    public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file){
+    public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file) throws IOException {
         return BaseResponse.ok(classService.updateClasses(file));
     }
 

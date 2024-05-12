@@ -2,9 +2,11 @@ package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
@@ -34,4 +36,8 @@ public class ClassController {
         return BaseResponse.created(classService.getClassByCourseId(courseId, semester));
     }
 
+    @PostMapping("/register-class")
+    public ResponseEntity<?> registerClass(@RequestBody ClassPK classPK){
+        return BaseResponse.created(classService.registerClass(classPK),"Lỗi: ban chưa đăng ký được");
+    }
 }

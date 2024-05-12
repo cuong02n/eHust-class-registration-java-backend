@@ -3,7 +3,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.CourseRelationshipRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentCourseRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
@@ -23,10 +22,7 @@ public class CourseController {
     }
 
     @GetMapping("/register-course")
-    public ResponseEntity<?> getRegistedCourse(@RequestParam(required = false) String semester) {
-        if(semester==null){
-            return BaseResponse.ok(courseService.getRegistedCourse());
-        }
+    public ResponseEntity<?> getRegistedCourse(@RequestParam String semester) {
         return BaseResponse.ok(courseService.getRegistedCourse(semester));
     }
 
@@ -37,6 +33,6 @@ public class CourseController {
 
     @DeleteMapping("/register-course")
     public ResponseEntity<?> unregisterCourse(@RequestBody StudentCourseRegistrationRequest request) {
-        return BaseResponse.deleted(courseService.unregisterCourse(request.getCourseIds())+" course(s) unregisted.");
+        return BaseResponse.deleted(courseService.unregisterCourse(request.getCourseIds()) + " course(s) unregisted.");
     }
 }

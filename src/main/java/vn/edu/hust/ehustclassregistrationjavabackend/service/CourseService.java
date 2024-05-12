@@ -72,14 +72,13 @@ public class CourseService {
     public List<Course> insertCourses(List<Course> courses) {
         List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
         if (!duplicateCourses.isEmpty()) {
-            return null;
+            throw new RuntimeException("There is duplicated course, please take attention: "+duplicateCourses.stream().map(Course::getId).toList());
         }
         return courseRepository.saveAll(courses);
     }
 
     public List<Course> insertCourses(MultipartFile file) {
         return insertCourses(ExcelUtil.getCourseRequest(file));
-
     }
 
     public Course deleteCourse(String courseId) {
@@ -119,10 +118,6 @@ public class CourseService {
 
     public CourseRelationship getRelationshipById(Long relationshipId) {
         return relationshipRepository.findById(relationshipId).orElse(null);
-    }
-
-    public List<UserCourseRegistration> getRegistedCourse() {
-        return getRegistedCourse(metadataService.getCurrentSemester());
     }
 
     public List<UserCourseRegistration> getRegistedCourse(String semester) {
@@ -166,6 +161,8 @@ public class CourseService {
     }
 
     public List<UserCourseRegistration> registerCourse(List<String> courseIds) {
+        // TODO
+
         return registerCourse(metadataService.getCurrentSemester(), courseIds);
     }
 

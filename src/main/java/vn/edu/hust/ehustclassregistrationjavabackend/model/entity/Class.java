@@ -37,9 +37,9 @@ public class Class extends BaseEntity {
     @Column(name = "course_id", nullable = false)
     @Expose
     String courseId;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @Expose(serialize = false)
-    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "course_id", insertable = false, updatable = false)
     Course course;
     @Expose
     @Column(columnDefinition = "json not null")
