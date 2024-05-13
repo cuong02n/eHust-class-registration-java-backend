@@ -6,22 +6,15 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentCourseRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
-import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/course")
+@RequestMapping("/student/course")
 @RequiredArgsConstructor
 public class CourseController {
     private final CourseService courseService;
-    private final MetadataService metadataService;
 
-
-    @GetMapping("/test")
-    public void count(){
-        System.out.println(courseService.countCourseCreditByCourseIds(List.of("AC2020","AC2040")));
-    }
     @GetMapping("/course-relationship")
     public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
         return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");

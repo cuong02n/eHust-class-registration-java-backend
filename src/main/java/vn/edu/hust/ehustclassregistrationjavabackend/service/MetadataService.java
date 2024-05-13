@@ -36,30 +36,31 @@ public class MetadataService {
     }
 
     public String getCurrentSemester() {
-        return getMetadata("current_semester", String.class);
+        return getMetadata("current-semester", String.class);
     }
 
     public boolean isElitechOfficialRegisterClass(String semester) {
-        return timeBetweenMetadata("open_class_official_elitech" , "close_class_official_elitech" , semester, System.currentTimeMillis());
+        return timeBetweenMetadata("open-class-official-elitech", "close-class-official-elitech", semester, System.currentTimeMillis());
     }
 
     public boolean isStandardOfficialRegisterClass(String semester) {
-        return timeBetweenMetadata("open_class_official_standard", "close_class_official_standard" ,semester, System.currentTimeMillis());
+        return timeBetweenMetadata("open-class-official-standard", "close-class-official-standard", semester, System.currentTimeMillis());
     }
 
     public boolean isElitechUnofficialRegisterClass(String semester) {
-        return timeBetweenMetadata("open_class_unofficial_elitech", "close_class_unofficial_elitech",semester, System.currentTimeMillis());
+        return timeBetweenMetadata("open-class-unofficial-elitech", "close-class-unofficial-elitech", semester, System.currentTimeMillis());
     }
 
     public boolean isStandardUnofficialRegisterClass(String semester) {
-        return timeBetweenMetadata("open_class_unofficial_standard", "close_class_unofficial_standard" ,semester, System.currentTimeMillis());
+        return timeBetweenMetadata("open-class-unofficial-standard", "close-class-unofficial-standard", semester, System.currentTimeMillis());
     }
 
     public boolean isFreeClassRegister(String semester) {
-        return timeBetweenMetadata("open_class_free_all", "close_class_free_all",semester, System.currentTimeMillis());
+        return timeBetweenMetadata("open-class-free-all", "close-class-free-all", semester, System.currentTimeMillis());
     }
-    public boolean isAtTimeCourseRegistration(String semester){
-        return timeBetweenMetadata("open_course_registration","close_course_registration",semester,System.currentTimeMillis());
+
+    public boolean isAtTimeCourseRegistration(String semester) {
+        return timeBetweenMetadata("open-course-registration", "close-course-registration", semester, System.currentTimeMillis());
     }
 
     private boolean timeBetweenMetadata(@Nonnull String metadataKeyStart, @Nonnull String metadataKeyEnd, String semester, long timeInMillis) {
@@ -71,7 +72,7 @@ public class MetadataService {
         return Long.parseLong(start.getValue()) <= timeInMillis && timeInMillis <= Long.parseLong(end.getValue());
     }
 
-    public Metadata updateMetadata(MetadataRequest metadataRequest){
+    public Metadata updateMetadata(MetadataRequest metadataRequest) {
         return metadataRepository.saveAndFlush(metadataRequest.toEntity());
     }
 }

@@ -9,10 +9,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.CourseRelationshipRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentCourseRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegistration;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRelationshipRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
@@ -52,8 +49,8 @@ public class CourseService {
         courseRepository.saveAll(courses);
     }
 
-    public Course getActiveCourse(String courseId) {
-        return courseRepository.findById(courseId).orElse(null);
+    public List<Course> getActiveCourse(List<String> courseIds) {
+        return courseRepository.findAllByIdIn(courseIds);
     }
 
 
@@ -75,7 +72,7 @@ public class CourseService {
     public List<Course> insertCourses(List<Course> courses) {
         List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
         if (!duplicateCourses.isEmpty()) {
-            throw new RuntimeException("There is duplicated course, please take attention: "+duplicateCourses.stream().map(Course::getId).toList());
+            throw new RuntimeException("There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
         }
         return courseRepository.saveAll(courses);
     }
@@ -132,18 +129,19 @@ public class CourseService {
         return userCourseRepository.findAllByUserIdAndSemester(userId, semester);
     }
 
-    public int countCourseCreditByCourseIds(List<String> courseIds){
-         return courseRepository.sumCreditByCourseIds(courseIds);
+    public int countCourseCreditByCourseIds(List<String> courseIds) {
+        return courseRepository.sumCreditByCourseIds(courseIds);
     }
 
     public List<UserCourseRegistration> registerCourse(StudentCourseRegistrationRequest courseRequest) {
         User user = (User) httpServletRequest.getAttribute("user");
 
-        if(!metadataService.isAtTimeCourseRegistration(courseRequest.getSemester())){
+
+        if (!metadataService.isAtTimeCourseRegistration(courseRequest.getSemester())) {
             throw new MessageException("không phải thời gian đăng ký học phần");
         }
 
-        if(!courseRegistedNotExceedMaximumCredit(user,courseRequest.getSemester(),courseRequest.getCourseIds())){
+        if (!courseRegistedNotExceedMaximumCredit(user, courseRequest.getSemester(), courseRequest.getCourseIds())) {
             throw new MessageException("Đã vượt quá số tín cho phép");
         }
 
@@ -160,7 +158,6 @@ public class CourseService {
         }
         return userCourseRepository.saveAllAndFlush(registrations);
     }
-
 
 
     public long unregisterCourse(String semester, List<String> courseIds) {
@@ -184,9 +181,10 @@ public class CourseService {
 
     public boolean courseRegistedNotExceedMaximumCredit(User student, String semester, List<String> courseIds) {
         return getCourseCreditRegisted(student, semester)
-                + courseRepository.sumCreditByCourseIds(courseIds)<=student.getMaxCredit();
+                + courseRepository.sumCreditByCourseIds(courseIds) <= student.getMaxCredit();
     }
-    public int getCourseCreditRegisted(User student,String semester){
-        return userCourseRepository.sumCreditRegistedByUserIdAndSemester(student.getId(),semester);
+
+    public int getCourseCreditRegisted(User student, String semester) {
+        return userCourseRepository.sumCreditRegistedByUserIdAndSemester(student.getId(), semester);
     }
 }

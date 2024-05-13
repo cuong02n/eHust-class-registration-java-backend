@@ -45,19 +45,19 @@ public class Course extends BaseEntity {
     @Builder.Default
     Boolean needExperiment = false;
 
-    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.LAZY)
     @SQLRestriction("relation = 'PREREQUISITE'")
-    @Expose
+    @Expose(serialize = false)
     List<CourseRelationship> preRequisiteCourses;
 
-    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.LAZY)
     @SQLRestriction("relation = 'PRECOURSE'")
-    @Expose
+    @Expose(serialize = false)
     List<CourseRelationship> preCourse;
 
-    @OneToMany(mappedBy = "courseId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "courseId", fetch = FetchType.LAZY)
     @SQLRestriction("relation = 'COREQUISITECOURSE'")
-    @Expose
+    @Expose(serialize = false)
     List<CourseRelationship> coreQuisiteCourse;
 
     @Override

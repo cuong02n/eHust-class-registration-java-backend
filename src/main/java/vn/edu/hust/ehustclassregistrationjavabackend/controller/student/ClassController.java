@@ -10,7 +10,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
-@RequestMapping("/api/class")
+@RequestMapping("/student/class")
 @RequiredArgsConstructor
 public class ClassController {
     final ClassService classService;
@@ -25,16 +25,9 @@ public class ClassController {
 //
 //    }
 
-    @GetMapping()
-    public ResponseEntity<?> getClass(@RequestParam String id, @RequestParam String semester) {
-        System.out.println("ok");
-        return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester).toClassDto(), "Not found class");
-    }
 
-    @GetMapping("/get-by-course-id")
-    public ResponseEntity<?> getClassByCourseId(@RequestParam String courseId, @RequestParam String semester) {
-        return BaseResponse.created(classService.getClassByCourseId(courseId, semester));
-    }
+
+
 
     @PostMapping("/register-class")
     public ResponseEntity<?> registerClass(@RequestBody ClassPK classPK){

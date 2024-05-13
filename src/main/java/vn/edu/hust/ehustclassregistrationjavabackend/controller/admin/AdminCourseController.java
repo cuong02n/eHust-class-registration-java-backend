@@ -17,10 +17,6 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 @RequiredArgsConstructor
 public class AdminCourseController {
     final CourseService courseService;
-    @GetMapping("")
-    public ResponseEntity<?> getCourse(@RequestParam String courseId) {
-        return BaseResponse.ok(courseService.getActiveCourse(courseId), "Not found course: ", courseId);
-    }
 
     @PostMapping("")
     public ResponseEntity<?> createCourse(@RequestBody Course newCourse) {
