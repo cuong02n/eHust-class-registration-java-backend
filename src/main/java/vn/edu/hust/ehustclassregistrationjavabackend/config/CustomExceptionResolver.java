@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,24 +18,9 @@ import java.io.IOException;
 //@Order
 public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
-//    @Override
-//    protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, @NonNull Exception ex) {
-//        super.doResolveException(request,response,handler,ex);
-//        try {
-//            if (ex instanceof ErrorResponse errorResponse) {
-////                HttpHeaders headers = errorResponse.getHeaders();
-////                headers.forEach((name, values) -> values.forEach(value -> response.addHeader(name, value)));
-//                System.out.println(errorResponse.getDetailMessageCode());
-//            }
-//        } catch (Exception e) {
-//        }
-//
-//        return new ModelAndView();
-//    }
-
-
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
+        System.out.println("There is an error occured");
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
@@ -98,19 +84,28 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected void sendServerError(@NonNull Exception ex, @NonNull HttpServletRequest request, @NonNull HttpServletResponse response) throws IOException {
+
         if (response.isCommitted()) {
             return;
         }
         String message;
+        int statusCode = 400;
         if (ex instanceof ErrorResponse errorResponse) {
             message = errorResponse.getDetailMessageCode();
-        } else if (ex instanceof DataIntegrityViolationException d) {
+        } else if (ex instanceof DataIntegrityViolationException) {
             message = "Cannot process your requests, maybe there is one of your requests not exist! ";
         } else if (ex instanceof MessageException me) {
             message = me.getMessage();
+            statusCode = me.httpStatus.value();
+        } else if (ex instanceof AccessDeniedException) {
+            message = "You do not have permission to access this resource";
+            statusCode = 403;
         } else message = null;
 
-        int statusCode = (message == null) ? 500 : 400;
+
+        if (statusCode == 400 && message == null) {
+            statusCode = 500;
+        }
 
         response.addHeader("content-type", "application/json");
         response.getWriter().write(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString());

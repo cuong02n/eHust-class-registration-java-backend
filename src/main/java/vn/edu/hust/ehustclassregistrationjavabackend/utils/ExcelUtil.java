@@ -5,6 +5,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
+import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
@@ -101,7 +102,7 @@ public class ExcelUtil {
 
             return builderMap.values().stream().map(ClassDto.ClassDtoBuilder::build).toList();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new MessageException(e.getMessage());
         }
     }
 
@@ -116,8 +117,6 @@ public class ExcelUtil {
                 String courseName = row.getCell(COURSE_NAME_POSITION).getStringCellValue();
                 String courseNameE = row.getCell(COURSE_NAME_ENGLISH_POSITION).getStringCellValue();
                 String ordinalCreditInfo = row.getCell(COURSE_CREDIT_INFO_POSITION).getStringCellValue();
-                System.out.println(ordinalCreditInfo);
-                System.out.println("Line: " + i);
                 int indexOfOpenRoundBracket = ordinalCreditInfo.indexOf("(");
                 int credit = Integer.parseInt(ordinalCreditInfo.substring(0, indexOfOpenRoundBracket));
                 String creditInfo = ordinalCreditInfo.substring(indexOfOpenRoundBracket);
@@ -142,9 +141,9 @@ public class ExcelUtil {
             }
             return builderMap.values().stream().map(Course.CourseBuilder::build).toList();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new MessageException(e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException("ERROR LINE " + i + ": " + e.getMessage());
+            throw new MessageException("ERROR LINE " + i + ": " + e.getMessage());
         }
 
     }

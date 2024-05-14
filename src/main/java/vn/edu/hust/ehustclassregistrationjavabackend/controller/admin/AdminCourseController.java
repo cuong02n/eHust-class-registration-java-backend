@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.CourseRelationshipRequest;
@@ -15,6 +16,8 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 @RestController
 @RequestMapping("/admin/course")
 @RequiredArgsConstructor
+@PreAuthorize("hasAnyRole('ADMIN')")
+
 public class AdminCourseController {
     final CourseService courseService;
 

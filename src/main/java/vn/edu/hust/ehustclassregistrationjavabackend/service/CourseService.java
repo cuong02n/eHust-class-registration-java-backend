@@ -72,7 +72,7 @@ public class CourseService {
     public List<Course> insertCourses(List<Course> courses) {
         List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
         if (!duplicateCourses.isEmpty()) {
-            throw new RuntimeException("There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
+            throw new MessageException( "There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
         }
         return courseRepository.saveAll(courses);
     }

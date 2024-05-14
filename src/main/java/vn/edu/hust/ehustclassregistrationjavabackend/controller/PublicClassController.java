@@ -25,4 +25,9 @@ public class PublicClassController {
     public ResponseEntity<?> getClassByCourseId(@RequestParam String courseId, @RequestParam String semester) {
         return BaseResponse.created(classService.getClassByCourseId(courseId, semester));
     }
+
+    @GetMapping("/get-by-semester")
+    public ResponseEntity<?> getClassBySemester(@RequestParam String semester) {
+        return BaseResponse.ok(classService.getClassBySemester(semester));
+    }
 }

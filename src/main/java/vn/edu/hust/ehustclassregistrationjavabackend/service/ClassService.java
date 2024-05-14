@@ -1,10 +1,10 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.ServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
@@ -24,7 +24,6 @@ public class ClassService {
 
     private final UserClassRepository userClassRepository;
     private final ClassRepository classRepository;
-    private final HttpServletResponse response;
     private final MetadataService metadataService;
     private final ServletRequest httpServletRequest;
     private final CourseService courseService;
@@ -35,6 +34,10 @@ public class ClassService {
 
     public List<ClassDto> updateClasses(MultipartFile file) throws IOException {
         return createClass(ExcelUtil.getClassDtoRequest(file.getInputStream()));
+    }
+
+    public List<ClassDto> getClassBySemester(String semester) {
+        return classRepository.findAllByClassPK_Semester(semester).stream().map(Class::toClassDto).toList();
     }
 
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
@@ -65,15 +68,13 @@ public class ClassService {
         User user = (User) httpServletRequest.getAttribute("user");
         var existingRegistration = userClassRepository.findByUserIdAndClassIdAndSemester(user.getId(), classPK.getId(), classPK.getSemester());
         if (existingRegistration.isPresent()) {
-            throw new RuntimeException("Bạn đã đăng kí lớp nay rồi " + existingRegistration.get());
+            throw new MessageException("Bạn đã đăng kí lớp nay rồi " + existingRegistration.get());
         }
         Class registedClass = classRepository.findByClassPK(classPK);
-        String statusClass = isClassOpenForStudent(user, registedClass);
-        if (statusClass.isEmpty()) {
-            return insertUserClassRegistration(user, registedClass);
-        }
-        throw new RuntimeException(statusClass);
+        checkClassOpenForStudent(user, registedClass);
+        return insertUserClassRegistration(user, registedClass);
     }
+
 
     private UserClassRegistration insertUserClassRegistration(User student, Class registedClass) {
         return userClassRepository.saveAndFlush(
@@ -101,42 +102,45 @@ public class ClassService {
         return getCreditRegisted(student, semester) + registerClass.getCourse().getCredit() <= student.getMaxCredit();
     }
 
-    public String isClassOpenForStudent(User student, Class registerClass) {
+    public void checkClassOpenForStudent(User student, Class registerClass) {
         String semester = registerClass.getClassPK().getSemester();
         if (!classNotExceedMaximumCredit(student, semester, registerClass)) {
-            return "You cannot register for more than your maximum credit";
+            throw new MessageException("Bạn không thể đăng ký số tín chỉ vượt quá giới hạn của bạn");
         }
 
         if (isFullSlotClass(registerClass)) {
-            return "The class is full, wait or contact admin";
+            throw new MessageException("Lớp đã đầy, đợi 1 xíu hoặc liên hệ admin để đăng ký");
         }
 
         if (!courseService.studentMatchedAllCourseBefore(student, registerClass)) {
-            return "This course require some pre-course, prequisite-course, or corequisite-course";
+            throw new MessageException("Muốn đăng kí học phần này, bạn cần học phần tiên quyết | điều kiện | song hành");
         }
 
         if (metadataService.isFreeClassRegister(semester)) {
-            return "";
+            return;
         }
 
         if (courseService.isStudentRegisterCourseBefore(student, registerClass.getCourseId(), semester)) {// đã đăng kí học phần rồi->
             if (student.getStudentType() == User.StudentType.ELITECH) {
-                return (metadataService.isElitechOfficialRegisterClass(semester)
-                        || metadataService.isElitechUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+                if ((metadataService.isElitechOfficialRegisterClass(semester)
+                        || metadataService.isElitechUnofficialRegisterClass(semester)))
+                    throw new MessageException("Đây không phải thời điểm đăng ký");
             }
             if (student.getStudentType() == User.StudentType.STANDARD) {
-                return (metadataService.isStandardOfficialRegisterClass(semester)
-                        || metadataService.isStandardUnofficialRegisterClass(semester)) ? "" : "Not your registration time";
+                if ((metadataService.isStandardOfficialRegisterClass(semester)
+                        || metadataService.isStandardUnofficialRegisterClass(semester)))
+                    throw new MessageException("Đây không phải thời điểm đăng ký");
             }
         } else {
             if (student.getStudentType() == User.StudentType.ELITECH) { // chưa đăng kí học phần
-                return metadataService.isElitechUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+                if (metadataService.isElitechUnofficialRegisterClass(semester))
+                    throw new MessageException("Đây không phải thời điểm đăng ký");
+
             }
             if (student.getStudentType() == User.StudentType.STANDARD) {
-                return metadataService.isStandardUnofficialRegisterClass(semester) ? "" : "Not your registration time";
+                if (metadataService.isStandardUnofficialRegisterClass(semester))
+                    throw new MessageException("Đây không phải thời điểm đăng ký");
             }
         }
-
-        return "";
     }
 }

@@ -2,6 +2,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentCourseRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/student/course")
 @RequiredArgsConstructor
+@PreAuthorize("hasAnyRole('STUDENT')")
 public class CourseController {
     private final CourseService courseService;
 

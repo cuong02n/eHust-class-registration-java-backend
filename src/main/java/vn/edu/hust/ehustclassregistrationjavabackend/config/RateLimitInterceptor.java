@@ -49,6 +49,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
                 if (requests.size() >= MAX_REQUEST) {
                     response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
 
+                    @SuppressWarnings("DataFlowIssue")
                     String retry = String.valueOf((requests.peek() + intervalTime - currentTime) / 1000 + 1);
                     response.addHeader("Retry-After", retry);
                     response.getWriter().println("TOO MANY REQUEST, PLEASE TRY AGAIN IN " + retry + " SECOND(S)");
