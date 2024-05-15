@@ -2,6 +2,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
@@ -14,6 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Component
 public class RateLimitInterceptor implements HandlerInterceptor {
+    private static final Logger log = LoggerFactory.getLogger(RateLimitInterceptor.class);
     final ConcurrentHashMap<String, Queue<Long>> requestSaved = new ConcurrentHashMap<>();
     int MAX_REQUEST;
     long intervalTime;
@@ -24,18 +27,22 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     }
 
     private String getClientIpAddress(HttpServletRequest request) {
-        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
-        if (xForwardedForHeader != null) {
-            return xForwardedForHeader.split(",")[0].trim();
-        }
-        return request.getRemoteAddr();
+//        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        System.out.println(request.getRemotePort());
+        System.out.println(request.getRemoteHost());
+        return request.getRemoteHost() + ":" + request.getRemotePort();
+//        if (xForwardedForHeader != null) {
+//            return xForwardedForHeader.split(",")[0].trim();
+//        }
+//        return request.getRemoteAddr();
     }
 
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         long currentTime = System.currentTimeMillis();
         String ip = getClientIpAddress(request);
-        if (ip.equals("0:0:0:0:0:0:0:1")) return true;
+        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
+        if (request.getRequestURI().startsWith("/swagger")) return true;
         synchronized (requestSaved) {
             Queue<Long> requests = requestSaved.get(ip);
             if (requests != null) {
@@ -53,6 +60,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
                     String retry = String.valueOf((requests.peek() + intervalTime - currentTime) / 1000 + 1);
                     response.addHeader("Retry-After", retry);
                     response.getWriter().println("TOO MANY REQUEST, PLEASE TRY AGAIN IN " + retry + " SECOND(S)");
+                    log.info("{} was blocked due to many request", ip);
                     return false;
                 }
                 requests.add(currentTime);

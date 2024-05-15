@@ -3,6 +3,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
@@ -15,12 +17,10 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 import java.io.IOException;
 
 @Component
-//@Order
 public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
-        System.out.println("There is an error occured");
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
@@ -50,7 +50,6 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 //                } else if (ex instanceof AsyncRequestTimeoutException theEx) {
 //                    mav = handleAsyncRequestTimeoutException(theEx, request, response, handler);
 //                }
-                System.out.println("Error Response");
                 return this.handleErrorResponse(errorResponse, request, response, handler);
             }
 

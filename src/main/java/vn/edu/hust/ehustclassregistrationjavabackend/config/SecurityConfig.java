@@ -28,20 +28,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security, JwtFilter jwtFilter) throws Exception {
         security.csrf(AbstractHttpConfigurer::disable)
+
 //                .authorizeHttpRequests(
 //                        request -> request
-////                                .requestMatchers("/admin/**").hasRole("ADMIN")
-////                                .requestMatchers("/v3/api-docs/**").permitAll()
-////                                .requestMatchers("/swagger-ui/**").permitAll()
-////                                .requestMatchers("/api/v1/auth/**").permitAll()
-////                                .requestMatchers("/student/**").hasAnyRole("STUDENT")
-//                                .requestMatchers("/public/**").permitAll()
+//                                .requestMatchers("/admin/**").hasRole("ADMIN")
+//                                .requestMatchers("/v3/api-docs/**").permitAll()
+//                                .requestMatchers("/swagger-ui/**").permitAll()
+//                                .requestMatchers("/api/v1/auth/**").permitAll()
+//                                .requestMatchers("/student/**").hasAnyRole("STUDENT")
+////                                .requestMatchers("/").permitAll()
+//                                .anyRequest().permitAll()
 //                )
+                .addFilterAt(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> {
 //                    httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint((request, response, authException) -> {
+//                        authException.printStackTrace();
 //                        response.getWriter().write(new BaseResponse.ErrorResponse(401, authException.getMessage()).toString());
 //                        response.setStatus(401);
 //                    });
