@@ -55,8 +55,7 @@ public class Application {
         Vector<User> users = new Vector<>();
         for (int i = 1; i <= 100; i++) {
             users.add(User.builder()
-                    .id(20204500 + i + "")
-                    .email("virtual_user" + i + "@gmail.com")
+                    .email(20204500 + i + "@sis.hust.edu.vn")
                     .role(User.Role.ROLE_STUDENT)
                     .name("Cuong Nguyen Manh " + i)
                     .build()
@@ -92,7 +91,7 @@ public class Application {
                             UserCourseRegistration.builder()
                                     .semester("20231")
                                     .courseId(course.getId())
-                                    .userId(user.getId())
+                                    .email(user.getEmail())
                                     .build()
                     );
                 }

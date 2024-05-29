@@ -19,11 +19,11 @@ public class UserClassRegistration extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_email", nullable = false)
     @Expose
-    private String userId;
+    private String email;
 
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_email", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @Expose
     User user;

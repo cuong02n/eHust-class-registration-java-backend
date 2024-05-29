@@ -1,6 +1,8 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.config;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +26,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 public class SecurityConfig {
     //    final JwtFilter jwtFilter;
     final UserService userService;
+    final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security, JwtFilter jwtFilter) throws Exception {
@@ -68,6 +71,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        logger.info("Created Password Encoder");
         return new BCryptPasswordEncoder();
     }
 

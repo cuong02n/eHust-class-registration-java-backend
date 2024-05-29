@@ -44,12 +44,12 @@ public class RestApiInterceptor implements HandlerInterceptor {
         printStream.println("\tIp: " + request.getRemoteAddr() + ", " + request.getHeader("X-Forwarded-For"));
         printStream.println("\tUrl: " + request.getMethod() + " " + request.getRequestURI());
         String contentType = request.getHeader("Content-Type");
-        if (contentType != null && Arrays.asList(contentTypeAllowedForLogging).contains(contentType)) {
-            printStream.println("\tContent Length: " + request.getContentLength() + "; " + request.getContentLengthLong());
-            printStream.println("\tContent:\n" + request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-        }else{
-            printStream.println("\tRequest Content wasn't displayed because not readable");
-        }
+//        if (contentType != null && Arrays.asList(contentTypeAllowedForLogging).contains(contentType)) {
+//            printStream.println("\tContent Length: " + request.getContentLength() + "; " + request.getContentLengthLong());
+//            printStream.println("\tContent:\n" + request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
+//        }else{
+//            printStream.println("\tRequest Content wasn't displayed because not readable");
+//        }
 
         printStream.println("Response: " + response.getStatus());
         printStream.println("\tResponse Body: Not display here");

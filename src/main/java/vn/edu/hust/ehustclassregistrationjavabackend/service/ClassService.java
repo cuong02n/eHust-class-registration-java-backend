@@ -66,7 +66,7 @@ public class ClassService {
 
     public UserClassRegistration registerClass(ClassPK classPK) {
         User user = (User) httpServletRequest.getAttribute("user");
-        var existingRegistration = userClassRepository.findByUserIdAndClassIdAndSemester(user.getId(), classPK.getId(), classPK.getSemester());
+        var existingRegistration = userClassRepository.findByEmailAndClassIdAndSemester(user.getEmail(), classPK.getId(), classPK.getSemester());
         if (existingRegistration.isPresent()) {
             throw new MessageException("Bạn đã đăng kí lớp nay rồi " + existingRegistration.get());
         }
@@ -80,7 +80,7 @@ public class ClassService {
         return userClassRepository.saveAndFlush(
                 UserClassRegistration.builder()
                         .classId(registedClass.getClassPK().getId())
-                        .userId(student.getId())
+                        .email(student.getEmail())
                         .semester(registedClass.getClassPK().getSemester())
                         .build()
         );
@@ -95,7 +95,7 @@ public class ClassService {
     }
 
     public int getCreditRegisted(User user, String semester) {
-        return userClassRepository.sumCreditByUserIdAndSemester(user.getId(), semester);
+        return userClassRepository.sumCreditByEmailAndSemester(user.getEmail(), semester);
     }
 
     public boolean classNotExceedMaximumCredit(User student, String semester, Class registerClass) {

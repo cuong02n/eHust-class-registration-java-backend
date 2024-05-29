@@ -16,9 +16,6 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     final UserRepository userRepository;
 
-    public String test2(ClassPK pk) {
-        return "";
-    }
 
     public boolean checkUserExist(String userId) {
         return userRepository.existsById(userId);

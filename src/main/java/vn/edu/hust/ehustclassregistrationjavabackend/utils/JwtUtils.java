@@ -27,11 +27,11 @@ public class JwtUtils {
         key = Keys.hmacShaKeyFor(keyByte);
     }
 
-    public String generateAccessToken(UserDetails userDetails) {
+    public String generateAccessToken(UserDetails userDetails,long expired) {
         return Jwts.builder()
                 .id(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRED))
+                .expiration(new Date(expired))
                 .signWith(key)
                 .compact();
     }

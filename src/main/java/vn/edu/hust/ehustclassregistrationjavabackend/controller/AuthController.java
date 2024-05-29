@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.AuthIdPasswordRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.AuthResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.AuthEmailPasswordRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.service.AuthService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.JwtUtils;
 
@@ -18,10 +18,10 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.JwtUtils;
 public class AuthController {
     final UserService userService;
     private final JwtUtils jwtUtils;
+    final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthIdPasswordRequest request) {
-        String accessToken = jwtUtils.generateAccessToken(userService.loadUserByUsername(request.getId()));
-        return BaseResponse.ok(new AuthResponse(accessToken, (jwtUtils.getExpirationDate(accessToken).getTime() - System.currentTimeMillis()) / 1000), "User not exist");
+    public ResponseEntity<?> login(@RequestBody AuthEmailPasswordRequest request) {
+        return BaseResponse.createBaseResponse(authService.login(request),200,401,"Sai tài khoản/Mật khẩu");
     }
 }

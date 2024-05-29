@@ -22,8 +22,8 @@ public class UserCourseRegistration extends BaseEntity {
     @Column(nullable = false)
     String semester;
 
-    @Column(name = "user_id", nullable = false)
-    String userId;
+    @Column(name = "user_email", nullable = false)
+    String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)

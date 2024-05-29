@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class AuthIdPasswordRequest {
-    @SerializedName("id")
+public class AuthEmailPasswordRequest {
+    @SerializedName("email")
     @NonNull
-    String id;
+    String email;
 
     @SerializedName("password")
     @NonNull

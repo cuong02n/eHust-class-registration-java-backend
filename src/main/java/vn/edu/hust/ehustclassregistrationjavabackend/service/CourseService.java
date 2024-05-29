@@ -122,11 +122,11 @@ public class CourseService {
 
     public List<UserCourseRegistration> getRegistedCourse(String semester) {
         User user = (User) httpServletRequest.getAttribute("user");
-        return getRegistedCourse(user.getId(), semester);
+        return getRegistedCourse(user.getEmail(), semester);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String semester, String userId) {
-        return userCourseRepository.findAllByUserIdAndSemester(userId, semester);
+    public List<UserCourseRegistration> getRegistedCourse(String semester, String email) {
+        return userCourseRepository.findAllByEmailAndSemester(email, semester);
     }
 
     public int countCourseCreditByCourseIds(List<String> courseIds) {
@@ -149,11 +149,11 @@ public class CourseService {
         for (String courseId : courseRequest.getCourseIds()) {
             var courseRegistration = UserCourseRegistration.builder()
                     .semester(courseRequest.getSemester())
-                    .userId(user.getId())
+                    .email(user.getEmail())
                     .courseId(courseId)
                     .build();
-            courseRegistration.setCreatedById(user.getId());
-            courseRegistration.setUpdatedById(user.getId());
+            courseRegistration.setCreatedById(user.getEmail());
+            courseRegistration.setUpdatedById(user.getEmail());
             registrations.add(courseRegistration);
         }
         return userCourseRepository.saveAllAndFlush(registrations);
@@ -162,7 +162,7 @@ public class CourseService {
 
     public long unregisterCourse(String semester, List<String> courseIds) {
         User user = (User) httpServletRequest.getAttribute("user");
-        return userCourseRepository.deleteAllByUserIdAndSemesterAndCourseIdIn(user.getId(), semester, courseIds);
+        return userCourseRepository.deleteAllByEmailAndSemesterAndCourseIdIn(user.getEmail(), semester, courseIds);
     }
 
     public long unregisterCourse(List<String> courseIds) {
@@ -176,7 +176,7 @@ public class CourseService {
     }
 
     public boolean isStudentRegisterCourseBefore(User student, String courseId, String semester) {
-        return userCourseRepository.findByCourseIdAndSemesterAndUserId(courseId, semester, student.getId()).isPresent();
+        return userCourseRepository.findByCourseIdAndSemesterAndEmail(courseId, semester, student.getEmail()).isPresent();
     }
 
     public boolean courseRegistedNotExceedMaximumCredit(User student, String semester, List<String> courseIds) {
@@ -185,6 +185,6 @@ public class CourseService {
     }
 
     public int getCourseCreditRegisted(User student, String semester) {
-        return userCourseRepository.sumCreditRegistedByUserIdAndSemester(student.getId(), semester);
+        return userCourseRepository.sumCreditRegistedByEmailAndSemester(student.getEmail(), semester);
     }
 }

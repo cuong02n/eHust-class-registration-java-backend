@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserCourseRepository extends JpaRepository<UserCourseRegistration,Long> {
-    long deleteAllByUserIdAndSemesterAndCourseIdIn(String userId,String semester,List<String> courseIds);
-    List<UserCourseRegistration> findAllByUserIdAndSemester(String userId,String semester);
+    long deleteAllByEmailAndSemesterAndCourseIdIn(String email,String semester,List<String> courseIds);
+    List<UserCourseRegistration> findAllByEmailAndSemester(String email,String semester);
 
-    Optional<UserCourseRegistration> findByCourseIdAndSemesterAndUserId(String courseId,String semester,String userId);
+    Optional<UserCourseRegistration> findByCourseIdAndSemesterAndEmail(String courseId,String semester,String userId);
 
-    @Query("select sum(c.credit) from UserCourseRegistration r,Course c where r.userId =:userId and r.semester = :semester and r.courseId = c.id")
-    int sumCreditRegistedByUserIdAndSemester(String userId,String semester);
+    @Query("select sum(c.credit) from UserCourseRegistration r,Course c where r.email =:email and r.semester = :semester and r.courseId = c.id")
+    int sumCreditRegistedByEmailAndSemester(String email,String semester);
 }

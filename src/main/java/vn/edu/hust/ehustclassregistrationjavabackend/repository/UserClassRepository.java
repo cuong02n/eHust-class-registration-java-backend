@@ -7,10 +7,10 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserClassRegis
 import java.util.Optional;
 
 public interface UserClassRepository extends JpaRepository<UserClassRegistration, Long> {
-    Optional<UserClassRegistration> findByUserIdAndClassIdAndSemester(String userId, String classId, String semester);
+    Optional<UserClassRegistration> findByEmailAndClassIdAndSemester(String email, String classId, String semester);
 
-    @Query("select sum (co.credit) from UserClassRegistration reg ,Class cl,Course co where reg.userId = :userId and reg.semester = :semester and reg.classId = cl.classPK.id and cl.courseId = co.id")
-    int sumCreditByUserIdAndSemester(String userId, String semester);
+    @Query("select sum (co.credit) from UserClassRegistration reg ,Class cl,Course co where reg.email = :email and reg.semester = :semester and reg.classId = cl.classPK.id and cl.courseId = co.id")
+    int sumCreditByEmailAndSemester(String email, String semester);
 
     @Query("select count(*) from UserClassRegistration reg where reg.classId = :classId and reg.semester = :semester")
     int countRegistedByClassIdAndSemester(String classId,String semester);

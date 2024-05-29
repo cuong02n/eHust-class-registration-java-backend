@@ -20,7 +20,7 @@ import java.util.Collections;
 public class User extends BaseEntity implements UserDetails {
     @Id
     @Expose
-    String id;
+    String email;
 
     @Enumerated(EnumType.STRING)
     @Expose
@@ -34,16 +34,11 @@ public class User extends BaseEntity implements UserDetails {
     @Expose
     String name;
 
-    @Expose
-    String email;
     @Expose(serialize = false)
     String password;
 
     @Expose
     int maxCredit;
-    public String getPassword(){
-        return "";
-    }
     @Expose
     @Column(columnDefinition = "BIT(1) default 1")
     boolean active;
@@ -55,7 +50,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return getId();
+        return getEmail();
     }
 
     @Override
