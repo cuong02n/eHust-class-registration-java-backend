@@ -17,8 +17,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
+
+import java.lang.reflect.Array;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -31,7 +35,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security, JwtFilter jwtFilter) throws Exception {
         security.csrf(AbstractHttpConfigurer::disable)
-
+                .cors(cors->cors.configurationSource(request ->{
+                    CorsConfiguration conf = new CorsConfiguration();
+                    conf.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE"));
+                    conf.setAllowedOrigins(List.of("http://localhost:5173"));
+                    conf.setAllowedHeaders(List.of("*"));
+                    return conf;
+                }))
 //                .authorizeHttpRequests(
 //                        request -> request
 //                                .requestMatchers("/admin/**").hasRole("ADMIN")

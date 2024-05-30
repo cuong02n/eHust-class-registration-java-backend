@@ -43,6 +43,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
         String ip = getClientIpAddress(request);
         if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
         if (request.getRequestURI().startsWith("/swagger")) return true;
+
         synchronized (requestSaved) {
             Queue<Long> requests = requestSaved.get(ip);
             if (requests != null) {
