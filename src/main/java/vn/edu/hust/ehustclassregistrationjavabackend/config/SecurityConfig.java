@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .cors(cors->cors.configurationSource(request ->{
                     CorsConfiguration conf = new CorsConfiguration();
                     conf.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE"));
-                    conf.setAllowedOrigins(List.of("http://localhost:5173"));
+                    conf.setAllowedOrigins(List.of("*"));
                     conf.setAllowedHeaders(List.of("*"));
                     return conf;
                 }))

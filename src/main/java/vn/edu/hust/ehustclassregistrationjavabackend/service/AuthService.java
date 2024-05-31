@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.SecurityConfig;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.AuthEmailPasswordRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.AuthResponse;
@@ -26,6 +27,6 @@ public class AuthService {
             long expired = System.currentTimeMillis() + ACCESS_TOKEN_EXPIRED;
             return new AuthResponse(jwtUtils.generateAccessToken(user, expired), ACCESS_TOKEN_EXPIRED/1000);
         }
-        return null;
+        throw new MessageException("Sai mật khẩu");
     }
 }
