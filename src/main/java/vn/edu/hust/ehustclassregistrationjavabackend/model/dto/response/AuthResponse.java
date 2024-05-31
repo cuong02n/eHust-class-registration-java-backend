@@ -10,5 +10,5 @@ public class AuthResponse {
     @Expose
     String token;
     @Expose
-    Long expiredIn;
+    Long expiredAt;
 }

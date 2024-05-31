@@ -25,7 +25,7 @@ public class AuthService {
         UserDetails user = userService.loadUserByUsername(request.getEmail());
         if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             long expired = System.currentTimeMillis() + ACCESS_TOKEN_EXPIRED;
-            return new AuthResponse(jwtUtils.generateAccessToken(user, expired), ACCESS_TOKEN_EXPIRED/1000);
+            return new AuthResponse(jwtUtils.generateAccessToken(user, expired), expired);
         }
         throw new MessageException("Sai mật khẩu");
     }
