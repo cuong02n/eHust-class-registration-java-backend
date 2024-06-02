@@ -41,7 +41,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         long currentTime = System.currentTimeMillis();
         String ip = getClientIpAddress(request);
-        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
+//        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
         if (request.getRequestURI().startsWith("/swagger")) return true;
 
         synchronized (requestSaved) {
@@ -55,14 +55,15 @@ public class RateLimitInterceptor implements HandlerInterceptor {
                     requests.poll();
                 }
                 if (requests.size() >= MAX_REQUEST) {
-                    response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+//                    response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
 
                     @SuppressWarnings("DataFlowIssue")
                     String retry = String.valueOf((requests.peek() + intervalTime - currentTime) / 1000 + 1);
                     response.addHeader("Retry-After", retry);
-                    response.getWriter().println("TOO MANY REQUEST, PLEASE TRY AGAIN IN " + retry + " SECOND(S)");
                     log.info("{} was blocked due to many request", ip);
-                    return false;
+
+//                    response.getWriter().println("TOO MANY REQUEST, PLEASE TRY AGAIN IN " + retry + " SECOND(S)");
+                    throw new MessageException("Từ từ thôi, hãy thử lại trong "+retry+" s",HttpStatus.TOO_MANY_REQUESTS);
                 }
                 requests.add(currentTime);
             } else {

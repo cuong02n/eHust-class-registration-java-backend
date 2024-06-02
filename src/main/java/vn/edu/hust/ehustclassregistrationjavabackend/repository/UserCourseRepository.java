@@ -8,7 +8,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegi
 import java.util.List;
 import java.util.Optional;
 
-public interface UserCourseRepository extends JpaRepository<UserCourseRegistration,Long> {
+public interface UserCourseRepository extends JpaRepository<UserCourseRegistration,String> {
     long deleteAllByEmailAndSemesterAndCourseIdIn(String email,String semester,List<String> courseIds);
     List<UserCourseRegistration> findAllByEmailAndSemester(String email,String semester);
 

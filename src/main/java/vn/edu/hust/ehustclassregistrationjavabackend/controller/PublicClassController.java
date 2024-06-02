@@ -12,13 +12,18 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/public/class")
+@RequestMapping("/public/classes")
 public class PublicClassController {
     final ClassService classService;
 
     @GetMapping()
     public ResponseEntity<?> getClass(@RequestParam String id, @RequestParam String semester) {
         return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester).toClassDto(), "Not found class");
+    }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<?> getClasses(@RequestParam String semester){
+        return BaseResponse.ok(classService.getClassBySemester(semester));
     }
 
     @GetMapping("/get-by-course-id")

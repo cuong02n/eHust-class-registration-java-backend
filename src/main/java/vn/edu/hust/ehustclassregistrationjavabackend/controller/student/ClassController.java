@@ -11,7 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
-@RequestMapping("/student/class")
+@RequestMapping("/students/class")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('STUDENT')")
 public class ClassController {
@@ -27,12 +27,10 @@ public class ClassController {
 //
 //    }
 
-
-
-
-
     @PostMapping("/register-class")
     public ResponseEntity<?> registerClass(@RequestBody ClassPK classPK){
         return BaseResponse.created(classService.registerClass(classPK),"Lỗi: ban chưa đăng ký được");
     }
+
+
 }

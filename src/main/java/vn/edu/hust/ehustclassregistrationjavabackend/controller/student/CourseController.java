@@ -11,7 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student/course")
+@RequestMapping("/students/courses")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('STUDENT')")
 public class CourseController {
@@ -22,17 +22,17 @@ public class CourseController {
         return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");
     }
 
-    @GetMapping("/register-course")
+    @GetMapping("/register-courses")
     public ResponseEntity<?> getRegistedCourse(@RequestParam String semester) {
         return BaseResponse.ok(courseService.getRegistedCourse(semester));
     }
 
-    @PostMapping("/register-course")
+    @PostMapping("/register-courses")
     public ResponseEntity<?> registerCourse(@RequestBody StudentCourseRegistrationRequest request) {
         return BaseResponse.created(courseService.registerCourse(request));
     }
 
-    @DeleteMapping("/register-course")
+    @DeleteMapping("/register-courses")
     public ResponseEntity<?> unregisterCourse(@RequestBody StudentCourseRegistrationRequest request) {
         return BaseResponse.deleted(courseService.unregisterCourse(request.getCourseIds()) + " course(s) unregisted.");
     }

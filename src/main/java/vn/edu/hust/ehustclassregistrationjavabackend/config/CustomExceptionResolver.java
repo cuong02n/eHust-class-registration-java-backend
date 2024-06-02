@@ -87,7 +87,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         if (response.isCommitted()) {
             return;
         }
-        String message;
+        String message = null;
         int statusCode = 400;
         if (ex instanceof ErrorResponse errorResponse) {
             message = errorResponse.getDetailMessageCode();
@@ -99,12 +99,14 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         } else if (ex instanceof AccessDeniedException) {
             message = "You do not have permission to access this resource";
             statusCode = 403;
-        } else message = null;
+        }
 
 
         if (statusCode == 400 && message == null) {
             statusCode = 500;
+            message = ex.getMessage();
         }
+        System.out.println("status code response: "+statusCode);
 
         response.addHeader("content-type", "application/json");
         response.getWriter().write(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString());

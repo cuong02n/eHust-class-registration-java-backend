@@ -125,7 +125,7 @@ public class CourseService {
         return getRegistedCourse(user.getEmail(), semester);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String semester, String email) {
+    public List<UserCourseRegistration> getRegistedCourse(String email,String semester) {
         return userCourseRepository.findAllByEmailAndSemester(email, semester);
     }
 

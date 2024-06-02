@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Builder
 @AllArgsConstructor
-@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "course_id", "semester"})})
+@Table(name = "user_course_registration", uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "course_id", "semester"})})
 public class UserCourseRegistration extends BaseEntity {
 
     @Id
@@ -22,11 +22,11 @@ public class UserCourseRegistration extends BaseEntity {
     @Column(nullable = false)
     String semester;
 
-    @Column(name = "user_email", nullable = false)
+    @Column(name = "email", nullable = false)
     String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "email", insertable = false, updatable = false)
     @Expose(serialize = false)
     User user;
 
