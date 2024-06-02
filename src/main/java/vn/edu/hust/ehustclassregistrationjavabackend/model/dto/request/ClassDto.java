@@ -30,6 +30,10 @@ public class ClassDto implements Serializable {
     Integer maxStudent;
 
     @Expose
+    @Nullable
+    Integer currentRegisted;
+
+    @Expose
     String theoryClassId;
 
     @Expose

@@ -15,6 +15,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResp
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
@@ -109,7 +110,8 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         System.out.println("status code response: "+statusCode);
 
         response.addHeader("content-type", "application/json");
-        response.getWriter().write(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString());
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(new String(GsonUtil.gsonExpose.toJsonTree(new BaseResponse.ErrorResponse(statusCode, message)).toString().getBytes(StandardCharsets.UTF_8)));
         response.setStatus(statusCode);
     }
 
@@ -117,6 +119,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
     protected @NonNull ModelAndView handleErrorResponse(ErrorResponse errorResponse, @NonNull HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         response.setStatus(errorResponse.getStatusCode().value());
         response.addHeader("content-type", "application/json");
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().println(GsonUtil.gsonExpose.toJson(new BaseResponse.ErrorResponse(errorResponse.getStatusCode().value(), errorResponse.getBody().getDetail())));
         return new ModelAndView();
     }

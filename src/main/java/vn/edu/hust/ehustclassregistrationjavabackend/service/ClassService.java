@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
@@ -30,6 +31,10 @@ public class ClassService {
 
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester));
+    }
+
+    public List<UserClassRegistration> getRegistedClassByEmailAndSemester(String email,String semester){
+        return userClassRepository.findAllByEmailAndSemester(email,semester);
     }
 
     public List<ClassDto> updateClasses(MultipartFile file) throws IOException {
@@ -58,9 +63,14 @@ public class ClassService {
         return oldClass.toClassDto();
     }
 
-    public List<ClassDto> getClassByCourseId(String courseId, String semester) {
+    public List<ClassDto> getClassByCourseId(String courseId, String semester,boolean countRegisted) {
         List<ClassDto> result = new Vector<>();
         classRepository.findAllByCourseIdAndClassPK_Semester(courseId, semester).forEach(c -> result.add(c.toClassDto()));
+        if(countRegisted){
+            for(ClassDto classDto: result){
+                classDto.setCurrentRegisted(userClassRepository.countRegistedByClassIdAndSemester(classDto.getId(),semester));
+            }
+        }
         return result;
     }
 
@@ -68,13 +78,12 @@ public class ClassService {
         User user = (User) httpServletRequest.getAttribute("user");
         var existingRegistration = userClassRepository.findByEmailAndClassIdAndSemester(user.getEmail(), classPK.getId(), classPK.getSemester());
         if (existingRegistration.isPresent()) {
-            throw new MessageException("Bạn đã đăng kí lớp nay rồi " + existingRegistration.get());
+            throw new MessageException("Bạn đã đăng kí lớp nay rồi: " + existingRegistration.get().getClassId());
         }
         Class registedClass = classRepository.findByClassPK(classPK);
         checkClassOpenForStudent(user, registedClass);
         return insertUserClassRegistration(user, registedClass);
     }
-
 
     private UserClassRegistration insertUserClassRegistration(User student, Class registedClass) {
         return userClassRepository.saveAndFlush(
