@@ -14,7 +14,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelation
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
 @RestController
-@RequestMapping("/admin/course")
+@RequestMapping("/admin/courses")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('ADMIN')")
 

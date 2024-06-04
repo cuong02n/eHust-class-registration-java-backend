@@ -1,6 +1,5 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller.admin;
 
-import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,7 +14,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/admin/class")
+@RequestMapping("/admin/classes")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('ADMIN')")
 public class AdminClassController {
@@ -34,7 +33,7 @@ public class AdminClassController {
 
     @PostMapping("/post-class-by-file")
     public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file) throws IOException {
-        return BaseResponse.ok(classService.updateClasses(file));
+        return BaseResponse.ok(classService.updateClassesByFile(file));
     }
 
     @PostMapping("/cancel-class")

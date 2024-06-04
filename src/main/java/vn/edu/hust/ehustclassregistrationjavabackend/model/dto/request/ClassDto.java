@@ -8,6 +8,7 @@ import lombok.NonNull;
 import lombok.Singular;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.io.Serializable;
@@ -50,7 +51,7 @@ public class ClassDto implements Serializable {
     @Singular
     List<Class.Timetable> timetables;
 
-    public Class toClassEntity() {
+    public Class toClassEntity(User modified) {
         return Class.builder()
                 .classPK(new ClassPK(id, semester))
                 .semesterType(semesterType)

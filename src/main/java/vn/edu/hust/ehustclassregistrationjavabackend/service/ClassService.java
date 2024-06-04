@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
@@ -33,11 +32,11 @@ public class ClassService {
         return classRepository.findByClassPK(new ClassPK(id, semester));
     }
 
-    public List<UserClassRegistration> getRegistedClassByEmailAndSemester(String email,String semester){
-        return userClassRepository.findAllByEmailAndSemester(email,semester);
+    public List<UserClassRegistration> getRegistedClassByEmailAndSemester(String email, String semester) {
+        return userClassRepository.findAllByEmailAndSemester(email, semester);
     }
 
-    public List<ClassDto> updateClasses(MultipartFile file) throws IOException {
+    public List<ClassDto> updateClassesByFile(MultipartFile file) throws IOException {
         return createClass(ExcelUtil.getClassDtoRequest(file.getInputStream()));
     }
 
@@ -46,8 +45,9 @@ public class ClassService {
     }
 
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
+        User admin = (User) httpServletRequest.getAttribute("user");
         return classRepository.saveAll(
-                        classDtos.stream().map(ClassDto::toClassEntity).toList() // Make entity for update database
+                        classDtos.stream().map(classDto -> classDto.toClassEntity(admin)).toList() // Make entity for update database
                 )
                 .stream().map(Class::toClassDto).toList();
 
@@ -59,16 +59,17 @@ public class ClassService {
             return null;
         }
         oldClass.setStatus(Class.Status.CANCEL);
+        oldClass.setUserModified((User) httpServletRequest.getAttribute("user"));
         classRepository.saveAndFlush(oldClass);
         return oldClass.toClassDto();
     }
 
-    public List<ClassDto> getClassByCourseId(String courseId, String semester,boolean countRegisted) {
+    public List<ClassDto> getClassByCourseId(String courseId, String semester, boolean countRegisted) {
         List<ClassDto> result = new Vector<>();
         classRepository.findAllByCourseIdAndClassPK_Semester(courseId, semester).forEach(c -> result.add(c.toClassDto()));
-        if(countRegisted){
-            for(ClassDto classDto: result){
-                classDto.setCurrentRegisted(userClassRepository.countRegistedByClassIdAndSemester(classDto.getId(),semester));
+        if (countRegisted) {
+            for (ClassDto classDto : result) {
+                classDto.setCurrentRegisted(userClassRepository.countRegistedByClassIdAndSemester(classDto.getId(), semester));
             }
         }
         return result;
@@ -86,13 +87,13 @@ public class ClassService {
     }
 
     private UserClassRegistration insertUserClassRegistration(User student, Class registedClass) {
-        return userClassRepository.saveAndFlush(
-                UserClassRegistration.builder()
-                        .classId(registedClass.getClassPK().getId())
-                        .email(student.getEmail())
-                        .semester(registedClass.getClassPK().getSemester())
-                        .build()
-        );
+        UserClassRegistration entity = UserClassRegistration.builder()
+                .classId(registedClass.getClassPK().getId())
+                .email(student.getEmail())
+                .semester(registedClass.getClassPK().getSemester())
+                .build();
+        entity.setUserModified(student);
+        return userClassRepository.saveAndFlush(entity);
     }
 
     private int getNumberOfRegistedClass(Class registedClass) {

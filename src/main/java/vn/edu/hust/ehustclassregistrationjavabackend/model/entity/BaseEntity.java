@@ -71,4 +71,11 @@ public abstract class BaseEntity implements Serializable {
         updatedTime = now;
         updatedById = userId;
     }
+
+    public void setUserModified(User user){
+        if(createdById == null){
+            createdById = user.email;
+        }
+        updatedById = user.email;
+    }
 }

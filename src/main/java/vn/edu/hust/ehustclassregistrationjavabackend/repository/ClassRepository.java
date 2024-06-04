@@ -8,6 +8,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import java.util.List;
 
 public interface ClassRepository extends JpaRepository<Class, ClassPK> {
+
     List<Class> findAllByCourseIdAndClassPK_Semester(String courseId, String semester);
 
     List<Class> findAllByClassPK_Semester(String semester);
