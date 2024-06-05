@@ -4,6 +4,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
@@ -46,6 +47,10 @@ public class Class extends BaseEntity {
     String timetable;
 
     @Expose
+    @Nullable
+    String teacherEmail;
+
+    @Expose
     String theoryClassId;
 
     @Expose
@@ -61,6 +66,7 @@ public class Class extends BaseEntity {
                 .status(status)
                 .courseId(courseId)
                 .timetables(GsonUtil.gsonExpose.fromJson(timetable, timetableListTypetoken))
+                .teacherEmail(teacherEmail)
                 .theoryClassId(theoryClassId)
                 .classType(classType)
                 .build();

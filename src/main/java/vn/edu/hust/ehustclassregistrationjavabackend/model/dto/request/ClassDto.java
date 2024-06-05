@@ -51,8 +51,11 @@ public class ClassDto implements Serializable {
     @Singular
     List<Class.Timetable> timetables;
 
+    @Expose
+    String teacherEmail;
+
     public Class toClassEntity(User modified) {
-        return Class.builder()
+        Class entity = Class.builder()
                 .classPK(new ClassPK(id, semester))
                 .semesterType(semesterType)
                 .maxStudent(maxStudent)
@@ -61,7 +64,9 @@ public class ClassDto implements Serializable {
                 .timetable(TimetableUtil.toString(timetables))
                 .theoryClassId(theoryClassId)
                 .classType(classType)
+                .teacherEmail(teacherEmail)
                 .build();
-
+        entity.setUserModified(modified);
+        return entity;
     }
 }

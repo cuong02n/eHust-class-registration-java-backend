@@ -139,6 +139,10 @@ public class ClassService {
 
         List<Class> registedClassRequests = classRepository.findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
 
+        if(registedClassRequests.stream().map(Class::getCourseId).collect(Collectors.toSet()).size()!=registedClassRequests.size()){
+            throw new MessageException("Hãy kiểm tra lại, có học phần trùng nhau");
+        }
+
         /**
          * Kiểm tra xem có trong thời gian đăng kí môn học không
          */
@@ -155,7 +159,7 @@ public class ClassService {
         /**
          * Kiểm tra xem đủ học phần LT,BT,TN chưa
          */
-        if (satisfyConstraintCourse()) {
+        if (!satisfyConstraintCourse()) {
             throw new MessageException("Hãy kiểm tra học phần thí nghiệm, bài tập");
         }
         /**
@@ -194,6 +198,9 @@ public class ClassService {
 
         List<Class> registedClassRequests = classRepository.findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
 
+        if(registedClassRequests.stream().map(Class::getCourseId).collect(Collectors.toSet()).size()!=registedClassRequests.size()){
+            throw new MessageException("Hãy kiểm tra lại, có học phần trùng nhau");
+        }
         /**
          * Kiểm tra xem có quá số lượng tín chỉ ko
          */
@@ -204,7 +211,7 @@ public class ClassService {
         /**
          * Kiểm tra xem đủ học phần LT,BT,TN chưa
          */
-        if (satisfyConstraintCourse()) {
+        if (!satisfyConstraintCourse()) {
             throw new MessageException("Hãy kiểm tra học phần thí nghiệm, bài tập");
         }
         /**
