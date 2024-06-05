@@ -6,18 +6,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegistrationRequest;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserClassRegistration;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
+@SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
 public class ClassService {
@@ -27,12 +31,13 @@ public class ClassService {
     private final MetadataService metadataService;
     private final ServletRequest httpServletRequest;
     private final CourseService courseService;
+    private final UserService userService;
 
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester));
     }
 
-    public List<UserClassRegistration> getRegistedClassByEmailAndSemester(String email, String semester) {
+    public Collection<UserClassRegistration> getStudentRegisted(String email, String semester) {
         return userClassRepository.findAllByEmailAndSemester(email, semester);
     }
 
@@ -46,20 +51,19 @@ public class ClassService {
 
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
         User admin = (User) httpServletRequest.getAttribute("user");
-        return classRepository.saveAll(
-                        classDtos.stream().map(classDto -> classDto.toClassEntity(admin)).toList() // Make entity for update database
-                )
-                .stream().map(Class::toClassDto).toList();
+        return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(admin)).toList() // Make entity for update database
+        ).stream().map(Class::toClassDto).toList();
 
     }
 
     public ClassDto cancelClass(ClassPK classPK) {
+        User admin = (User) httpServletRequest.getAttribute("user");
         Class oldClass = classRepository.findByClassPK(classPK);
         if (oldClass == null) {
             return null;
         }
         oldClass.setStatus(Class.Status.CANCEL);
-        oldClass.setUserModified((User) httpServletRequest.getAttribute("user"));
+        oldClass.setUserModified(admin);
         classRepository.saveAndFlush(oldClass);
         return oldClass.toClassDto();
     }
@@ -75,82 +79,188 @@ public class ClassService {
         return result;
     }
 
-    public UserClassRegistration registerClass(ClassPK classPK) {
-        User user = (User) httpServletRequest.getAttribute("user");
-        var existingRegistration = userClassRepository.findByEmailAndClassIdAndSemester(user.getEmail(), classPK.getId(), classPK.getSemester());
-        if (existingRegistration.isPresent()) {
-            throw new MessageException("Bạn đã đăng kí lớp nay rồi: " + existingRegistration.get().getClassId());
+    /**
+     * @param student:  student
+     * @param semester: semester
+     * @return Có trong thời gian được đăng kí lớp không
+     */
+    public boolean isOpenForStudentRegisterClass(User student, String semester, List<String> courseIdsRequest) {
+        if (metadataService.isFreeClassRegister(semester)) {
+            return true;
         }
-        Class registedClass = classRepository.findByClassPK(classPK);
-        checkClassOpenForStudent(user, registedClass);
-        return insertUserClassRegistration(user, registedClass);
+        Set<String> courseIdsRegisted = courseService.getRegistedCourse(student.getEmail(), semester).stream().map(UserCourseRegistration::getCourseId).collect(Collectors.toSet());
+
+        /**
+         * Kiểm tra đã đăng kí hết hay chưa
+         */
+        if (courseIdsRegisted.containsAll(courseIdsRequest)) {
+            /**
+             * Đã đăng kí hết -> trong thời gian điều chỉnh hay chính thức đều được
+             */
+            if (student.getStudentType() == User.StudentType.ELITECH) {
+                return metadataService.isElitechOfficialRegisterClass(semester) || metadataService.isElitechUnofficialRegisterClass(semester);
+
+            } else {
+                // Standard
+                return metadataService.isStandardOfficialRegisterClass(semester) || metadataService.isStandardUnofficialRegisterClass(semester);
+            }
+
+        } else {
+            /**
+             * Chưa đăng kí hết-> phải đợi đăng kí điều chỉnh
+             */
+            if (student.getStudentType() == User.StudentType.ELITECH) {
+                return metadataService.isElitechUnofficialRegisterClass(semester);
+
+            } else {
+                return metadataService.isStandardUnofficialRegisterClass(semester);
+            }
+        }
     }
 
-    private UserClassRegistration insertUserClassRegistration(User student, Class registedClass) {
-        UserClassRegistration entity = UserClassRegistration.builder()
-                .classId(registedClass.getClassPK().getId())
-                .email(student.getEmail())
-                .semester(registedClass.getClassPK().getSemester())
-                .build();
-        entity.setUserModified(student);
-        return userClassRepository.saveAndFlush(entity);
+    private boolean satisfyConstraintCourse() {
+        return true;
     }
 
-    private int getNumberOfRegistedClass(Class registedClass) {
-        return userClassRepository.countRegistedByClassIdAndSemester(registedClass.getClassPK().getId(), registedClass.getClassPK().getSemester());
+    public List<UserClassRegistration> registerClassByStudent(StudentClassRegistrationRequest rq) {
+        User student = (User) httpServletRequest.getAttribute("user");
+
+        List<UserClassRegistration> existingRegistrations = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<String> existingRegistrationIds = existingRegistrations.stream().map(UserClassRegistration::getClassId).toList();
+        List<String> duplicatedClassIds = rq.getClassIds().stream().filter(existingRegistrationIds::contains).toList();
+
+        /**
+         * Kiểm tra xem đã có class bị trùng đăng kí hay chưa, nếu đã đăng kí rồi thì lỗi
+         * */
+        if (!duplicatedClassIds.isEmpty()) {
+            throw new MessageException("Bạn đã đăng kí lớp học này rồi " + duplicatedClassIds);
+        }
+
+
+        List<Class> registedClassRequests = classRepository.findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
+
+        /**
+         * Kiểm tra xem có trong thời gian đăng kí môn học không
+         */
+        if (isOpenForStudentRegisterClass(student, rq.getSemester(), registedClassRequests.stream().map(c -> c.getCourse().getId()).toList())) {
+            throw new MessageException("Không phải thời gian đăng kí 1 trong các lớp này, có thể là do bạn chưa đăng kí học phần");
+        }
+        /**
+         * Kiểm tra xem có quá số lượng tín chỉ ko
+         */
+        if (!classNotExceedMaximumCredit(student, rq.getSemester(), registedClassRequests)) {
+            throw new MessageException("Quá số lượng tín chỉ cho phép");
+        }
+
+        /**
+         * Kiểm tra xem đủ học phần LT,BT,TN chưa
+         */
+        if (satisfyConstraintCourse()) {
+            throw new MessageException("Hãy kiểm tra học phần thí nghiệm, bài tập");
+        }
+        /**
+         * Kiểm tra học phần tiên quyết, học phần song hành, học trước
+         */
+
+        checkFullSlotClass(registedClassRequests);
+        List<UserClassRegistration> registedWillSave = new Vector<>();
+        for (Class c : registedClassRequests) {
+            UserClassRegistration entity = UserClassRegistration
+                    .builder()
+                    .classId(c.getClassPK().getId())
+                    .semester(c.getClassPK().getSemester())
+                    .email(student.getEmail())
+                    .build();
+            entity.setUserModified(student);
+            registedWillSave.add(entity);
+        }
+        return userClassRepository.saveAllAndFlush(registedWillSave);
     }
 
-    private boolean isFullSlotClass(Class registedClass) {
-        return getNumberOfRegistedClass(registedClass) >= registedClass.getMaxStudent();
+    public List<UserClassRegistration> registerClassByAdmin(AdminClassRegistrationRequest rq) {
+        User admin = (User) httpServletRequest.getAttribute("user");
+        User student = userService.findUserByEmail(rq.getStudentEmail());
+
+        List<UserClassRegistration> existingRegistrations = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<String> existingRegistrationIds = existingRegistrations.stream().map(UserClassRegistration::getClassId).toList();
+        List<String> duplicatedClassIds = rq.getClassIds().stream().filter(existingRegistrationIds::contains).toList();
+
+        /**
+         * Kiểm tra xem đã có class bị trùng đăng kí hay chưa, nếu đã đăng kí rồi thì lỗi
+         * */
+        if (!duplicatedClassIds.isEmpty()) {
+            throw new MessageException("Bạn đã đăng kí lớp học này rồi " + duplicatedClassIds);
+        }
+
+        List<Class> registedClassRequests = classRepository.findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
+
+        /**
+         * Kiểm tra xem có quá số lượng tín chỉ ko
+         */
+        if (!classNotExceedMaximumCredit(student, rq.getSemester(), registedClassRequests)) {
+            throw new MessageException("Quá số lượng tín chỉ cho phép");
+        }
+
+        /**
+         * Kiểm tra xem đủ học phần LT,BT,TN chưa
+         */
+        if (satisfyConstraintCourse()) {
+            throw new MessageException("Hãy kiểm tra học phần thí nghiệm, bài tập");
+        }
+        /**
+         * Kiểm tra học phần tiên quyết, học phần song hành, học trước
+         */
+        checkFullSlotClass(registedClassRequests);
+
+        List<UserClassRegistration> registedWillSave = new Vector<>();
+        for (Class c : registedClassRequests) {
+            UserClassRegistration entity = UserClassRegistration
+                    .builder()
+                    .classId(c.getClassPK().getId())
+                    .semester(c.getClassPK().getSemester())
+                    .email(student.getEmail())
+                    .build();
+            entity.setUserModified(admin);
+            registedWillSave.add(entity);
+        }
+        return userClassRepository.saveAllAndFlush(registedWillSave);
+    }
+
+    public List<UserClassRegistration> unRegisterClassByStudent(StudentClassRegistrationRequest rq) {
+        //
+        User student = (User) httpServletRequest.getAttribute("user");
+        List<UserClassRegistration> existingClassRegistration = userClassRepository.findByEmailAndSemesterAndClassIdIn(student.getEmail(), rq.getSemester(), rq.getClassIds());
+        List<String> existingClassIds = existingClassRegistration.stream().map(UserClassRegistration::getClassId).toList();
+        if (existingClassRegistration.size() != rq.getClassIds().size()) {
+            throw new MessageException("Bạn chưa đăng kí lớp này: " + rq.getClassIds() + ", " + existingClassIds);
+        }
+
+        /**
+         * Kiểm tra xem có lớp nào do admin đăng kí không (không phải do mình đăng kí)
+         */
+        List<String> classRegistedByAdmin = existingClassRegistration.stream().map(BaseEntity::getCreatedById).filter(s -> !s.equals(student.getEmail())).toList();
+        if (rq.getClassIds().stream().anyMatch(classRegistedByAdmin::contains)) {
+            throw new MessageException("Bạn không thể hủy lớp do quản trị viên đã đăng kí");
+        }
+
+        // TODO
+        return null;
+    }
+
+
+    private void checkFullSlotClass(List<Class> registedClasses) {
+//        return getNumberOfRegistedClass(registedClass) >= registedClass.getMaxStudent();
+        // TODO
     }
 
     public int getCreditRegisted(User user, String semester) {
         return userClassRepository.sumCreditByEmailAndSemester(user.getEmail(), semester);
     }
 
-    public boolean classNotExceedMaximumCredit(User student, String semester, Class registerClass) {
-        return getCreditRegisted(student, semester) + registerClass.getCourse().getCredit() <= student.getMaxCredit();
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public boolean classNotExceedMaximumCredit(User student, String semester, List<Class> registerClasses) {
+        return getCreditRegisted(student, semester) + registerClasses.stream().mapToInt(cl -> cl.getCourse().getCredit()).sum() <= student.getMaxCredit();
     }
 
-    public void checkClassOpenForStudent(User student, Class registerClass) {
-        String semester = registerClass.getClassPK().getSemester();
-        if (!classNotExceedMaximumCredit(student, semester, registerClass)) {
-            throw new MessageException("Bạn không thể đăng ký số tín chỉ vượt quá giới hạn của bạn");
-        }
-
-        if (isFullSlotClass(registerClass)) {
-            throw new MessageException("Lớp đã đầy, đợi 1 xíu hoặc liên hệ admin để đăng ký");
-        }
-
-        if (!courseService.studentMatchedAllCourseBefore(student, registerClass)) {
-            throw new MessageException("Muốn đăng kí học phần này, bạn cần học phần tiên quyết | điều kiện | song hành");
-        }
-
-        if (metadataService.isFreeClassRegister(semester)) {
-            return;
-        }
-
-        if (courseService.isStudentRegisterCourseBefore(student, registerClass.getCourseId(), semester)) {// đã đăng kí học phần rồi->
-            if (student.getStudentType() == User.StudentType.ELITECH) {
-                if ((metadataService.isElitechOfficialRegisterClass(semester)
-                        || metadataService.isElitechUnofficialRegisterClass(semester)))
-                    throw new MessageException("Đây không phải thời điểm đăng ký");
-            }
-            if (student.getStudentType() == User.StudentType.STANDARD) {
-                if ((metadataService.isStandardOfficialRegisterClass(semester)
-                        || metadataService.isStandardUnofficialRegisterClass(semester)))
-                    throw new MessageException("Đây không phải thời điểm đăng ký");
-            }
-        } else {
-            if (student.getStudentType() == User.StudentType.ELITECH) { // chưa đăng kí học phần
-                if (metadataService.isElitechUnofficialRegisterClass(semester))
-                    throw new MessageException("Đây không phải thời điểm đăng ký");
-
-            }
-            if (student.getStudentType() == User.StudentType.STANDARD) {
-                if (metadataService.isStandardUnofficialRegisterClass(semester))
-                    throw new MessageException("Đây không phải thời điểm đăng ký");
-            }
-        }
-    }
 }

@@ -40,11 +40,14 @@ public class JwtFilter extends OncePerRequestFilter {
             }
             String token = authHeader.substring(7);
             String userId = jwtUtils.extractId(token);
-            System.out.println("user id: "+userId);
             if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails user = userService.loadUserByUsername(userId);
+                if(!user.isEnabled()){
+                    filterChain.doFilter(request,response);
+                    return;
+                }
                 request.setAttribute("user", user);
-                System.out.println(GsonUtil.gsonExpose.toJson(user));
+//                System.out.println(GsonUtil.gsonExpose.toJson(user));
 
                 if (jwtUtils.isTokenValid(token, user)) {
                     SecurityContext context = SecurityContextHolder.createEmptyContext();

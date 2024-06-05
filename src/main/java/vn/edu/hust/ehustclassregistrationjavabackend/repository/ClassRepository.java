@@ -17,4 +17,6 @@ public interface ClassRepository extends JpaRepository<Class, ClassPK> {
 
     boolean existsByClassPKIn(List<ClassPK> classPKS);
     Class findByClassPK(ClassPK classPK);
+
+    List<Class> findAllByClassPK_SemesterAndClassPK_IdIn(String semester,List<String> classIds);
 }

@@ -37,7 +37,7 @@ public class Class extends BaseEntity {
     @Column(name = "course_id", nullable = false)
     @Expose
     String courseId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @Expose(serialize = false)
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
     Course course;

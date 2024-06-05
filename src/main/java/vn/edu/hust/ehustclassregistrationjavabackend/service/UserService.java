@@ -17,10 +17,6 @@ public class UserService implements UserDetailsService {
     final UserRepository userRepository;
 
 
-    public boolean checkUserExist(String userId) {
-        return userRepository.existsById(userId);
-    }
-
     public void createUser(User user) {
         userRepository.save(user);
     }
@@ -32,5 +28,8 @@ public class UserService implements UserDetailsService {
     @Override
     public User loadUserByUsername(String id) throws UsernameNotFoundException {
         return userRepository.findById(id).orElse(null);
+    }
+    public User findUserByEmail(String email){
+        return userRepository.findByEmail(email).orElseThrow();
     }
 }

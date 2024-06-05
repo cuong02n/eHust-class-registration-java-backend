@@ -22,9 +22,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthEmailPasswordRequest request) {
-        System.out.println("User login");
-        var ret =  BaseResponse.createBaseResponse(authService.login(request),200,401,"Sai tài khoản/Mật khẩu");
-        System.out.println(ret);
-        return ret;
+        return BaseResponse.createBaseResponse(authService.login(request),200,401,"Sai tài khoản/Mật khẩu");
     }
 }

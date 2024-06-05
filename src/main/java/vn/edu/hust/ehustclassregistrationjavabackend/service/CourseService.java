@@ -170,7 +170,7 @@ public class CourseService {
     }
 
 
-    public boolean studentMatchedAllCourseBefore(User student, Class registerClass) {
+    public boolean studentMatchQuisiteCourse(User student, Class registerClass) {
         // TODO
         return true;
     }

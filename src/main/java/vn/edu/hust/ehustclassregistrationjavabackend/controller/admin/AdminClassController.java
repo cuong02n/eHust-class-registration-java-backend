@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegistrationRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.ClassCreateRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
@@ -39,5 +40,10 @@ public class AdminClassController {
     @PostMapping("/cancel-class")
     public ResponseEntity<?> cancelClass(@RequestBody ClassPK classPK){
         return BaseResponse.ok(classService.cancelClass(classPK));
+    }
+
+    @PostMapping("/register-class-for-student")
+    public ResponseEntity<?> registerClass(@RequestBody AdminClassRegistrationRequest adminClassRegistrationRequest){
+        return BaseResponse.created(classService.registerClassByAdmin(adminClassRegistrationRequest));
     }
 }

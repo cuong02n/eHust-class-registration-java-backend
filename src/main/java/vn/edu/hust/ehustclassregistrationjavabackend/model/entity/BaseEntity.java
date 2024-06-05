@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,7 +16,6 @@ import java.sql.Timestamp;
 public abstract class BaseEntity implements Serializable {
     @Column(name = "createdBy")
     @Expose
-    @Nullable
     String createdById;
 
     @JoinColumn(name = "createdBy", updatable = false, insertable = false)
@@ -26,7 +26,6 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "updatedBy")
     @Expose
-    @Nullable
     String updatedById;
 
     @JoinColumn(name = "updatedBy", updatable = false, insertable = false)

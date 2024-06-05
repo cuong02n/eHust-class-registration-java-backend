@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserClassRegistration;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,8 @@ public interface UserClassRepository extends JpaRepository<UserClassRegistration
 
     @Query("select count(*) from UserClassRegistration reg where reg.classId = :classId and reg.semester = :semester")
     int countRegistedByClassIdAndSemester(String classId,String semester);
+
+    List<UserClassRegistration> findByEmailAndSemesterAndClassIdIn(String email,String semester,List<String> classIds);
 
     List<UserClassRegistration> findAllByEmailAndSemester(String email, String semester);
 }

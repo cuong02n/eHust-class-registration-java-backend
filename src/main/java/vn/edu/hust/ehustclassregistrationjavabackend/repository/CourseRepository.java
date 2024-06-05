@@ -13,4 +13,7 @@ public interface CourseRepository extends JpaRepository<Course, String> {
 
     @Query("select sum(c.credit) from Course c where c.id in :courseIds")
     int sumCreditByCourseIds(List<String> courseIds);
+
+    @Query("select c.id from Course c, Class cl where c.id = cl.courseId and cl.classPK.id in :classIds and cl.classPK.semester= :semester")
+    List<String> getCourseIdsByClassIdsAndSemester(List<String> classIds,String semester);
 }

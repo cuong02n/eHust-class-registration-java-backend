@@ -17,9 +17,13 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 @PreAuthorize("hasAnyRole('STUDENT') or hasAnyRole('ADMIN')")
 public class CommonClassController {
     private final ClassService classService;
-
     @GetMapping("/get-by-course-id")
     public ResponseEntity<?> getClassesByCourseIdAndSemester(@RequestParam String semester, @RequestParam String courseId){
         return BaseResponse.ok(classService.getClassByCourseId(courseId,semester,true));
+    }
+
+    @GetMapping("/get-all-class")
+    public ResponseEntity<?> getAllClassesBySemester(@RequestParam String semester){
+        return BaseResponse.ok(classService.getClassBySemester(semester));
     }
 }
