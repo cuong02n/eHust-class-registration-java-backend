@@ -26,7 +26,9 @@ public class Class extends BaseEntity {
     @Expose
     ClassPK classPK;
     @Expose
-    String semesterType;
+    @Column(columnDefinition = "json not null")
+    String timetable;
+
     @Expose
     @Column(nullable = false)
     int maxStudent;
@@ -38,14 +40,12 @@ public class Class extends BaseEntity {
     @Column(name = "course_id", nullable = false)
     @Expose
     String courseId;
+    @Expose
+    String semesterType;
     @ManyToOne(fetch = FetchType.EAGER)
-    @Expose(serialize = false)
+    @Expose()
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
     Course course;
-    @Expose
-    @Column(columnDefinition = "json not null")
-    String timetable;
-
     @Expose
     @Nullable
     String teacherEmail;

@@ -9,6 +9,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,7 +107,7 @@ public class ExcelUtil {
         }
     }
 
-    public static List<Course> getCourseRequest(MultipartFile file) {
+    public static List<Course> getCourseRequest(MultipartFile file, User admin) {
         int i = 4;
         Map<String, Course.CourseBuilder> builderMap = new HashMap<>();
         try (Workbook workbook = new XSSFWorkbook(file.getInputStream())) {
@@ -139,7 +140,12 @@ public class ExcelUtil {
                 }
                 builderMap.put(courseId, builder);
             }
-            return builderMap.values().stream().map(Course.CourseBuilder::build).toList();
+
+            return builderMap.values().stream().map(c -> {
+                var entity = c.build();
+                entity.setUserModified(admin);
+                return entity;
+            }).toList();
         } catch (IOException e) {
             throw new MessageException(e.getMessage());
         } catch (Exception e) {

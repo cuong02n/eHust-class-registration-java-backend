@@ -39,6 +39,11 @@ dependencies {
     implementation 'org.apache.poi:poi:5.2.5'
     implementation 'org.apache.poi:poi-ooxml:5.2.5'
 
+    // testing:
+//    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1'
+//    implementation 'org.slf4j:slf4j-api'
+//    implementation 'ch.qos.logback:logback-core'
+//    implementation 'ch.qos.logback:logback-classic'
 }
 
 tasks.named('test') {

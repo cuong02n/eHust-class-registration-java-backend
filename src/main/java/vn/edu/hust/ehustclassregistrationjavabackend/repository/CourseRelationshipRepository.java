@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CourseRelationshipRepository extends JpaRepository<CourseRelationship,Long> {
     @Transactional
-    List<CourseRelationship> deleteAllByCourseConstraintIdOrCourseId(String courseConstraintId,String courseId);
+    List<CourseRelationship> deleteAllByCourseConstraintIdInOrCourseIdIn(List<String> courseConstraintId,List<String> courseId);
 }

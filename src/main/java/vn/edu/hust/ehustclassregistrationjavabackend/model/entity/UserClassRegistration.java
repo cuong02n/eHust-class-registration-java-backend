@@ -38,9 +38,9 @@ public class UserClassRegistration extends BaseEntity {
 
     @JoinColumn(name = "class_id", referencedColumnName = "id", insertable = false, updatable = false)
     @JoinColumn(name = "semester", referencedColumnName = "semester", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @SerializedName("class")
-    @Expose(serialize = false)
+    @Expose
     private Class aClass;
 
 }

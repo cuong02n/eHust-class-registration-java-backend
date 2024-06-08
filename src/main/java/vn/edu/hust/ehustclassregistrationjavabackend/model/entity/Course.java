@@ -21,8 +21,10 @@ public class Course extends BaseEntity {
     @Id
     @SerializedName("id")
     @Expose
+    @NonNull
     String id;
     @Expose
+    @NonNull
     String courseName;
     @Expose
     String courseNameE;
@@ -31,6 +33,7 @@ public class Course extends BaseEntity {
     String description;
     @Expose
     @Column(columnDefinition = "int not null")
+    @NonNull
     Integer credit; // 3
     @Expose
     String creditInfo; // (3-0-3-6)

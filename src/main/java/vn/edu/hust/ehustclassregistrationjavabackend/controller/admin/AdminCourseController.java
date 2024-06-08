@@ -13,6 +13,8 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Course;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.CourseRelationship;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin/courses")
 @RequiredArgsConstructor
@@ -22,8 +24,8 @@ public class AdminCourseController {
     final CourseService courseService;
 
     @PostMapping("")
-    public ResponseEntity<?> createCourse(@RequestBody Course newCourse) {
-        return BaseResponse.created(courseService.insertCourse(newCourse), "Cannot create course, duplicate id: ", newCourse.getId());
+    public ResponseEntity<?> createCourse(@RequestBody List<Course> newCourse) {
+        return BaseResponse.created(courseService.insertCourse(newCourse));
     }
 
     @PostMapping("/post-course-by-file")
@@ -32,12 +34,12 @@ public class AdminCourseController {
     }
 
     @PatchMapping("")
-    public ResponseEntity<?> updateCourse(@RequestBody Course newCourse){
+    public ResponseEntity<?> updateCourse(@RequestBody List<Course> newCourse){
         return BaseResponse.ok(courseService.updateCourse(newCourse));
     }
     @DeleteMapping("")
     @Operation(description = "Pending",security = @SecurityRequirement(name = "Bearer"))
-    public ResponseEntity<?> deleteCourse(@RequestParam String courseId){
+    public ResponseEntity<?> deleteCourse(@RequestParam List<String> courseId){
         // PENDING
         return BaseResponse.deleted(courseService.deleteCourse(courseId));
     }

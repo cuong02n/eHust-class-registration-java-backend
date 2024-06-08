@@ -19,6 +19,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.ObjectUtil;
 import java.util.List;
 import java.util.Vector;
 
+@SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
 public class CourseService {
@@ -54,42 +55,50 @@ public class CourseService {
     }
 
 
-    public Course insertCourse(Course course) {// TODO: must auth
-        String courseId = course.getId();
-        if (courseRepository.findById(courseId).isPresent()) {
-            return null;
+    public List<Course> insertCourse(List<Course> courses) {
+        /**
+         * Kiểm tra xem có bị trùng không
+         */
+        List<Course> duplicatedCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).toList());
+
+        if (duplicatedCourses.isEmpty()) {
+            return courseRepository.saveAll(courses);
         }
-        return courseRepository.save(course);
+        throw new MessageException("Mã học phần này đã tồn tại " + duplicatedCourses.stream().map(Course::getId).toList());
     }
 
-    public Course updateCourse(Course newCourse) {
-        Course existingCourse = courseRepository.findById(newCourse.getId()).orElse(null);
-        if (existingCourse == null) return null;
-        ObjectUtil.mergeEntityWithoutNullFieldAndId(existingCourse, newCourse);
-        return courseRepository.save(existingCourse);
+    public Course updateCourse(List<Course> newCourse) {
+//        Course existingCourse = courseRepository.findById(newCourse.getId()).orElse(null);
+//        if (existingCourse == null) return null;
+//        ObjectUtil.mergeEntityWithoutNullFieldAndId(existingCourse, newCourse);
+        //TODO:
+//        return courseRepository.save(existingCourse);
+        return null;
     }
 
     public List<Course> insertCourses(List<Course> courses) {
         List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
         if (!duplicateCourses.isEmpty()) {
-            throw new MessageException( "There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
+            throw new MessageException("There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
         }
         return courseRepository.saveAll(courses);
     }
 
     public List<Course> insertCourses(MultipartFile file) {
-        return insertCourses(ExcelUtil.getCourseRequest(file));
+        return insertCourses(ExcelUtil.getCourseRequest(file, (User) httpServletRequest.getAttribute("user")));
     }
 
-    public Course deleteCourse(String courseId) {
-        Course existingCourse = courseRepository.findById(courseId).orElse(null);
-        if (existingCourse == null) {
-            return null;
-        }
-        var deleted = relationshipRepository.deleteAllByCourseConstraintIdOrCourseId(courseId, courseId);
+    /**
+     *
+     * @param courseIds: courseIds want to delete
+     * @return <code> A list contains courseId deleted</code>
+     */
+    public List<String> deleteCourse(List<String> courseIds) {
+        List<Course> existingCourse = courseRepository.findAllByIdIn(courseIds);
+        var deleted = relationshipRepository.deleteAllByCourseConstraintIdInOrCourseIdIn(existingCourse.stream().map(Course::getId).toList(),existingCourse.stream().map(Course::getId).toList());
         System.out.println("deleted " + deleted.size());
-        courseRepository.deleteById(courseId);
-        return existingCourse;
+        courseRepository.deleteAllById(courseIds);
+        return courseIds;
     }
 
     public CourseRelationship insertCourseRelationship(CourseRelationshipRequest request) {
@@ -102,7 +111,8 @@ public class CourseService {
         return relationshipRepository.saveAndFlush(relationship);
     }
 
-    public CourseRelationship deleteCourseRelationShip() {
+    public CourseRelationship deleteCourseRelationShip(CourseRelationshipRequest request) {
+
         return null;
         //TODO
     }
@@ -125,7 +135,7 @@ public class CourseService {
         return getRegistedCourse(user.getEmail(), semester);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String email,String semester) {
+    public List<UserCourseRegistration> getRegistedCourse(String email, String semester) {
         return userCourseRepository.findAllByEmailAndSemester(email, semester);
     }
 
@@ -173,10 +183,6 @@ public class CourseService {
     public boolean studentMatchQuisiteCourse(User student, Class registerClass) {
         // TODO
         return true;
-    }
-
-    public boolean isStudentRegisterCourseBefore(User student, String courseId, String semester) {
-        return userCourseRepository.findByCourseIdAndSemesterAndEmail(courseId, semester, student.getEmail()).isPresent();
     }
 
     public boolean courseRegistedNotExceedMaximumCredit(User student, String semester, List<String> courseIds) {
