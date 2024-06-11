@@ -2,6 +2,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,10 +17,9 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
 
-import javax.lang.model.element.PackageElement;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Predicate;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("DanglingJavadoc")
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClassService {
 
+    private static final Logger log = LoggerFactory.getLogger(ClassService.class);
     private final UserClassRepository userClassRepository;
     private final ClassRepository classRepository;
     private final MetadataService metadataService;
@@ -119,7 +121,7 @@ public class ClassService {
         }
     }
 
-    private void satisfyConstraintCourse(List<Class> newClassIfMerged) {
+    private void checkSatisfyConstraintCourse(List<Class> newClassIfMerged) {
 
         Set<Class> theoryClasses = new HashSet<>();
         Set<Class> exersiseClasses = new HashSet<>();
@@ -154,10 +156,10 @@ public class ClassService {
                 }
             }
             /**
-             * kiểm tra trùng lặp
+             * kiểm tra trùng lặp (khác lớp nhưng chung học phần)
              */
-            if (theoryClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()))) {
-                throw new MessageException("Không thể đăng ký 2 lớp lý thuyết trùng học phần: " + c.getClassPK());
+            if (theoryClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
+                throw new MessageException("Học phần " + c.getCourse().getId() + " không thể có 2 lớp lý thuyết trùng nhau");
             }
 
         }
@@ -165,6 +167,7 @@ public class ClassService {
         /**
          * Xét lớp lý thuyết + bài tập
          */
+        log.info("LT+BT: {}", theoryExerciseClasses);
         for (Class c : theoryExerciseClasses) {
             /**
              * Kiểm tra thí nghiệm
@@ -176,10 +179,10 @@ public class ClassService {
             }
 
             /**
-             * Kiểm tra trùng lặp
+             * kiểm tra trùng lặp (khác lớp nhưng chung học phần)
              */
-            if (theoryExerciseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()))) {
-                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp trùng nhau");
+            if (theoryExerciseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
+                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp LT+BT trùng nhau");
             }
 
         }
@@ -189,10 +192,10 @@ public class ClassService {
          */
         for (Class c : exersiseClasses) {
             /**
-             * Kiểm tra trùng lặp
+             * kiểm tra trùng lặp (khác lớp nhưng chung học phần)
              */
-            if (exersiseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()))) {
-                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp trùng nhau");
+            if (exersiseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
+                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp bài tập trùng nhau");
             }
             /**
              * Kiểm tra có lớp lý thuyết không
@@ -226,10 +229,10 @@ public class ClassService {
             }
 
             /**
-             * Kiểm tra trùng lặp
+             * kiểm tra trùng lặp (khác lớp nhưng chung học phần)
              */
-            if (experimentClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()))) {
-                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp trùng nhau");
+            if (experimentClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
+                throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp thí nghiệm trùng nhau");
             }
         }
     }
@@ -261,18 +264,21 @@ public class ClassService {
         if (isOpenForStudentRegisterClass(student, rq.getSemester(), registedClassRequests.stream().map(c -> c.getCourse().getId()).toList())) {
             throw new MessageException("Không phải thời gian đăng kí 1 trong các lớp này, có thể là do bạn chưa đăng kí học phần");
         }
-        /**
-         * Kiểm tra xem có quá số lượng tín chỉ ko
-         */
-        classNotExceedMaximumCredit(student, rq.getSemester(), registedClassRequests);
+
         /**
          * Kiểm tra xem đủ học phần LT,BT,TN chưa
          */
 
         List<Class> newClassRegistedIfSuccess = new Vector<>();
+
         newClassRegistedIfSuccess.addAll(existingRegistrations.stream().map(UserClassRegistration::getAClass).toList());
         newClassRegistedIfSuccess.addAll(registedClassRequests);
-        satisfyConstraintCourse(newClassRegistedIfSuccess);
+        checkSatisfyConstraintCourse(newClassRegistedIfSuccess);
+
+        /**
+         * Kiểm tra xem có quá số lượng tín chỉ ko
+         */
+        checkClassExceedStudentMaximumCredit(student, newClassRegistedIfSuccess);
 
         /**
          * Kiểm tra học phần tiên quyết, học phần song hành, học trước
@@ -314,10 +320,6 @@ public class ClassService {
         if (registedClassRequests.stream().map(Class::getCourseId).collect(Collectors.toSet()).size() != registedClassRequests.size()) {
             throw new MessageException("Hãy kiểm tra lại, có học phần trùng nhau");
         }
-        /**
-         * Kiểm tra xem có quá số lượng tín chỉ ko
-         */
-        classNotExceedMaximumCredit(student, rq.getSemester(), registedClassRequests);
 
         /**
          * Kiểm tra xem đủ học phần LT,BT,TN chưa
@@ -325,14 +327,20 @@ public class ClassService {
         List<Class> newClassRegistedIfSuccess = new Vector<>();
         newClassRegistedIfSuccess.addAll(existingRegistrations.stream().map(UserClassRegistration::getAClass).toList());
         newClassRegistedIfSuccess.addAll(registedClassRequests);
-        satisfyConstraintCourse(newClassRegistedIfSuccess);
+        checkSatisfyConstraintCourse(newClassRegistedIfSuccess);
+
+        /**
+         * Kiểm tra xem có quá số lượng tín chỉ ko
+         */
+        checkClassExceedStudentMaximumCredit(student, newClassRegistedIfSuccess);
+
 
         /**
          * Kiểm tra học phần tiên quyết, học phần song hành, học trước
          */
 
         /**
-         * Kiểm tra lớp đầy: Nhưng admin đăng kí thì lớp đầy vẫn được
+         * Không cần kiểm tra lớp đầy: admin đăng kí thì lớp đầy vẫn được
          */
 
         List<UserClassRegistration> registedWillSave = new Vector<>();
@@ -350,15 +358,17 @@ public class ClassService {
     }
 
     public List<UserClassRegistration> unRegisterClassByStudent(StudentClassRegistrationRequest rq) {
-        //
+
         User student = (User) httpServletRequest.getAttribute("user");
-        List<UserClassRegistration> existingClassRegistration = userClassRepository.findAllByEmailAndSemester(student.getEmail(),rq.getSemester());
+        List<UserClassRegistration> existingClassRegistration = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
         List<Class> registedClass = existingClassRegistration.stream().map(UserClassRegistration::getAClass).toList();
+
+        // TODO :  kiểm tra xem có phải thời điểm cho phép không
 
         /**
          * Kiểm tra xem request có hợp lệ hay ko (chỉ xóa những class đã đăng kí)
          */
-        if(registedClass.stream().map(c->c.getClassPK().getId()).collect(Collectors.toSet()).containsAll(rq.getClassIds())){
+        if (!registedClass.stream().map(c -> c.getClassPK().getId()).collect(Collectors.toSet()).containsAll(rq.getClassIds())) {
             throw new MessageException("Yêu cầu xóa không hợp lệ, bạn đã yêu cầu xóa lớp chưa đăng kí");
         }
 
@@ -370,10 +380,14 @@ public class ClassService {
             throw new MessageException("Bạn không thể hủy lớp do quản trị viên đã đăng kí");
         }
 
-//        List<Class> newClassIfDeletedSuccess = existingClassRegistration.stream().
+        List<Class> newClassIfDeletedSuccess = existingClassRegistration.stream().map(UserClassRegistration::getAClass).filter(e -> rq.getClassIds().contains(e.getClassPK().getId())).toList();
 
-        // TODO
-        return null;
+        /**
+         * Kiểm tra xem sau khi xóa thì có thỏa mãn điều kiện của các lớp thí nghiệm, thực hành hay ko
+         */
+        checkSatisfyConstraintCourse(newClassIfDeletedSuccess);
+
+        return userClassRepository.deleteAllBySemesterAndClassIdIn(rq.getSemester(), rq.getClassIds());
     }
 
 
@@ -387,10 +401,18 @@ public class ClassService {
     }
 
 
-    public void classNotExceedMaximumCredit(User student, String semester, List<Class> registerClasses) {
-        if (getCreditRegisted(student, semester) + registerClasses.stream().mapToInt(cl -> cl.getCourse().getCredit()).sum() > student.getMaxCredit()) {
-            throw new MessageException("Bạn không thể đăng kí quá số tín chỉ tối đa cho phép: " + student.getMaxCredit());
-        }
+    public void checkClassExceedStudentMaximumCredit(User student, List<Class> newClassIfActionSuccess) {
+        int totalCredit = newClassIfActionSuccess
+                .stream()
+                .collect(
+                        Collectors.toMap(
+                                Class::getCourseId,
+                                Function.identity(),
+                                (existElement, newElement) -> existElement
+                        )
+                ).values().stream().mapToInt(c -> c.getCourse().getCredit()).sum();
+        if (student.getMaxCredit() < totalCredit)
+            throw new MessageException("Bạn không thể đăng kí quá số tín chỉ tối đa cho phép: " + student.getMaxCredit() + " < " + totalCredit);
     }
 
 }

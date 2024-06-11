@@ -1,6 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student;
 
 import com.google.gson.annotations.Expose;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -13,5 +14,6 @@ public class StudentCourseRegistrationRequest {
     String semester;
     @Expose
     @NonNull
+    @Size(min = 1, max = 50)
     List<String> courseIds;
 }

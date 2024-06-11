@@ -3,10 +3,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 import com.google.gson.annotations.Expose;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -18,6 +15,7 @@ import java.io.Serializable;
 public class ClassPK implements Serializable {
     @Column(name = "id")
     @Expose
+    @NonNull
     String id;
     @Column(name = "semester")
     @Expose

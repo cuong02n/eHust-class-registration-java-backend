@@ -34,9 +34,9 @@ public class UserCourseRegistration extends BaseEntity {
     @Expose
     String courseId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    @Expose(serialize = false)
+    @Expose
     Course course;
 
 }

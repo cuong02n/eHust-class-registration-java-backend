@@ -1,6 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +20,7 @@ public class ClassController {
     private final HttpServletRequest request;
 
     @PostMapping("/register-class")
-    public ResponseEntity<?> registerClass(@RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
+    public ResponseEntity<?> registerClass(@Valid @RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
         return BaseResponse.created(classService.registerClassByStudent(studentClassRegistrationRequest), "Lỗi: ban chưa đăng ký được");
     }
 
@@ -30,7 +31,7 @@ public class ClassController {
     }
 
     @DeleteMapping("/register-class")
-    public ResponseEntity<?> unRegisterClass(@RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
+    public ResponseEntity<?> unRegisterClass(@Valid @RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
         return BaseResponse.created(classService.unRegisterClassByStudent(studentClassRegistrationRequest));
     }
 

@@ -1,5 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.repository;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserClassRegistration;
@@ -20,4 +21,7 @@ public interface UserClassRepository extends JpaRepository<UserClassRegistration
     List<UserClassRegistration> findByEmailAndSemesterAndClassIdIn(String email,String semester,List<String> classIds);
 
     List<UserClassRegistration> findAllByEmailAndSemester(String email, String semester);
+
+    @Transactional
+    List<UserClassRegistration> deleteAllBySemesterAndClassIdIn(String semester,List<String> classIds);
 }

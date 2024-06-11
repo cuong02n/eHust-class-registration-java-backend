@@ -41,7 +41,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         long currentTime = System.currentTimeMillis();
         String ip = getClientIpAddress(request);
-//        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
+        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
         if (request.getRequestURI().startsWith("/swagger")) return true;
 
         synchronized (requestSaved) {
