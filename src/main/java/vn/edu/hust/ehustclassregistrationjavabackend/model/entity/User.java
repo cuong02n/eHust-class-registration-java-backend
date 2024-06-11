@@ -22,6 +22,9 @@ public class User extends BaseEntity implements UserDetails {
     @Expose
     String email;
 
+    @Expose
+    String studentClassName;
+
     @Enumerated(EnumType.STRING)
     @Expose
     @Column(nullable = false)

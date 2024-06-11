@@ -32,4 +32,8 @@ public class UserService implements UserDetailsService {
     public User findUserByEmail(String email){
         return userRepository.findByEmail(email).orElseThrow();
     }
+
+    public User findStudentById(String id){
+        return userRepository.findByEmailContaining(id.substring(2)).orElseThrow();
+    }
 }
