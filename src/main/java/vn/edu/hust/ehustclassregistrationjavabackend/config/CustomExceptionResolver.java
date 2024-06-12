@@ -22,6 +22,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
+        ex.printStackTrace();
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {

@@ -37,6 +37,10 @@ public class BaseResponse {
         return createBaseResponse(value, 204, 404, messageIfError);
     }
 
+    public static <T> ResponseEntity<?> noContent(String message){
+        return createBaseResponse(message, 204, 404);
+    }
+
 
     @AllArgsConstructor
     @Getter
