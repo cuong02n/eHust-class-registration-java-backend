@@ -22,57 +22,12 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
-        ex.printStackTrace();
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
-//                ModelAndView mav = null;
-//                if (ex instanceof HttpRequestMethodNotSupportedException theEx) {
-//                    mav = handleHttpRequestMethodNotSupported(theEx, request, response, handler);
-//                } else if (ex instanceof HttpMediaTypeNotSupportedException theEx) {
-//                    mav = handleHttpMediaTypeNotSupported(theEx, request, response, handler);
-//                } else if (ex instanceof HttpMediaTypeNotAcceptableException theEx) {
-//                    mav = handleHttpMediaTypeNotAcceptable(theEx, request, response, handler);
-//                } else if (ex instanceof MissingPathVariableException theEx) {
-//                    mav = handleMissingPathVariable(theEx, request, response, handler);
-//                } else if (ex instanceof MissingServletRequestParameterException theEx) {
-//                    mav = handleMissingServletRequestParameter(theEx, request, response, handler);
-//                } else if (ex instanceof MissingServletRequestPartException theEx) {
-//                    mav = handleMissingServletRequestPartException(theEx, request, response, handler);
-//                } else if (ex instanceof ServletRequestBindingException theEx) {
-//                    mav = handleServletRequestBindingException(theEx, request, response, handler);
-//                } else if (ex instanceof MethodArgumentNotValidException theEx) {
-//                    mav = handleMethodArgumentNotValidException(theEx, request, response, handler);
-//                } else if (ex instanceof HandlerMethodValidationException theEx) {
-//                    mav = handleHandlerMethodValidationException(theEx, request, response, handler);
-//                } else if (ex instanceof NoHandlerFoundException theEx) {
-//                    mav = handleNoHandlerFoundException(theEx, request, response, handler);
-//                } else if (ex instanceof NoResourceFoundException theEx) {
-//                    mav = handleNoResourceFoundException(theEx, request, response, handler);
-//                } else if (ex instanceof AsyncRequestTimeoutException theEx) {
-//                    mav = handleAsyncRequestTimeoutException(theEx, request, response, handler);
-//                }
                 return this.handleErrorResponse(errorResponse, request, response, handler);
             }
 
-            // Other, lower level exceptions
-//            System.out.println(ex.getMessage());
-//            if (ex instanceof ConversionNotSupportedException theEx) {
-//                 handleConversionNotSupported(theEx, request, response, handler);
-//            } else if (ex instanceof TypeMismatchException theEx) {
-//                return handleTypeMismatch(theEx, request, response, handler);
-//            } else if (ex instanceof HttpMessageNotReadableException theEx) {
-//                return handleHttpMessageNotReadable(theEx, request, response, handler);
-//            } else if (ex instanceof HttpMessageNotWritableException theEx) {
-//                return handleHttpMessageNotWritable(theEx, request, response, handler);
-//            } else if (ex instanceof MethodValidationException theEx) {
-//                return handleMethodValidationException(theEx, request, response, handler);
-//            } else if (ex instanceof BindException theEx) {
-//                return handleBindException(theEx, request, response, handler);
-//            } else if (ex instanceof AsyncRequestNotUsableException) {
-//                return handleAsyncRequestNotUsableException(
-//                        (AsyncRequestNotUsableException) ex, request, response, handler);
-//            }
             sendServerError(ex, request, response);
         } catch (Exception handlerEx) {
             if (logger.isWarnEnabled()) {
@@ -101,6 +56,9 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
         } else if (ex instanceof AccessDeniedException) {
             message = "You do not have permission to access this resource";
             statusCode = 403;
+        }else if(ex instanceof NullPointerException n){
+            message = "Yêu cầu không hợp lệ: "+n.getMessage();
+            statusCode = 400;
         }
 
 
@@ -108,7 +66,6 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
             statusCode = 500;
             message = ex.getMessage();
         }
-        System.out.println("status code response: "+statusCode);
 
         response.addHeader("content-type", "application/json");
         response.setCharacterEncoding("UTF-8");

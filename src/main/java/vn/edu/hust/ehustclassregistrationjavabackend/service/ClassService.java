@@ -404,7 +404,7 @@ public class ClassService {
             throw new MessageException("Không có lớp này " + rq.getOldClassId());
         }
         Class oldClass = tmpOldClass.get(0);
-        Class newClass = classRepository.findByClassPK(new ClassPK(rq.getSemester(), rq.getNewClassId())).orElseThrow();
+        Class newClass = classRepository.findByClassPK(new ClassPK(rq.getNewClassId(),rq.getSemester())).orElseThrow();
 
         if (!newClass.getClassType().equals(oldClass.getClassType())) {
             throw new MessageException("2 lớp phải có cùng loại (LT,BT,TH)");
@@ -420,7 +420,7 @@ public class ClassService {
             throw new MessageException("Lớp đã đầy: " + rq.getNewClassId());
 
 
-        if (newClass.getClassType() == Class.ClassType.THEORY_EXERCISE) {
+        if (newClass.getClassType() == Class.ClassType.THEORY_EXERCISE || newClass.getClassType()== Class.ClassType.EXPERIMENT) {
             /**
              * LT+BT
              * TN: same
@@ -441,7 +441,7 @@ public class ClassService {
                     return List.of(userClassRepository.saveAndFlush(registration));
                 }
             }
-            throw new MessageException("lỗi xử lý server, không tìm thấy lớp trong danh sách đã đăng kí: "+rq.get)
+            throw new MessageException("lỗi xử lý server, không tìm thấy lớp trong danh sách đã đăng kí: "+rq.getOldClassId());
         } else if (newClass.getClassType() == Class.ClassType.EXERCISE) {
             /**
              * Lớp BT
@@ -490,10 +490,10 @@ public class ClassService {
                 }
             }
             return userClassRepository.saveAllAndFlush(listRegistrationToSave);
-        } else
+        }
         /**
          * LT: false
          */
-            throw new MessageException("Bạn không thể thao tác với lớp lý thuyết");
+        throw new MessageException("Bạn không thể thao tác với lớp lý thuyết");
     }
 }
