@@ -171,7 +171,6 @@ public class ClassService {
         /**
          * Xét lớp lý thuyết + bài tập
          */
-        log.info("LT+BT: {}", theoryExerciseClasses);
         for (Class c : theoryExerciseClasses) {
             /**
              * Kiểm tra thí nghiệm
@@ -269,7 +268,7 @@ public class ClassService {
         }
 
         /**
-         * Tự động thêm lớp lý thuyết nếu có lớp bài tập
+         * TODO: error: Tự động thêm lớp lý thuyết nếu có lớp bài tập
          */
         registedClassRequests.addAll(classRepository.findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), registedClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
 
