@@ -15,7 +15,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 public class AdminMetadataController {
     final MetadataService metadataService;
 
-    @PatchMapping("")
+    @PatchMapping("/start-year")
     public ResponseEntity<?> updateMetadata(@RequestBody MetadataRequest request) {
         return BaseResponse.ok(metadataService.updateMetadata(request));
     }

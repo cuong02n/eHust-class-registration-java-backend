@@ -1,0 +1,3 @@
+### GET request to example server
+GET http://localhost:8081/public/metadata/get-day-start-year?year=2023
+###

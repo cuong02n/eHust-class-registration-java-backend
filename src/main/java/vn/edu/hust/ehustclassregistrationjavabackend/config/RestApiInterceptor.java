@@ -52,7 +52,6 @@ public class RestApiInterceptor implements HandlerInterceptor {
 //        }
 
         printStream.println("Response: " + response.getStatus());
-        printStream.println("\tResponse Body: Not display here");
         printStream.println("\tThis request took " + ((System.currentTimeMillis() - (long) request.getAttribute("xxx-start-time-xxx")) / 1000.0) + " to complete");
     }
 }
