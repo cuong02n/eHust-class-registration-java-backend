@@ -7,15 +7,14 @@ import lombok.NonNull;
 import java.util.List;
 
 @Data
-public class AdminClassRegistrationRequest {
-    @Expose
+public class AdminClassRegisterRequest {
     @NonNull
+    @Expose
     String studentEmail;
-
-    @Expose
     @NonNull
+    @Expose
     String semester;
-    @Expose
     @NonNull
+    @Expose
     List<String> classIds;
 }

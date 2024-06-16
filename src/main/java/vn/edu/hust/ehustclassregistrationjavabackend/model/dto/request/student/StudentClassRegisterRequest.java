@@ -8,7 +8,7 @@ import lombok.NonNull;
 import java.util.List;
 
 @Getter
-public class StudentClassRegistrationRequest {
+public class StudentClassRegisterRequest {
     @Expose
     @NonNull
     String semester;

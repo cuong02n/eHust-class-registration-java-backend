@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ChangeClassRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegistrationRequest;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
@@ -21,8 +21,8 @@ public class ClassController {
     private final HttpServletRequest request;
 
     @PostMapping("/register-class")
-    public ResponseEntity<?> registerClass(@Valid @RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
-        return BaseResponse.created(classService.registerClassByStudent(studentClassRegistrationRequest), "Lỗi: ban chưa đăng ký được");
+    public ResponseEntity<?> registerClass(@Valid @RequestBody StudentClassRegisterRequest studentClassRegisterRequest) {
+        return BaseResponse.created(classService.registerClassByStudent(studentClassRegisterRequest), "Lỗi: ban chưa đăng ký được");
     }
 
     @GetMapping("/register-class")
@@ -38,8 +38,8 @@ public class ClassController {
     }
 
     @DeleteMapping("/register-class")
-    public ResponseEntity<?> unRegisterClass(@Valid @RequestBody StudentClassRegistrationRequest studentClassRegistrationRequest) {
-        return BaseResponse.created(classService.unRegisterClassByStudent(studentClassRegistrationRequest));
+    public ResponseEntity<?> unRegisterClass(@Valid @RequestBody StudentClassRegisterRequest studentClassRegisterRequest) {
+        return BaseResponse.created(classService.unRegisterClassByStudent(studentClassRegisterRequest));
     }
 
 }
