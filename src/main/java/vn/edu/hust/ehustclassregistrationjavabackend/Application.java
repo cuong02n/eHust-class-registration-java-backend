@@ -1,17 +1,12 @@
 package vn.edu.hust.ehustclassregistrationjavabackend;
 
-import com.google.gson.Gson;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
-import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 
-import java.sql.Timestamp;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
@@ -51,18 +46,20 @@ public class Application {
 //        classRepository.save(a);
     }
 
-    static List<User> getListVirtualUser() {
-        Vector<User> users = new Vector<>();
-        for (int i = 1; i <= 100; i++) {
-            users.add(User.builder()
-                    .email(20204500 + i + "@sis.hust.edu.vn")
-                    .role(User.Role.ROLE_STUDENT)
-                    .name("Cuong Nguyen Manh " + i)
-                    .build()
-            );
-        }
-        return users;
-    }
+//    static List<User> getListVirtualUser() {
+//        Random r = new Random();
+//        Vector<User> users = new Vector<>();
+//        for (int i = 1; i < 10000; i++) {
+//            users.add(User.builder()
+//                    .email(20200000 + i + "@sis.hust.edu.vn")
+//                    .role(User.Role.ROLE_STUDENT)
+//                    .maxCredit(r.nextInt(14,25))
+//                    .name("Cuong Nguyen Manh " + i)
+//                    .build()
+//            );
+//        }
+//        return users;
+//    }
 
     static List<Course> getListVirtualCourse() {
         Vector<Course> courses = new Vector<>();
@@ -143,7 +140,6 @@ public class Application {
 //
 //                new Metadata("open_free_all", String.valueOf(Timestamp.valueOf("2024-02-05 00:00:00").getTime())),
 //                new Metadata("close_free_all", String.valueOf(Timestamp.valueOf("2024-05-17 00:00:00").getTime()))
-//                // TODO: metadata Etag or another v.v
         );
     }
 }

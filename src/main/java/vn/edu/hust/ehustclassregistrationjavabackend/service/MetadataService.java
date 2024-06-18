@@ -1,84 +1,92 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.annotation.Nonnull;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.MetadataRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.MetadataRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
-import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MetadataService {
     private final MetadataRepository metadataRepository;
-    private final UserClassRepository userClassRepository;
-    private final UserCourseRepository userCourseRepository;
+    private final HttpServletRequest httpServletRequest;
 
     /**
-     * @param name:
+     * @param key:
      * @param semester: pass empty String for metadata not depends on semester
      * @return String
      */
-    public String getMetadata(String name, String semester) {
-        Metadata metadata = metadataRepository.findByMetadataPk_NameAndMetadataPk_Semester(name, semester).orElseThrow();
+    public String getMetadata(Metadata.MetadataKey key, String semester) {
+        Metadata metadata = metadataRepository.findByMetadataKeyAndSemester(key, semester).orElseThrow();
         return metadata.getValue();
     }
 
-    public String getMetadata(String name) {
-        return getMetadata(name, "");
+    public String getMetadata(Metadata.MetadataKey key) {
+        return getMetadata(key, "");
     }
 
     /**
      * @param year require
      * @return Timestamp for response to client only, server doesnot use this
      */
-    public Timestamp getDayStartWeek1(int year){
-        return Timestamp.valueOf(getMetadata("date-start",year+"1"));
+    public Timestamp getDayStartWeek1(int year) {
+        return Timestamp.valueOf(getMetadata(Metadata.MetadataKey.START_WEEK_1, year + "1"));
     }
 
     public String getCurrentSemester() {
-        return getMetadata("current-semester");
+        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER);
     }
 
     public boolean isElitechOfficialRegisterClass(String semester) {
-        return isTimeBetween("open-class-official-elitech", "close-class-official-elitech", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_OFFICIAL_ELITECH, Metadata.MetadataKey.END_REGISTER_CLASS_OFFICIAL_ELITECH, semester, System.currentTimeMillis());
     }
 
     public boolean isStandardOfficialRegisterClass(String semester) {
-        return isTimeBetween("open-class-official-standard", "close-class-official-standard", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_OFFICIAL_STANDARD, Metadata.MetadataKey.END_REGISTER_CLASS_OFFICIAL_STANDARD, semester, System.currentTimeMillis());
     }
 
     public boolean isElitechUnofficialRegisterClass(String semester) {
-        return isTimeBetween("open-class-unofficial-elitech", "close-class-unofficial-elitech", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_UNOFFICIAL_ELITECH, Metadata.MetadataKey.END_REGISTER_CLASS_UNOFFICIAL_ELITECH, semester, System.currentTimeMillis());
     }
 
     public boolean isStandardUnofficialRegisterClass(String semester) {
-        return isTimeBetween("open-class-unofficial-standard", "close-class-unofficial-standard", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REIGSTER_CLASS_UNOFFICIAL_STANDARD, Metadata.MetadataKey.END_REIGSTER_CLASS_UNOFFICIAL_STANDARD, semester, System.currentTimeMillis());
     }
 
     public boolean isFreeClassRegister(String semester) {
-        return isTimeBetween("open-class-free-all", "close-class-free-all", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_FREE, Metadata.MetadataKey.END_REGISTER_FREE, semester, System.currentTimeMillis());
     }
 
     public boolean isAtTimeCourseRegistration(String semester) {
-        return isTimeBetween("open-course-registration", "close-course-registration", semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_COURSE, Metadata.MetadataKey.END_REGISTER_COURSE, semester, System.currentTimeMillis());
     }
 
-    private boolean isTimeBetween(@Nonnull String metadataKeyStart, @Nonnull String metadataKeyEnd, String semester, long timeInMillis) {
-        Metadata start = metadataRepository.findByMetadataPk_NameAndMetadataPk_Semester(metadataKeyStart, semester).orElse(null);
-        if (start == null) return false;
-        Metadata end = metadataRepository.findByMetadataPk_NameAndMetadataPk_Semester(metadataKeyEnd, semester).orElse(null);
-        if (end == null) return false;
+    private boolean isTimeBetween(@Nonnull Metadata.MetadataKey metadataKeyStart, @Nonnull Metadata.MetadataKey metadataKeyEnd, String semester, long timeInMillis) {
+        String start = getMetadata(metadataKeyStart, semester);
+        String end = getMetadata(metadataKeyEnd, semester);
 
-        return Long.parseLong(start.getValue()) <= timeInMillis && timeInMillis <= Long.parseLong(end.getValue());
+        return Long.parseLong(start) <= timeInMillis && timeInMillis <= Long.parseLong(end);
     }
 
-    public Metadata updateMetadata(MetadataRequest metadataRequest) {
-        return metadataRepository.saveAndFlush(metadataRequest.toEntity());
+    public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
+        User superAdmin = (User) httpServletRequest.getAttribute("user");
+        Optional<Metadata> metadataDB = metadataRepository.findByMetadataKeyAndSemester(key, semester);
+        Metadata metadata;
+        if (metadataDB.isPresent()) {
+            metadata = metadataDB.get();
+        } else {
+            metadata = new Metadata();
+            metadata.setMetadataKey(key);
+            metadata.setSemester(semester);
+        }
+        metadata.setValue(value);
+        metadata.setUserModified(superAdmin);
+        return metadataRepository.saveAndFlush(metadata);
     }
 }

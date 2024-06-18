@@ -1,6 +1,5 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller.admin;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.superadmin;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,15 +11,15 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.superadmi
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
-@RequiredArgsConstructor
+@PreAuthorize("hasRole('SUPER_ADMIN')")
 @RestController
-@RequestMapping("/admin/metadata")
-@PreAuthorize("hasAnyRole('ADMIN')")
-public class AdminMetadataController {
-    final MetadataService metadataService;
+@RequestMapping("/super-admin")
+@RequiredArgsConstructor
+public class SuperAdminController {
+    private final MetadataService metadataService;
 
-    @PostMapping("")
-    public ResponseEntity<?> updateMetadata(@RequestBody @Valid SuperAdminMetadataRequest rq) {
-        return BaseResponse.ok(metadataService.updateMetadata(rq.getKey(), rq.getSemester(), rq.getValue()));
+    @PostMapping("/update-metadata")
+    public ResponseEntity<?> updateMetadata(@RequestBody SuperAdminMetadataRequest rq){
+        return BaseResponse.ok(metadataService.updateMetadata(rq.getKey(),rq.getSemester(),rq.getValue()));
     }
 }

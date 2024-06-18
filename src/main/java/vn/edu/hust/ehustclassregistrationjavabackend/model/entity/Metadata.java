@@ -2,9 +2,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.model.entity;
 
 
 import com.google.gson.annotations.Expose;
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.*;
 import lombok.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
@@ -16,15 +15,44 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 @Setter
 //@Data
 public class Metadata extends BaseEntity {
-    @EmbeddedId
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Expose
-    MetadataPk metadataPk;
+    @Enumerated(EnumType.STRING)
+    @Nonnull
+    MetadataKey metadataKey;
+
+    @Expose
+    String semester;
+
     @Expose
     @Column(nullable = false)
     String value;
 
+
     @Override
     public String toString() {
         return GsonUtil.gsonExpose.toJson(this);
+    }
+
+    public enum MetadataKey {
+        START_WEEK_1,
+        CURRENT_SEMESTER,
+        START_REGISTER_CLASS_OFFICIAL_STANDARD,
+        START_REIGSTER_CLASS_UNOFFICIAL_STANDARD,
+        START_REGISTER_CLASS_OFFICIAL_ELITECH,
+        START_REGISTER_CLASS_UNOFFICIAL_ELITECH,
+        START_REGISTER_FREE,
+
+        END_REGISTER_CLASS_OFFICIAL_STANDARD,
+        END_REIGSTER_CLASS_UNOFFICIAL_STANDARD,
+        END_REGISTER_CLASS_OFFICIAL_ELITECH,
+        END_REGISTER_CLASS_UNOFFICIAL_ELITECH,
+        END_REGISTER_FREE,
+
+        START_REGISTER_COURSE,
+        END_REGISTER_COURSE,
     }
 }

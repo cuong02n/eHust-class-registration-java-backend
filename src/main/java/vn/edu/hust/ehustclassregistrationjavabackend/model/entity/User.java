@@ -44,7 +44,7 @@ public class User extends BaseEntity implements UserDetails {
     int maxCredit;
     @Expose
     @Column(columnDefinition = "BIT(1) default 1")
-    boolean active;
+    boolean active = true;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -78,7 +78,8 @@ public class User extends BaseEntity implements UserDetails {
 
     public enum Role {
         ROLE_STUDENT,
-        ROLE_ADMIN
+        ROLE_ADMIN,
+        ROLE_SUPER_ADMIN
     }
 
     public enum StudentType {

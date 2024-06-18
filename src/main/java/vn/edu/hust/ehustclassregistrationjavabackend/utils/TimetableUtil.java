@@ -2,12 +2,12 @@ package vn.edu.hust.ehustclassregistrationjavabackend.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+@SuppressWarnings("DanglingJavadoc")
 public class TimetableUtil {
     public static List<Class.Timetable> toTimetable(String timetableString) {
         TypeToken<List<Class.Timetable>> typeToken = new TypeToken<>() {
@@ -27,22 +27,53 @@ public class TimetableUtil {
         return toJsonElement(toTimetable(timetableString));
     }
 
-    public static boolean availableTimetableStudent(List<Class.Timetable> existings, List<Class.Timetable> newTimetables) {
-        for (Class.Timetable newTime : newTimetables) {
-            for (Class.Timetable exist : existings) {
-                if (!newTime.getDayOfWeek().equals(exist.getDayOfWeek())) {
-                    continue;
-                }
-                if (!conflictWeek(newTime.getWeek(), exist.getWeek())) {
-                    continue;
-                }
-                if (!conflictHour(newTime.getFrom(), newTime.getTo(), exist.getFrom(), exist.getTo())) {
-                    continue;
-                }
-                return false;
+    public static void checkValidTimetableClass(List<Class> registedClasses) {
+
+        Map<Class.Timetable, String> mapTimetableAndClassId = new HashMap<>();
+        /**
+         * Duyệt các class
+         */
+        for (Class cl : registedClasses) {
+            /**
+             * Map các thời khóa biểu trong class
+             */
+            List<Class.Timetable> timetables = TimetableUtil.toTimetable(cl.getTimetable());
+            for (Class.Timetable timetable : timetables) {
+                mapTimetableAndClassId.put(timetable, cl.getClassPK().getId());
             }
         }
-        return true;
+        /**
+         * Bắt đầu kiểm tra tkb: 2 vòng for check trùng lặp
+         */
+        for (Map.Entry<Class.Timetable, String> timetable1 : mapTimetableAndClassId.entrySet()) {
+            for (Map.Entry<Class.Timetable, String> timetable2 : mapTimetableAndClassId.entrySet()) {
+                if (timetable1.getValue().equals(timetable2.getValue())) {
+                    continue;
+                }
+                /**
+                 * Khác thứ -> ok luôn
+                 */
+                if(!timetable2.getKey().getDayOfWeek().equals(timetable1.getKey().getDayOfWeek())){
+                    continue;
+                }
+                /**
+                 * Không trùng tuần -> ok luôn
+                 */
+                if(!conflictWeek(timetable1.getKey().getWeek(),timetable2.getKey().getWeek())){
+                    continue;
+                }
+                /**
+                 * Không trùng giờ -> ok luôn
+                 */
+                if (!conflictHour(timetable1.getKey().getFrom(), timetable2.getKey().getTo(), timetable2.getKey().getFrom(), timetable2.getKey().getTo())) {
+                    continue;
+                }
+                /**
+                 * Trùng thứ, trùng tuần, trùng giờ -> ko hợp lệ
+                 */
+                throw new MessageException("Trùng lịch học: "+timetable1.getValue()+", "+timetable2.getValue());
+            }
+        }
     }
 
     public static boolean conflictHour(String from1, String to1, String from2, String to2) {
@@ -60,7 +91,9 @@ public class TimetableUtil {
 
     private static int convertToNumberValue(String hourMinute) {
         String[] a = hourMinute.trim().split(":");
-        return Integer.parseInt(a[0]) * 60 + Integer.parseInt(a[1]);
+        String hour = hourMinute.substring(0, 2);
+        String minute = hourMinute.substring(2);
+        return Integer.parseInt(hour) * 60 + Integer.parseInt(minute);
     }
 
     public static boolean conflictWeek(String week1, String week2) {

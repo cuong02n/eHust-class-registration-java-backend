@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.ErrorResponse;
@@ -22,6 +23,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
 
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
+        ex.printStackTrace(System.out);
         try {
             // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
@@ -58,6 +60,9 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
             statusCode = 403;
         }else if(ex instanceof NullPointerException n){
             message = "Yêu cầu không hợp lệ: "+n.getMessage();
+            statusCode = 400;
+        }else if(ex instanceof HttpMessageNotReadableException hmne){
+            message = hmne.getMessage();
             statusCode = 400;
         }
 

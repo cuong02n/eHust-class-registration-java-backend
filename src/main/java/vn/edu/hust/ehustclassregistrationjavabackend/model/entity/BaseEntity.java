@@ -60,22 +60,15 @@ public abstract class BaseEntity implements Serializable {
         updatedTime = new Timestamp(System.currentTimeMillis());
     }
 
-    public void update(String userId) {
+    public void setUserModified(User user){
+        if(createdById == null){
+            createdById = user.getEmail();
+        }
+        updatedById = user.getEmail();
         Timestamp now = new Timestamp(System.currentTimeMillis());
         if (createdTime == null) {
             createdTime = now;
         }
-        if (createdById == null) {
-            createdById = userId;
-        }
         updatedTime = now;
-        updatedById = userId;
-    }
-
-    public void setUserModified(User user){
-        if(createdById == null){
-            createdById = user.email;
-        }
-        updatedById = user.email;
     }
 }

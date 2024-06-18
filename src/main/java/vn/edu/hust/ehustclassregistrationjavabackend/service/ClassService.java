@@ -16,6 +16,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.ClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.io.IOException;
 import java.util.*;
@@ -288,6 +289,11 @@ public class ClassService {
         checkSatisfyConstraintCourse(newClassRegistedIfSuccess);
 
         /**
+         * Kiểm tra tkb
+         */
+        checkTimetable(newClassRegistedIfSuccess);
+
+        /**
          * Kiểm tra xem có quá số lượng tín chỉ ko
          */
         checkClassExceedStudentMaximumCredit(student, newClassRegistedIfSuccess);
@@ -358,6 +364,12 @@ public class ClassService {
         newClassRegistedIfSuccess.addAll(registedClassRequests);
 
         checkSatisfyConstraintCourse(newClassRegistedIfSuccess);
+
+        /**
+         * Kiểm tra tkb
+         */
+        checkTimetable(newClassRegistedIfSuccess);
+
 
         /**
          * Kiểm tra xem có quá số lượng tín chỉ ko
@@ -519,8 +531,9 @@ public class ClassService {
     }
 
     private void checkTimetable(List<Class> registedClasses) {
-
+        TimetableUtil.checkValidTimetableClass(registedClasses);
     }
+
 
 
     public void checkClassExceedStudentMaximumCredit(User student, List<Class> newClassIfActionSuccess) {
@@ -562,17 +575,14 @@ public class ClassService {
         if (userClassRepository.countRegistedByClassIdAndSemester(rq.getNewClassId(), rq.getSemester()) >= newClass.getMaxStudent())
             throw new MessageException("Lớp đã đầy: " + rq.getNewClassId());
 
-
+        // TODO: Kiem tra tkb cho case này
         if (newClass.getClassType() == Class.ClassType.THEORY_EXERCISE || newClass.getClassType() == Class.ClassType.EXPERIMENT) {
             /**
              * LT+BT
              * TN: same
              */
             registedClass.set(registedClass.indexOf(oldClass), newClass);
-            /**
-             * Kiểm tra thời khóa biểu
-             */
-            checkTimetable(registedClass);
+
 
             /**
              * Thay đổi data ->
@@ -594,17 +604,13 @@ public class ClassService {
              * Tìm lớp lý thuyết và thay đổi trong list
              */
             Class newTheoryClass = classRepository.findByClassPK(new ClassPK(newClass.getTheoryClassId(), rq.getSemester())).orElseThrow();
-            int i = 0;
+            int i;
             for (i = 0; i < registedClass.size(); i++) {
                 /**
                  * Tìm thấy lớp LT (chắc chắn)
                  */
                 if (registedClass.get(i).getClassPK().getId().equals(newClass.getTheoryClassId())) {
                     registedClass.set(i, newTheoryClass);
-                    /**
-                     * Check TKB
-                     */
-                    checkTimetable(registedClass);
                     break;
                 }
             }
