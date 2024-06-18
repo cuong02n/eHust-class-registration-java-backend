@@ -20,4 +20,9 @@ public class PublicMetadataController {
     public ResponseEntity<?> getDayStartYear(@RequestParam Metadata.MetadataKey key, @RequestParam String semester) {
         return BaseResponse.ok(metadataService.getMetadata(key, semester));
     }
+
+    @GetMapping("/get-by-semester")
+    public ResponseEntity<?> getBySemester(@RequestParam String semester) {
+        return BaseResponse.ok(metadataService.getAllMetadataBySemester(semester));
+    }
 }

@@ -8,7 +8,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.MetadataRepository;
 
-import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,16 +31,12 @@ public class MetadataService {
         return getMetadata(key, "");
     }
 
-    /**
-     * @param year require
-     * @return Timestamp for response to client only, server doesnot use this
-     */
-    public Timestamp getDayStartWeek1(int year) {
-        return Timestamp.valueOf(getMetadata(Metadata.MetadataKey.START_WEEK_1, year + "1"));
-    }
-
     public String getCurrentSemester() {
         return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER);
+    }
+
+    public List<Metadata> getAllMetadataBySemester(String semester) {
+        return metadataRepository.findAllBySemester(semester);
     }
 
     public boolean isElitechOfficialRegisterClass(String semester) {
