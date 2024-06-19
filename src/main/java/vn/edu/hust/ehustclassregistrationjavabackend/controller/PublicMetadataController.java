@@ -25,4 +25,9 @@ public class PublicMetadataController {
     public ResponseEntity<?> getBySemester(@RequestParam String semester) {
         return BaseResponse.ok(metadataService.getAllMetadataBySemester(semester));
     }
+
+    @GetMapping("/current-semester")
+    public ResponseEntity<?> getCurrentSemester() {
+        return BaseResponse.ok(metadataService.getCurrentSemester());
+    }
 }

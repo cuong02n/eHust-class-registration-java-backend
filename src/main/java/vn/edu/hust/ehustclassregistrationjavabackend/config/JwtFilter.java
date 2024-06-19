@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
@@ -43,11 +44,10 @@ public class JwtFilter extends OncePerRequestFilter {
             if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails user = userService.loadUserByUsername(userId);
                 if(!user.isEnabled()){
-                    filterChain.doFilter(request,response);
-                    return;
+//                    filterChain.doFilter(request,response);
+                    throw new MessageException("Tài khoản của bạn đã hết hạn", HttpStatus.UNAUTHORIZED);
                 }
                 request.setAttribute("user", user);
-//                System.out.println(GsonUtil.gsonExpose.toJson(user));
 
                 if (jwtUtils.isTokenValid(token, user)) {
                     SecurityContext context = SecurityContextHolder.createEmptyContext();

@@ -41,7 +41,7 @@ public class User extends BaseEntity implements UserDetails {
     String password;
 
     @Expose
-    int maxCredit;
+    Integer maxCredit;
     @Expose
     @Column(columnDefinition = "BIT(1) default 1")
     boolean active = true;

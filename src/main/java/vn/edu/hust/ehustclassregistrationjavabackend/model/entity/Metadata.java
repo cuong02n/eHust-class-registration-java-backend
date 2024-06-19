@@ -15,17 +15,9 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 @Setter
 //@Data
 public class Metadata extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @EmbeddedId
     @Expose
-    @Enumerated(EnumType.STRING)
-    @Nonnull
-    MetadataKey metadataKey;
-
-    @Expose
-    String semester;
+    MetadataPk metadataPk;
 
     @Expose
     @Column(nullable = false)
@@ -54,5 +46,19 @@ public class Metadata extends BaseEntity {
 
         START_REGISTER_COURSE,
         END_REGISTER_COURSE,
+    }
+    @Embeddable
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @EqualsAndHashCode
+    @Data
+    public static class MetadataPk{
+        @Expose
+        @Enumerated(EnumType.STRING)
+        @Nonnull
+        MetadataKey metadataKey;
+
+        @Expose
+        String semester;
     }
 }

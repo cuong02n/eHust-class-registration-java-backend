@@ -14,7 +14,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/common/classes")
-@PreAuthorize("hasAnyRole('STUDENT') or hasAnyRole('ADMIN')")
+@PreAuthorize("hasAnyRole('STUDENT') or hasAnyRole('ADMIN') or hasAnyRole('SUPER_ADMIN')")
 public class CommonClassController {
     private final ClassService classService;
     @GetMapping("/get-by-course-id")

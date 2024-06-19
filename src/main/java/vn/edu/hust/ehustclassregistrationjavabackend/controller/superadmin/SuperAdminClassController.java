@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller.admin;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.superadmin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/admin/classes")
+@RequestMapping("/super-admin/classes")
 @RequiredArgsConstructor
-@PreAuthorize("hasAnyRole('ADMIN')")
-public class AdminClassController {
+@PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+public class SuperAdminClassController {
     final CourseService courseService;
     private final ClassService classService;
 

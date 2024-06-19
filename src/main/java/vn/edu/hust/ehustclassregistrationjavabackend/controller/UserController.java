@@ -34,4 +34,5 @@ public class UserController {
     public ResponseEntity<?> getStudentInfo(@RequestParam String studentEmail) {
         return BaseResponse.ok(userService.findUserByEmail(studentEmail));
     }
+
 }

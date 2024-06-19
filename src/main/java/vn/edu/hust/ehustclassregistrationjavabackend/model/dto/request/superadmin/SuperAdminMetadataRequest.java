@@ -9,7 +9,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 @Data
 public class SuperAdminMetadataRequest {
     @Nonnull
-    Metadata.MetadataKey key;
+    Metadata.MetadataKey metadataKey;
     @Size(min = 4,max = 5)
     String semester;
     String value;

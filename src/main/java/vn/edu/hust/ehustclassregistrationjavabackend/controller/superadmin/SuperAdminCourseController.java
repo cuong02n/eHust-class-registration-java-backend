@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller.admin;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.superadmin;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -16,11 +16,11 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/courses")
+@RequestMapping("/super-admin/courses")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('ADMIN')")
 
-public class AdminCourseController {
+public class SuperAdminCourseController {
     final CourseService courseService;
 
     @PostMapping("")

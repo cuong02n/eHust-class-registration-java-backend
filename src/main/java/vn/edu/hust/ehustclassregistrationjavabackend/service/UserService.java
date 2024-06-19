@@ -1,6 +1,7 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.xmlbeans.impl.xb.xsdschema.Attribute;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,13 +17,22 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     final UserRepository userRepository;
 
-
     public void createUser(User user) {
         userRepository.save(user);
     }
 
     public void createUser(List<User> users) {
         userRepository.saveAll(users);
+    }
+
+    public List<User> getAllStudent(){
+        return userRepository.findAllByRole(User.Role.ROLE_STUDENT);
+    }
+    public List<User> getAllAdmin(){
+        return userRepository.findAllByRole(User.Role.ROLE_ADMIN);
+    }
+    public List<User> getAllSuperAdmin(){
+        return userRepository.findAllByRole(User.Role.ROLE_SUPER_ADMIN);
     }
 
     @Override

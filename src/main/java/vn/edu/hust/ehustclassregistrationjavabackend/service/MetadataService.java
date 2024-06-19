@@ -3,6 +3,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
@@ -23,20 +24,18 @@ public class MetadataService {
      * @return String
      */
     public String getMetadata(Metadata.MetadataKey key, String semester) {
-        Metadata metadata = metadataRepository.findByMetadataKeyAndSemester(key, semester).orElseThrow();
+        Metadata metadata = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester).orElseThrow();
         return metadata.getValue();
     }
 
     public String getMetadata(Metadata.MetadataKey key) {
-        return getMetadata(key, "");
+        Metadata metadata = metadataRepository.findByMetadataPk_MetadataKey(key).orElseThrow();
+        return metadata.getValue();
     }
 
-    public String getCurrentSemester() {
-        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER);
-    }
 
     public List<Metadata> getAllMetadataBySemester(String semester) {
-        return metadataRepository.findAllBySemester(semester);
+        return metadataRepository.findAllByMetadataPk_Semester(semester);
     }
 
     public boolean isElitechOfficialRegisterClass(String semester) {
@@ -72,17 +71,21 @@ public class MetadataService {
 
     public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
         User superAdmin = (User) httpServletRequest.getAttribute("user");
-        Optional<Metadata> metadataDB = metadataRepository.findByMetadataKeyAndSemester(key, semester);
+        Optional<Metadata> metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
         Metadata metadata;
         if (metadataDB.isPresent()) {
             metadata = metadataDB.get();
         } else {
             metadata = new Metadata();
-            metadata.setMetadataKey(key);
-            metadata.setSemester(semester);
+            metadata.setMetadataPk(new Metadata.MetadataPk(key, semester == null ? "" : semester));
         }
         metadata.setValue(value);
         metadata.setUserModified(superAdmin);
         return metadataRepository.saveAndFlush(metadata);
+    }
+
+    @CachePut(value = "currentSemester")
+    public String getCurrentSemester() {
+        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER);
     }
 }

@@ -46,20 +46,21 @@ public class Application {
 //        classRepository.save(a);
     }
 
-//    static List<User> getListVirtualUser() {
-//        Random r = new Random();
-//        Vector<User> users = new Vector<>();
-//        for (int i = 1; i < 10000; i++) {
-//            users.add(User.builder()
-//                    .email(20200000 + i + "@sis.hust.edu.vn")
-//                    .role(User.Role.ROLE_STUDENT)
-//                    .maxCredit(r.nextInt(14,25))
-//                    .name("Cuong Nguyen Manh " + i)
-//                    .build()
-//            );
-//        }
-//        return users;
-//    }
+    static List<User> getListVirtualUser() {
+        Random r = new Random();
+        Vector<User> users = new Vector<>();
+        for (int i = 1; i < 10000; i++) {
+            users.add(User.builder()
+                    .email(20200000 + i + "@sis.hust.edu.vn")
+                    .role(User.Role.ROLE_STUDENT)
+                    .maxCredit(r.nextInt(14, 29))
+                    .name("Cuong Nguyen Manh " + i)
+                    .studentClassName("Class Cuong +i")
+                    .build()
+            );
+        }
+        return users;
+    }
 
     static List<Course> getListVirtualCourse() {
         Vector<Course> courses = new Vector<>();
