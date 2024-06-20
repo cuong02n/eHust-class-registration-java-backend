@@ -22,4 +22,5 @@ public class SuperAdminMetadataController {
     public ResponseEntity<?> updateMetadata(@RequestBody SuperAdminMetadataRequest rq){
         return BaseResponse.ok(metadataService.updateMetadata(rq.getMetadataKey(),rq.getSemester(),rq.getValue()));
     }
+
 }

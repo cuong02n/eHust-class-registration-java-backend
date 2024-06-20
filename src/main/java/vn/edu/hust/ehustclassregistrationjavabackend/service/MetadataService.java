@@ -51,7 +51,7 @@ public class MetadataService {
     }
 
     public boolean isStandardUnofficialRegisterClass(String semester) {
-        return isTimeBetween(Metadata.MetadataKey.START_REIGSTER_CLASS_UNOFFICIAL_STANDARD, Metadata.MetadataKey.END_REIGSTER_CLASS_UNOFFICIAL_STANDARD, semester, System.currentTimeMillis());
+        return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_UNOFFICIAL_STANDARD, Metadata.MetadataKey.END_REGISTER_CLASS_UNOFFICIAL_STANDARD, semester, System.currentTimeMillis());
     }
 
     public boolean isFreeClassRegister(String semester) {
@@ -70,6 +70,12 @@ public class MetadataService {
     }
 
     public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
+        if(key== Metadata.MetadataKey.START_WEEK_1){
+            /**
+             * TODO: Ktra có phải t2 ko
+             */
+
+        }
         User superAdmin = (User) httpServletRequest.getAttribute("user");
         Optional<Metadata> metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
         Metadata metadata;
