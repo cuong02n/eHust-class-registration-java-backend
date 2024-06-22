@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.superadmin.SuperAdminMetadataRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
 @PreAuthorize("hasRole('SUPER_ADMIN')")

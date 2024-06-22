@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request;
+package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.auth;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

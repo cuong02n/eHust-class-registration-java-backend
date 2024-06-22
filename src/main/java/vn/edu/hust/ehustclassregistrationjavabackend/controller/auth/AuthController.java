@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.AuthEmailPasswordRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.auth.AuthEmailPasswordRequest;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.AuthService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.JwtUtils;

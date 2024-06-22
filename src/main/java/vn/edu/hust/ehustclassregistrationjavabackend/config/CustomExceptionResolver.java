@@ -3,8 +3,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.io.IOException;

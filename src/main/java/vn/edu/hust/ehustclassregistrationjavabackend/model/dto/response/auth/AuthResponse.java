@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response;
+package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.auth;
 
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;

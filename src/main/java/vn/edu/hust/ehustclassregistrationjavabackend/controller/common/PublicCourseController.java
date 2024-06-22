@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.common;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/public/course")
+@RequestMapping("/course")
 @RequiredArgsConstructor
 public class PublicCourseController {
     final CourseService courseService;

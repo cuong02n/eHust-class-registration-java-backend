@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request;
+package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student;
 
 import lombok.Data;
 import lombok.NonNull;

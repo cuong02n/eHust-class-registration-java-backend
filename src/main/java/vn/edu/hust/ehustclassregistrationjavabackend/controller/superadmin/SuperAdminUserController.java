@@ -6,11 +6,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
-
-import java.util.List;
 
 @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
 @RestController

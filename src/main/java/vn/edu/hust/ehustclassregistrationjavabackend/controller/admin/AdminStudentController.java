@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegisterRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;

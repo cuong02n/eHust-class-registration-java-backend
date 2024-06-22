@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.controller;
+package vn.edu.hust.ehustclassregistrationjavabackend.controller.common;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 

@@ -6,7 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.ClassCreateRequest;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response.BaseResponse;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;

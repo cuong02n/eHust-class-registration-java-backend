@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ChangeClassRequest;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.ChangeClassRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;

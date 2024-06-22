@@ -22,12 +22,12 @@ public class Course extends BaseEntity {
     @SerializedName("id")
     @Expose
     @NonNull
-    String id;
+    String id; // IT1110
     @Expose
     @NonNull
-    String courseName;
+    String courseName;// Tin học đại cương
     @Expose
-    String courseNameE;
+    String courseNameE; // Introduction
     @Expose
     @Column(columnDefinition = "text")
     String description;

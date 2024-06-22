@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.response;
+package vn.edu.hust.ehustclassregistrationjavabackend.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.Expose;
