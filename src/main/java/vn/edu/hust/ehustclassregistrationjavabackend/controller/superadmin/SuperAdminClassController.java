@@ -14,17 +14,12 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/super-admin/classes")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+@RequestMapping("/super-admin/classes")
 public class SuperAdminClassController {
     final CourseService courseService;
-    private final ClassService classService;
-
-    @GetMapping()
-    public String test(){
-        return "";
-    }
+    final ClassService classService;
 
     @PostMapping()
     public ResponseEntity<?> createClass(@RequestBody ClassCreateRequest request){
