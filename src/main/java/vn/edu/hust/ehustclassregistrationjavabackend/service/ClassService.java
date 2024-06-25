@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.ChangeClassRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegisterRequest;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.ChangeClassRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
@@ -84,9 +84,9 @@ public class ClassService {
      * @param semester: semester
      * @return Có trong thời gian được đăng kí lớp không
      */
-    public boolean isOpenForStudentRegisterClass(User student, String semester, List<String> courseIdsRequest) {
+    public void checkTimeOpenForStudent(User student, String semester, List<String> courseIdsRequest) {
         if (metadataService.isFreeClassRegister(semester)) {
-            return true;
+            return;
         }
         Set<String> courseIdsRegisted = courseService.getRegistedCourse(student.getEmail(), semester).stream().map(UserCourseRegistration::getCourseId).collect(Collectors.toSet());
 
@@ -98,11 +98,15 @@ public class ClassService {
              * Đã đăng kí hết -> trong thời gian điều chỉnh hay chính thức đều được
              */
             if (student.getStudentType() == User.StudentType.ELITECH) {
-                return metadataService.isElitechOfficialRegisterClass(semester) || metadataService.isElitechUnofficialRegisterClass(semester);
+                if (!metadataService.isElitechOfficialRegisterClass(semester) && !metadataService.isElitechUnofficialRegisterClass(semester)) {
+                    throw new MessageException("Đây không phải là thời điểm đăng kí của bạn 102");
+                }
 
             } else {
                 // Standard
-                return metadataService.isStandardOfficialRegisterClass(semester) || metadataService.isStandardUnofficialRegisterClass(semester);
+                if (!metadataService.isStandardOfficialRegisterClass(semester) && !metadataService.isStandardUnofficialRegisterClass(semester))
+                    throw new MessageException("Đây không phải là thời điểm đăng kí của bạn 108");
+
             }
 
         } else {
@@ -110,10 +114,13 @@ public class ClassService {
              * Chưa đăng kí hết-> phải đợi đăng kí điều chỉnh
              */
             if (student.getStudentType() == User.StudentType.ELITECH) {
-                return metadataService.isElitechUnofficialRegisterClass(semester);
+                if (!metadataService.isElitechUnofficialRegisterClass(semester))
+                    throw new MessageException("Đây không phải là thời điểm đăng kí của bạn 118");
+
 
             } else {
-                return metadataService.isStandardUnofficialRegisterClass(semester);
+                if (!metadataService.isStandardUnofficialRegisterClass(semester))
+                    throw new MessageException("Đây không phải là thời điểm đăng kí của bạn 123");
             }
         }
     }
@@ -267,9 +274,7 @@ public class ClassService {
         /**
          * Kiểm tra xem có trong thời gian đăng kí môn học không
          */
-        if (isOpenForStudentRegisterClass(student, rq.getSemester(), registedClassRequests.stream().map(c -> c.getCourse().getId()).toList())) {
-            throw new MessageException("Không phải thời gian đăng kí 1 trong các lớp này, có thể là do bạn chưa đăng kí học phần");
-        }
+        checkTimeOpenForStudent(student, rq.getSemester(), registedClassRequests.stream().map(c -> c.getCourse().getId()).toList());
 
         /**
          * TODO: error: Tự động thêm lớp lý thuyết nếu có lớp bài tập
@@ -533,7 +538,6 @@ public class ClassService {
     private void checkTimetable(List<Class> registedClasses) {
         TimetableUtil.checkValidTimetableClass(registedClasses);
     }
-
 
 
     public void checkClassExceedStudentMaximumCredit(User student, List<Class> newClassIfActionSuccess) {

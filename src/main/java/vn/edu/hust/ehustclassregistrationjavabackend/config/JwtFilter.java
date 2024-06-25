@@ -27,37 +27,32 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
-        try {
-            String authHeader = request.getHeader("Authorization");
-            System.out.println(authHeader);
-            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-                filterChain.doFilter(request, response);
-                return;
-            }
-            String token = authHeader.substring(7);
-            String userId = jwtUtils.extractId(token);
-            if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails user = userService.loadUserByUsername(userId);
-                if(!user.isEnabled()){
-//                    filterChain.doFilter(request,response);
-                    throw new MessageException("Tài khoản của bạn đã hết hạn", HttpStatus.UNAUTHORIZED);
-                }
-                request.setAttribute("user", user);
-
-                if (jwtUtils.isTokenValid(token, user)) {
-                    SecurityContext context = SecurityContextHolder.createEmptyContext();
-                    UsernamePasswordAuthenticationToken upaToken = new UsernamePasswordAuthenticationToken(
-                            user, null, user.getAuthorities()
-                    );
-                    upaToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    context.setAuthentication(upaToken);
-                    SecurityContextHolder.setContext(context);
-                }
-            }
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
-        }catch (Exception e){
-            request.setAttribute("user",null);
-            filterChain.doFilter(request,response);
+            return;
         }
+        String token = authHeader.substring(7);
+        String userId = jwtUtils.extractId(token);
+        if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails user = userService.loadUserByUsername(userId);
+            if (!user.isEnabled()) {
+//                    filterChain.doFilter(request,response);
+                throw new MessageException("Tài khoản của bạn đã hết hạn", HttpStatus.UNAUTHORIZED);
+            }
+            request.setAttribute("user", user);
+
+            if (jwtUtils.isTokenValid(token, user)) {
+                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                UsernamePasswordAuthenticationToken upaToken = new UsernamePasswordAuthenticationToken(
+                        user, null, user.getAuthorities()
+                );
+                upaToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                context.setAuthentication(upaToken);
+                SecurityContextHolder.setContext(context);
+            }
+        }
+        filterChain.doFilter(request, response);
+
     }
 }

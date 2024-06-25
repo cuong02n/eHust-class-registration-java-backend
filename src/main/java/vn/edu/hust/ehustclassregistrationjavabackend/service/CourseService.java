@@ -14,7 +14,6 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRelationsh
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.CourseRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserCourseRepository;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
-import vn.edu.hust.ehustclassregistrationjavabackend.utils.ObjectUtil;
 
 import java.util.List;
 import java.util.Vector;
@@ -29,6 +28,7 @@ public class CourseService {
     final UserCourseRepository userCourseRepository;
     private final HttpServletRequest httpServletRequest;
     private final MetadataService metadataService;
+    private final CourseRelationshipRepository courseRelationshipRepository;
 
     public List<Course> getAllActiveCourse() {
         return courseRepository.findAll();
@@ -52,6 +52,10 @@ public class CourseService {
 
     public List<Course> getActiveCourse(List<String> courseIds) {
         return courseRepository.findAllByIdIn(courseIds);
+    }
+
+    public List<CourseRelationship> getAllCourseRelationship() {
+        return courseRelationshipRepository.findAll();
     }
 
 

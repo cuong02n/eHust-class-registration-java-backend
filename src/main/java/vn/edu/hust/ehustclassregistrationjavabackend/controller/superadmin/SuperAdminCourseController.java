@@ -28,7 +28,7 @@ public class SuperAdminCourseController {
         return BaseResponse.created(courseService.insertCourse(newCourse));
     }
 
-    @PostMapping("/post-course-by-file")
+    @PostMapping("/excel")
     public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file){
         return BaseResponse.ok(courseService.insertCourses(file));
     }
@@ -52,6 +52,11 @@ public class SuperAdminCourseController {
     @PatchMapping("/update-course-relationship")
     public ResponseEntity<?> updateCourseRelationship(@RequestBody CourseRelationship relationship) {
         return null;
-        // Todo
+        // TODO
+    }
+    @DeleteMapping("course-relationship")
+    public ResponseEntity<?> deleteCourseRelationship(@RequestParam List<String> courseId){
+        // TODO
+        return null;
     }
 }

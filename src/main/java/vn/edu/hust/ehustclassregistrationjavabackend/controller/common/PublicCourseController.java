@@ -12,18 +12,27 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/courses")
 @RequiredArgsConstructor
 public class PublicCourseController {
     final CourseService courseService;
 
-    @GetMapping("/all")
-    public ResponseEntity<?> getAllActiveCourses() {
+    @GetMapping("/get-all")
+    public ResponseEntity<?> getAllCourse() {
         return BaseResponse.ok(courseService.getAllActiveCourse());
     }
 
     @GetMapping()
     public ResponseEntity<?> getActiveCourse(@RequestParam List<String> courseIds) {
         return BaseResponse.ok(courseService.getActiveCourse(courseIds));
+    }
+    @GetMapping("/course-relationship")
+    public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
+        return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");
+    }
+
+    @GetMapping("/get-all-relationship")
+    public ResponseEntity<?> getAllRelationship() {
+        return BaseResponse.ok(courseService.getAllCourseRelationship());
     }
 }

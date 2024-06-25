@@ -15,10 +15,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 public class CourseController {
     private final CourseService courseService;
 
-    @GetMapping("/course-relationship")
-    public ResponseEntity<?> getRelationship(@RequestParam long relationshipId) {
-        return BaseResponse.ok(courseService.getRelationshipById(relationshipId), "Not found relationship");
-    }
+
 
     @GetMapping("/register-courses")
     public ResponseEntity<?> getRegistedCourse(@RequestParam String semester) {

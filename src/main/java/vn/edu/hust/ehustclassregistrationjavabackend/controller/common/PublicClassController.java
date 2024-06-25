@@ -20,10 +20,6 @@ public class PublicClassController {
         return BaseResponse.ok(classService.getClassByIdAndSemester(id, semester).toClassDto(), "Not found class");
     }
 
-    @GetMapping("/get-all")
-    public ResponseEntity<?> getClasses(@RequestParam String semester){
-        return BaseResponse.ok(classService.getClassBySemester(semester));
-    }
 
     @GetMapping("/get-by-course-id")
     public ResponseEntity<?> getClassByCourseId(@RequestParam String courseId, @RequestParam String semester) {

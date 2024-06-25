@@ -14,8 +14,8 @@ import lombok.*;
 @Table(name = "course_relationship", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_id", "course_constraint_id"})})
 public class CourseRelationship extends BaseEntity {
     @Id
-    @Expose(serialize = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Expose
     Long id;
 
     @Expose

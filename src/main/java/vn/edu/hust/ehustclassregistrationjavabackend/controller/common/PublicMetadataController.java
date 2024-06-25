@@ -17,7 +17,7 @@ public class PublicMetadataController {
     final MetadataService metadataService;
 
     @GetMapping("")
-    public ResponseEntity<?> getDayStartYear(@RequestParam Metadata.MetadataKey key, @RequestParam String semester) {
+    public ResponseEntity<?> getMetadata(@RequestParam Metadata.MetadataKey key, @RequestParam String semester) {
         return BaseResponse.ok(metadataService.getMetadata(key, semester));
     }
 

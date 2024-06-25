@@ -3,6 +3,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,12 +20,11 @@ import java.nio.charset.StandardCharsets;
 
 @Component
 public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
-
+    Logger logger = LoggerFactory.getLogger(CustomExceptionResolver.class);
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
-        ex.printStackTrace(System.out);
+        logger.error("{}: {}",request.getRequestURI(), ex.getMessage());
         try {
-            // ErrorResponse exceptions that expose HTTP response details
             if (ex instanceof ErrorResponse errorResponse) {
                 return this.handleErrorResponse(errorResponse, request, response, handler);
             }

@@ -9,6 +9,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.MetadataRepository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,8 +66,10 @@ public class MetadataService {
     private boolean isTimeBetween(@Nonnull Metadata.MetadataKey metadataKeyStart, @Nonnull Metadata.MetadataKey metadataKeyEnd, String semester, long timeInMillis) {
         String start = getMetadata(metadataKeyStart, semester);
         String end = getMetadata(metadataKeyEnd, semester);
-
-        return Long.parseLong(start) <= timeInMillis && timeInMillis <= Long.parseLong(end);
+        Instant instantStart = Instant.parse(start);
+        Instant instantEnd = Instant.parse(end);
+        Instant now = Instant.ofEpochMilli(timeInMillis);
+        return instantStart.isBefore(now) && now.isBefore(instantEnd);
     }
 
     public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
