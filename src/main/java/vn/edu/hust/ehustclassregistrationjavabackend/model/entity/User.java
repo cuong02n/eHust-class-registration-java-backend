@@ -37,7 +37,7 @@ public class User extends BaseEntity implements UserDetails {
     @Expose
     String name;
 
-    @Expose(serialize = false)
+    @Expose(serialize = false,deserialize = false)
     String password;
 
     @Expose
@@ -86,5 +86,4 @@ public class User extends BaseEntity implements UserDetails {
         ELITECH,
         STANDARD
     }
-
 }

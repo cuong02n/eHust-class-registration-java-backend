@@ -1,0 +1,72 @@
+---------------------------------------------------------
+The request #1
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.444 to complete
+---------------------------------------------------------
+The request #2
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #3
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #4
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.077 to complete
+---------------------------------------------------------
+The request #5
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.09 to complete
+---------------------------------------------------------
+The request #6
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #7
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #8
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 1.313 to complete
+---------------------------------------------------------
+The request #9
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 1.106 to complete
+---------------------------------------------------------
+The request #10
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/admin/students/get-student-info
+Response: 200
+	This request took 0.06 to complete
+---------------------------------------------------------
+The request #11
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/admin/students/get-course-student-registed
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #12
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/admin/students/get-class-student-registed
+Response: 200
+	This request took 0.014 to complete
