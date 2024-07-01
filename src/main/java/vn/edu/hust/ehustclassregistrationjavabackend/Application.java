@@ -44,6 +44,7 @@ public class Application {
 //                .courseId("IT_1").maxStudent(200).build();
 //        ClassRepository classRepository = ctx.getBean(ClassRepository.class);
 //        classRepository.save(a);
+
     }
 
     static List<User> getListVirtualUser() {

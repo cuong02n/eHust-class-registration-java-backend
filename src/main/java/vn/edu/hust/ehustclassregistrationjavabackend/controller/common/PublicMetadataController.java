@@ -11,7 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
 @RestController
-@RequestMapping("/metadata")
+@RequestMapping("/api/metadata")
 @RequiredArgsConstructor
 public class PublicMetadataController {
     final MetadataService metadataService;

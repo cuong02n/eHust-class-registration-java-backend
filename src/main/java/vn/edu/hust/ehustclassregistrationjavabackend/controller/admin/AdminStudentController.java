@@ -14,7 +14,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/admin/students")
+@RequestMapping("/api/admin/students")
 @PreAuthorize("hasAnyRole('ADMIN')")
 public class AdminStudentController {
     final ClassService classService;

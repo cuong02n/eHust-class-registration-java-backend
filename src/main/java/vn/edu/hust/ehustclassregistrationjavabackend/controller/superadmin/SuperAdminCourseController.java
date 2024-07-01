@@ -16,7 +16,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/super-admin/courses")
+@RequestMapping("/api/super-admin/courses")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('ADMIN')")
 

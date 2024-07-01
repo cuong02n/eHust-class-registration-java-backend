@@ -16,7 +16,7 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
-@RequestMapping("/super-admin/classes")
+@RequestMapping("/api/super-admin/classes")
 public class SuperAdminClassController {
     final CourseService courseService;
     final ClassService classService;

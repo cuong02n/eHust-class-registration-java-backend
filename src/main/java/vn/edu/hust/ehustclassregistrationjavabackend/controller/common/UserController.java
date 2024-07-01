@@ -12,7 +12,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
     final UserService userService;

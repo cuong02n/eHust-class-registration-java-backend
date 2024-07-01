@@ -9,7 +9,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
 @RestController
-@RequestMapping("/students/courses")
+@RequestMapping("/api/students/courses")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('STUDENT')")
 public class CourseController {

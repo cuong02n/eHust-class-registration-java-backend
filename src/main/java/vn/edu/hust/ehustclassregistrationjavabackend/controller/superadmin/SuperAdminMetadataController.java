@@ -13,7 +13,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 
 @PreAuthorize("hasRole('SUPER_ADMIN')")
 @RestController
-@RequestMapping("/super-admin/metadata")
+@RequestMapping("/api/super-admin/metadata")
 @RequiredArgsConstructor
 public class SuperAdminMetadataController {
     private final MetadataService metadataService;

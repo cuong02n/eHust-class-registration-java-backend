@@ -11,7 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/classes")
+@RequestMapping("/api/classes")
 public class PublicClassController {
     final ClassService classService;
 

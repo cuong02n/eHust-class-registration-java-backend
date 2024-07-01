@@ -13,7 +13,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 
 @RestController
-@RequestMapping("/students/classes")
+@RequestMapping("/api/students/classes")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('STUDENT')")
 public class ClassController {

@@ -11,7 +11,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
 
 @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
 @RestController
-@RequestMapping("/super-admin/user")
+@RequestMapping("/api/super-admin/user")
 @RequiredArgsConstructor
 public class SuperAdminUserController {
     final UserService userService;

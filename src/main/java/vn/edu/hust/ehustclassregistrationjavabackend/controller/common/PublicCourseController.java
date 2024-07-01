@@ -12,7 +12,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/api/courses")
 @RequiredArgsConstructor
 public class PublicCourseController {
     final CourseService courseService;
