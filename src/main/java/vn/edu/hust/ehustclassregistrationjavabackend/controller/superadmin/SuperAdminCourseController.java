@@ -38,7 +38,6 @@ public class SuperAdminCourseController {
         return BaseResponse.ok(courseService.updateCourse(newCourse));
     }
     @DeleteMapping("")
-    @Operation(description = "Pending",security = @SecurityRequirement(name = "Bearer"))
     public ResponseEntity<?> deleteCourse(@RequestParam List<String> courseId){
         // PENDING
         return BaseResponse.deleted(courseService.deleteCourse(courseId));
@@ -51,10 +50,11 @@ public class SuperAdminCourseController {
 
     @PatchMapping("/update-course-relationship")
     public ResponseEntity<?> updateCourseRelationship(@RequestBody CourseRelationship relationship) {
+
         return null;
         // TODO
     }
-    @DeleteMapping("course-relationship")
+    @DeleteMapping("/course-relationship")
     public ResponseEntity<?> deleteCourseRelationship(@RequestParam List<String> courseId){
         // TODO
         return null;

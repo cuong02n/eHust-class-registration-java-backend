@@ -53,8 +53,8 @@ public class ClassService {
     }
 
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
-        User admin = (User) httpServletRequest.getAttribute("user");
-        return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(admin)).toList() // Make entity for update database
+        User superadmin = (User) httpServletRequest.getAttribute("user");
+        return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(superadmin)).toList() // Make entity for update database
         ).stream().map(Class::toClassDto).toList();
 
     }
@@ -649,4 +649,5 @@ public class ClassService {
          */
         throw new MessageException("Bạn không thể thao tác với lớp lý thuyết");
     }
+
 }

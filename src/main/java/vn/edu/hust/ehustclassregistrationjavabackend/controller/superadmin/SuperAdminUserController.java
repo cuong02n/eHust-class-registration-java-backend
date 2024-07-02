@@ -34,4 +34,9 @@ public class SuperAdminUserController {
     public ResponseEntity<?> activate(@RequestBody List<String> emails){
         return BaseResponse.ok(userService.activate(emails));
     }
+
+    @PostMapping("/de-activate")
+    public ResponseEntity<?> deActivate(@RequestBody List<String> emails){
+        return BaseResponse.ok(userService.deActivate(emails));
+    }
 }

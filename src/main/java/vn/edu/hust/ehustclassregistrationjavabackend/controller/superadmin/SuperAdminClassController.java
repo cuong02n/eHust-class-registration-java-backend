@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.ClassCreateRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
@@ -12,6 +13,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,6 +36,11 @@ public class SuperAdminClassController {
     @PostMapping("/cancel-class")
     public ResponseEntity<?> cancelClass(@RequestBody ClassPK classPK){
         return BaseResponse.ok(classService.cancelClass(classPK));
+    }
+
+    @PostMapping("/update-class")
+    public ResponseEntity<?> updateClasses(@RequestBody List<ClassDto> classes){
+        return BaseResponse.ok(classService.createClass(classes));
     }
 
 }
