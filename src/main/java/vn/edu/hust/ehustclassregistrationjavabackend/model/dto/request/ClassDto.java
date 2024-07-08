@@ -32,7 +32,7 @@ public class ClassDto implements Serializable {
 
     @Expose
     @Nullable
-    Integer currentRegisted;
+    Integer currentRegistered;
 
     @Expose
     String theoryClassId;

@@ -19,7 +19,7 @@ public class PublicCourseController {
 
     @GetMapping("/get-all")
     public ResponseEntity<?> getAllCourse() {
-        return BaseResponse.ok(courseService.getAllActiveCourse());
+        return BaseResponse.ok(courseService.getAllCourses());
     }
 
     @GetMapping()

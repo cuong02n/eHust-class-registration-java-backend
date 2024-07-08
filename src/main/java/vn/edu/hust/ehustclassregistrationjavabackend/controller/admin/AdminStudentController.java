@@ -21,14 +21,14 @@ public class AdminStudentController {
     private final CourseService courseService;
     private final UserService userService;
 
-    @GetMapping("/get-class-student-registed")
-    public ResponseEntity<?> getClassStudentRegisted(@RequestParam String semester, @RequestParam String studentEmail) {
-        return BaseResponse.ok(classService.getStudentRegisted(studentEmail, semester));
+    @GetMapping("/get-class-student-registered")
+    public ResponseEntity<?> getClassStudentRegistered(@RequestParam String semester, @RequestParam String studentEmail) {
+        return BaseResponse.ok(classService.getStudentRegistered(studentEmail, semester));
     }
 
-    @GetMapping("/get-course-student-registed")
-    public ResponseEntity<?> getCourseStudentRegisted(@RequestParam String semester, @RequestParam String studentEmail) {
-        return BaseResponse.ok(courseService.getRegistedCourse(studentEmail, semester));
+    @GetMapping("/get-course-student-registered")
+    public ResponseEntity<?> getCourseStudentRegistered(@RequestParam String semester, @RequestParam String studentEmail) {
+        return BaseResponse.ok(courseService.getRegisteredCourse(studentEmail, semester));
     }
 
     @PostMapping("/register-by-admin")

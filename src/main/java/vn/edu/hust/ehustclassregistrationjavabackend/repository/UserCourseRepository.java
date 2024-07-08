@@ -1,6 +1,5 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.repository;
 
-import org.hibernate.boot.archive.internal.JarProtocolArchiveDescriptor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserCourseRegistration;
@@ -16,5 +15,5 @@ public interface UserCourseRepository extends JpaRepository<UserCourseRegistrati
     Optional<UserCourseRegistration> findByCourseIdAndSemesterAndEmail(String courseId,String semester,String userId);
 
     @Query("select sum(c.credit) from UserCourseRegistration r,Course c where r.email =:email and r.semester = :semester and r.courseId = c.id")
-    int sumCreditRegistedByEmailAndSemester(String email,String semester);
+    int sumCreditRegisteredByEmailAndSemester(String email, String semester);
 }

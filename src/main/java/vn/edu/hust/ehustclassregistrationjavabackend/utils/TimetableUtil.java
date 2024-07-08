@@ -27,13 +27,13 @@ public class TimetableUtil {
         return toJsonElement(toTimetable(timetableString));
     }
 
-    public static void checkValidTimetableClass(List<Class> registedClasses) {
+    public static void checkValidTimetableClass(List<Class> registeredClasses) {
 
         Map<Class.Timetable, String> mapTimetableAndClassId = new HashMap<>();
         /**
          * Duyệt các class
          */
-        for (Class cl : registedClasses) {
+        for (Class cl : registeredClasses) {
             /**
              * Map các thời khóa biểu trong class
              */

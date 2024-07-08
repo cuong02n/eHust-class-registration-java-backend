@@ -28,9 +28,9 @@ public class ClassController {
     }
 
     @GetMapping("/register-class")
-    public ResponseEntity<?> getRegistedClass(@RequestParam String semester) {
+    public ResponseEntity<?> getRegisteredClass(@RequestParam String semester) {
         User user = (User) request.getAttribute("user");
-        return BaseResponse.ok(classService.getStudentRegisted(user.getEmail(), semester));
+        return BaseResponse.ok(classService.getStudentRegistered(user.getEmail(), semester));
     }
 
     @PostMapping("/change-class")

@@ -1,8 +1,12 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
@@ -21,19 +25,17 @@ import java.util.Vector;
 @SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = {"courses"})
 public class CourseService {
-    final HttpServletResponse response;
-    final CourseRelationshipRepository relationshipRepository;
-    final CourseRepository courseRepository;
-    final UserCourseRepository userCourseRepository;
+    private static final Logger log = LoggerFactory.getLogger(CourseService.class);
+    private final CourseRelationshipRepository relationshipRepository;
+    private final CourseRepository courseRepository;
+    private final UserCourseRepository userCourseRepository;
     private final HttpServletRequest httpServletRequest;
     private final MetadataService metadataService;
     private final CourseRelationshipRepository courseRelationshipRepository;
 
-    public List<Course> getAllActiveCourse() {
-        return courseRepository.findAll();
-    }
-
+    @Cacheable(key = "'all'")
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
@@ -41,7 +43,7 @@ public class CourseService {
     public Course getCourseById(String id) {
         return courseRepository.findById(id).orElse(null);
     }
-
+    @CacheEvict(key = "'all'")
     public void addCourse(Course course) {
         courseRepository.save(course);
     }
@@ -54,11 +56,16 @@ public class CourseService {
         return courseRepository.findAllByIdIn(courseIds);
     }
 
+    @Cacheable(key = "'all-relationship'")
     public List<CourseRelationship> getAllCourseRelationship() {
         return courseRelationshipRepository.findAll();
     }
+    @CacheEvict(key = "#key")
+    public void evictCache(String key){
+        log.trace("cache evicted with cacheName: {}, key: {}","courses",key);
+    }
 
-
+    @CacheEvict(key = "'all-relationship'")
     public List<Course> insertCourse(List<Course> courses) {
         /**
          * Kiểm tra xem có bị trùng không
@@ -66,11 +73,11 @@ public class CourseService {
         List<Course> duplicatedCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).toList());
 
         if (duplicatedCourses.isEmpty()) {
+
             return courseRepository.saveAll(courses);
         }
         throw new MessageException("Mã học phần này đã tồn tại " + duplicatedCourses.stream().map(Course::getId).toList());
     }
-
     public Course updateCourse(List<Course> newCourse) {
 //        Course existingCourse = courseRepository.findById(newCourse.getId()).orElse(null);
 //        if (existingCourse == null) return null;
@@ -133,12 +140,12 @@ public class CourseService {
         return relationshipRepository.findById(relationshipId).orElse(null);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String semester) {
+    public List<UserCourseRegistration> getRegisteredCourse(String semester) {
         User user = (User) httpServletRequest.getAttribute("user");
-        return getRegistedCourse(user.getEmail(), semester);
+        return getRegisteredCourse(user.getEmail(), semester);
     }
 
-    public List<UserCourseRegistration> getRegistedCourse(String email, String semester) {
+    public List<UserCourseRegistration> getRegisteredCourse(String email, String semester) {
         return userCourseRepository.findAllByEmailAndSemester(email, semester);
     }
 
@@ -154,7 +161,7 @@ public class CourseService {
             throw new MessageException("không phải thời gian đăng ký học phần");
         }
 
-        if (!courseRegistedNotExceedMaximumCredit(user, courseRequest.getSemester(), courseRequest.getCourseIds())) {
+        if (!courseRegisteredNotExceedMaximumCredit(user, courseRequest.getSemester(), courseRequest.getCourseIds())) {
             throw new MessageException("Đã vượt quá số tín cho phép");
         }
 
@@ -188,12 +195,12 @@ public class CourseService {
         return true;
     }
 
-    public boolean courseRegistedNotExceedMaximumCredit(User student, String semester, List<String> courseIds) {
-        return getCourseCreditRegisted(student, semester)
+    public boolean courseRegisteredNotExceedMaximumCredit(User student, String semester, List<String> courseIds) {
+        return getCourseCreditRegistered(student, semester)
                 + courseRepository.sumCreditByCourseIds(courseIds) <= student.getMaxCredit();
     }
 
-    public int getCourseCreditRegisted(User student, String semester) {
-        return userCourseRepository.sumCreditRegistedByEmailAndSemester(student.getEmail(), semester);
+    public int getCourseCreditRegistered(User student, String semester) {
+        return userCourseRepository.sumCreditRegisteredByEmailAndSemester(student.getEmail(), semester);
     }
 }

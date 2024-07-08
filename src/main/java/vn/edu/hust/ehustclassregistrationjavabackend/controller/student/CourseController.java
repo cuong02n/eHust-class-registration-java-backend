@@ -16,8 +16,8 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping("/register-courses")
-    public ResponseEntity<?> getRegistedCourse(@RequestParam String semester) {
-        return BaseResponse.ok(courseService.getRegistedCourse(semester));
+    public ResponseEntity<?> getRegisteredCourse(@RequestParam String semester) {
+        return BaseResponse.ok(courseService.getRegisteredCourse(semester));
     }
 
     @PostMapping("/register-courses")
@@ -27,6 +27,6 @@ public class CourseController {
 
     @DeleteMapping("/register-courses")
     public ResponseEntity<?> unregisterCourse(@RequestBody StudentCourseRegistrationRequest request) {
-        return BaseResponse.deleted(courseService.unregisterCourse(request.getCourseIds()) + " course(s) unregisted.");
+        return BaseResponse.deleted(courseService.unregisterCourse(request.getCourseIds()) + " course(s) unRegistered.");
     }
 }
