@@ -65,7 +65,7 @@ public class TimetableUtil {
                 /**
                  * Không trùng giờ -> ok luôn
                  */
-                if (!conflictHour(timetable1.getKey().getFrom(), timetable2.getKey().getTo(), timetable2.getKey().getFrom(), timetable2.getKey().getTo())) {
+                if (!conflictHour(timetable1.getKey().getFrom(), timetable1.getKey().getTo(), timetable2.getKey().getFrom(), timetable2.getKey().getTo())) {
                     continue;
                 }
                 /**
@@ -82,15 +82,11 @@ public class TimetableUtil {
         int timeStart2 = convertToNumberValue(from2);
         int timeEnd2 = convertToNumberValue(to2);
 
-//        if (timeStart2 >= timeEnd1) {
-//            return false;
-//        }
         return timeStart2 < timeEnd1 && timeStart1 < timeEnd2;
 
     }
 
     private static int convertToNumberValue(String hourMinute) {
-        String[] a = hourMinute.trim().split(":");
         String hour = hourMinute.substring(0, 2);
         String minute = hourMinute.substring(2);
         return Integer.parseInt(hour) * 60 + Integer.parseInt(minute);

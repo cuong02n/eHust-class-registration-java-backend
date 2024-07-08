@@ -1,11 +1,18 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.config;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariConfigMXBean;
+import com.zaxxer.hikari.HikariDataSource;
+import com.zaxxer.hikari.HikariPoolMXBean;
+import com.zaxxer.hikari.pool.HikariPool;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -13,6 +20,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @Configuration
@@ -55,4 +65,19 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(restApiInterceptor);
     }
 
+
+//    @Bean
+//    HikariDataSource getDataSource(HikariConfig config){
+//        return new MyHikariDataSource(config);
+//    }
+//    static class MyHikariDataSource extends HikariDataSource {
+//        @Override
+//        public Connection getConnection() throws SQLException {
+//            System.out.println("get connection");
+//            return super.getConnection();
+//        }
+//        MyHikariDataSource(HikariConfig config) {
+//            super(config);
+//        }
+//    }
 }

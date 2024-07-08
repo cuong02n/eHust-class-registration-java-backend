@@ -2,6 +2,8 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @CacheConfig(cacheNames = {"users"})
 public class UserService implements UserDetailsService {
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
     final UserRepository userRepository;
     private final HttpServletRequest httpServletRequest;
 

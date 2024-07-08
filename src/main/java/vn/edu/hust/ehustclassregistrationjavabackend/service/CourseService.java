@@ -100,7 +100,6 @@ public class CourseService {
     public List<String> deleteCourse(List<String> courseIds) {
         List<Course> existingCourse = courseRepository.findAllByIdIn(courseIds);
         var deleted = relationshipRepository.deleteAllByCourseConstraintIdInOrCourseIdIn(existingCourse.stream().map(Course::getId).toList(),existingCourse.stream().map(Course::getId).toList());
-        System.out.println("deleted " + deleted.size());
         courseRepository.deleteAllById(courseIds);
         return courseIds;
     }

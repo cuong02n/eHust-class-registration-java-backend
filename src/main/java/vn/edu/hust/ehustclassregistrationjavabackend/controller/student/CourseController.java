@@ -15,8 +15,6 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.CourseService;
 public class CourseController {
     private final CourseService courseService;
 
-
-
     @GetMapping("/register-courses")
     public ResponseEntity<?> getRegistedCourse(@RequestParam String semester) {
         return BaseResponse.ok(courseService.getRegistedCourse(semester));

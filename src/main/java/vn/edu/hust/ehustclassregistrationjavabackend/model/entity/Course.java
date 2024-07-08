@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
+import org.springframework.cache.annotation.CacheConfig;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@CacheConfig(cacheNames = {"courses"})
+@Cacheable()
 public class Course extends BaseEntity {
     @Id
     @SerializedName("id")

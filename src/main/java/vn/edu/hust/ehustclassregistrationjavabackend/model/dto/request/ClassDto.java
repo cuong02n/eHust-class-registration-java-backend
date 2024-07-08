@@ -40,6 +40,8 @@ public class ClassDto implements Serializable {
     @Expose
     Class.ClassType classType;
 
+    @Expose
+    int credit;
     @Nullable
     @Expose
     Class.Status status;
@@ -53,6 +55,9 @@ public class ClassDto implements Serializable {
 
     @Expose
     String teacherEmail;
+
+    @Expose
+    boolean needExperiment;
 
     public Class toClassEntity(User modified) {
         Class entity = Class.builder()

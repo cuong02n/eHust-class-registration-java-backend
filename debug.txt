@@ -1,66 +1,6000 @@
 ---------------------------------------------------------
-The request #1
-	Ip: 0:0:0:0:0:0:0:1, null
-	Url: POST /api/v1/auth/login
-Response: 200
-	This request took 0.332 to complete
 ---------------------------------------------------------
-The request #2
-	Ip: 0:0:0:0:0:0:0:1, null
-	Url: POST /api/v1/auth/login
-Response: 200
-	This request took 0.227 to complete
 ---------------------------------------------------------
 The request #3
-	Ip: 0:0:0:0:0:0:0:1, null
-	Url: POST /api/v1/auth/login
-Response: 200
-	This request took 0.227 to complete
 ---------------------------------------------------------
 The request #4
 	Ip: 0:0:0:0:0:0:0:1, null
-	Url: POST /api/v1/auth/login
-Response: 200
-	This request took 0.229 to complete
----------------------------------------------------------
-The request #5
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.235 to complete
+---------------------------------------------------------
+The request #5
 ---------------------------------------------------------
 The request #6
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.242 to complete
 ---------------------------------------------------------
 The request #7
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.237 to complete
----------------------------------------------------------
-The request #8
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.242 to complete
+---------------------------------------------------------
+The request #8
+	Url: POST /api/v1/auth/login
+The request #2
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
 ---------------------------------------------------------
 The request #9
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.231 to complete
+Response: 200
+	This request took 1.071 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.073 to complete
+	This request took 1.073 to complete
+	This request took 1.072 to complete
+	This request took 1.071 to complete
+	This request took 1.073 to complete
+The request #1
 ---------------------------------------------------------
 The request #10
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
-Response: 200
-	This request took 0.237 to complete
----------------------------------------------------------
-The request #11
+	This request took 1.073 to complete
 	Ip: 0:0:0:0:0:0:0:1, null
 	Url: POST /api/v1/auth/login
 Response: 200
-	This request took 0.233 to complete
+Response: 200
+	This request took 1.073 to complete
+	This request took 1.073 to complete
+	This request took 1.073 to complete
+---------------------------------------------------------
+The request #11
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.086 to complete
+---------------------------------------------------------
+The request #12
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.086 to complete
+---------------------------------------------------------
+The request #13
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.102 to complete
+---------------------------------------------------------
+The request #14
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.097 to complete
+---------------------------------------------------------
+The request #15
+---------------------------------------------------------
+The request #16
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.095 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.1 to complete
+---------------------------------------------------------
+The request #17
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.119 to complete
+---------------------------------------------------------
+The request #18
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.11 to complete
+---------------------------------------------------------
+The request #19
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.115 to complete
+---------------------------------------------------------
+The request #20
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.113 to complete
+---------------------------------------------------------
+The request #21
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.87 to complete
+---------------------------------------------------------
+The request #22
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.872 to complete
+---------------------------------------------------------
+The request #23
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.88 to complete
+---------------------------------------------------------
+The request #24
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #25
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.896 to complete
+---------------------------------------------------------
+The request #26
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.897 to complete
+---------------------------------------------------------
+The request #27
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.892 to complete
+---------------------------------------------------------
+The request #28
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.921 to complete
+---------------------------------------------------------
+The request #29
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.912 to complete
+---------------------------------------------------------
+The request #30
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.933 to complete
+---------------------------------------------------------
+The request #31
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.925 to complete
+---------------------------------------------------------
+The request #32
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.062 to complete
+---------------------------------------------------------
+The request #33
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.051 to complete
+---------------------------------------------------------
+The request #34
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.058 to complete
+---------------------------------------------------------
+The request #35
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #36
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #37
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #38
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #39
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #40
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #41
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.913 to complete
+---------------------------------------------------------
+The request #42
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.933 to complete
+---------------------------------------------------------
+The request #43
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #44
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.939 to complete
+---------------------------------------------------------
+The request #45
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #46
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #47
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #48
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.95 to complete
+---------------------------------------------------------
+The request #49
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.942 to complete
+---------------------------------------------------------
+The request #50
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.942 to complete
+---------------------------------------------------------
+The request #51
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #52
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.034 to complete
+---------------------------------------------------------
+The request #53
+---------------------------------------------------------
+The request #54
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #55
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #56
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #57
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.963 to complete
+---------------------------------------------------------
+The request #58
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.996 to complete
+---------------------------------------------------------
+The request #59
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #60
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #61
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.912 to complete
+---------------------------------------------------------
+The request #62
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #63
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.932 to complete
+---------------------------------------------------------
+The request #64
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.934 to complete
+---------------------------------------------------------
+The request #65
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.954 to complete
+---------------------------------------------------------
+The request #66
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.988 to complete
+---------------------------------------------------------
+The request #67
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #68
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #69
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #70
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.012 to complete
+---------------------------------------------------------
+The request #71
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.003 to complete
+---------------------------------------------------------
+The request #72
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #73
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.005 to complete
+---------------------------------------------------------
+The request #74
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #75
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #76
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.049 to complete
+---------------------------------------------------------
+The request #77
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #78
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #79
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.067 to complete
+---------------------------------------------------------
+The request #80
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.032 to complete
+---------------------------------------------------------
+The request #81
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.936 to complete
+---------------------------------------------------------
+The request #82
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.011 to complete
+---------------------------------------------------------
+The request #83
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #84
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.911 to complete
+---------------------------------------------------------
+The request #85
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.938 to complete
+---------------------------------------------------------
+The request #86
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.934 to complete
+---------------------------------------------------------
+The request #87
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+---------------------------------------------------------
+The request #88
+	This request took 0.012 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #89
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.942 to complete
+---------------------------------------------------------
+The request #90
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #91
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.008 to complete
+---------------------------------------------------------
+The request #92
+---------------------------------------------------------
+The request #93
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+	Url: GET /api/metadata/current-semester
+Response: 200
+Response: 200
+	This request took 0.009 to complete
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #94
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #95
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.071 to complete
+---------------------------------------------------------
+The request #96
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #97
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.915 to complete
+---------------------------------------------------------
+The request #98
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #99
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.795 to complete
+---------------------------------------------------------
+The request #100
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.033 to complete
+---------------------------------------------------------
+The request #101
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.861 to complete
+---------------------------------------------------------
+The request #102
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+---------------------------------------------------------
+The request #103
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+	This request took 0.879 to complete
+---------------------------------------------------------
+The request #104
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.894 to complete
+---------------------------------------------------------
+The request #105
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #106
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.889 to complete
+---------------------------------------------------------
+The request #107
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #108
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #109
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #110
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.929 to complete
+---------------------------------------------------------
+The request #111
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #112
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.935 to complete
+---------------------------------------------------------
+The request #113
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #114
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #115
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.972 to complete
+---------------------------------------------------------
+The request #116
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #117
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.952 to complete
+---------------------------------------------------------
+The request #118
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #119
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.057 to complete
+---------------------------------------------------------
+The request #120
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #121
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.054 to complete
+---------------------------------------------------------
+The request #122
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.956 to complete
+---------------------------------------------------------
+The request #123
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.021 to complete
+---------------------------------------------------------
+The request #124
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #125
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #126
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #127
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.069 to complete
+---------------------------------------------------------
+The request #128
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.013 to complete
+---------------------------------------------------------
+The request #129
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #130
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.077 to complete
+---------------------------------------------------------
+The request #131
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.004 to complete
+---------------------------------------------------------
+The request #132
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #133
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #134
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #135
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.204 to complete
+---------------------------------------------------------
+The request #136
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #137
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.221 to complete
+---------------------------------------------------------
+The request #138
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #139
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.108 to complete
+---------------------------------------------------------
+The request #140
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.043 to complete
+---------------------------------------------------------
+The request #141
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.972 to complete
+---------------------------------------------------------
+The request #142
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #143
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #144
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.074 to complete
+---------------------------------------------------------
+The request #145
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #146
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.075 to complete
+---------------------------------------------------------
+The request #147
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #148
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.052 to complete
+---------------------------------------------------------
+The request #149
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.032 to complete
+---------------------------------------------------------
+The request #150
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #151
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #152
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #153
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.082 to complete
+---------------------------------------------------------
+The request #154
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #155
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.083 to complete
+---------------------------------------------------------
+The request #156
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.034 to complete
+---------------------------------------------------------
+The request #157
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #158
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.028 to complete
+---------------------------------------------------------
+The request #159
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.873 to complete
+---------------------------------------------------------
+The request #160
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.903 to complete
+---------------------------------------------------------
+The request #161
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.897 to complete
+---------------------------------------------------------
+The request #162
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #163
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.868 to complete
+---------------------------------------------------------
+The request #164
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.886 to complete
+---------------------------------------------------------
+The request #165
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.87 to complete
+---------------------------------------------------------
+The request #166
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #167
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #168
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #169
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #170
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.888 to complete
+---------------------------------------------------------
+The request #171
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #172
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.824 to complete
+---------------------------------------------------------
+The request #173
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #174
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #175
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.932 to complete
+---------------------------------------------------------
+The request #176
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #177
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.944 to complete
+---------------------------------------------------------
+The request #178
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #179
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.829 to complete
+---------------------------------------------------------
+The request #180
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.821 to complete
+---------------------------------------------------------
+The request #181
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.828 to complete
+---------------------------------------------------------
+The request #182
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #183
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.834 to complete
+---------------------------------------------------------
+The request #184
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.837 to complete
+---------------------------------------------------------
+The request #185
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #186
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #187
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #188
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.841 to complete
+---------------------------------------------------------
+The request #189
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.827 to complete
+---------------------------------------------------------
+The request #190
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #191
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.838 to complete
+---------------------------------------------------------
+The request #192
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #193
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #194
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #195
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.738 to complete
+---------------------------------------------------------
+The request #196
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #197
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.644 to complete
+---------------------------------------------------------
+The request #198
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.645 to complete
+---------------------------------------------------------
+The request #199
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #201
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.646 to complete
+---------------------------------------------------------
+The request #202
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #203
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.678 to complete
+---------------------------------------------------------
+The request #204
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.693 to complete
+---------------------------------------------------------
+The request #205
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #206
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #207
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.291 to complete
+---------------------------------------------------------
+The request #208
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #209
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.26 to complete
+---------------------------------------------------------
+The request #210
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.033 to complete
+---------------------------------------------------------
+The request #211
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.863 to complete
+---------------------------------------------------------
+The request #212
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.797 to complete
+---------------------------------------------------------
+The request #213
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #214
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.827 to complete
+---------------------------------------------------------
+The request #215
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.851 to complete
+---------------------------------------------------------
+The request #216
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #217
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #218
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #219
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.808 to complete
+---------------------------------------------------------
+The request #220
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.834 to complete
+---------------------------------------------------------
+The request #221
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #222
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #223
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.946 to complete
+---------------------------------------------------------
+The request #224
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #225
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.98 to complete
+---------------------------------------------------------
+The request #226
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #227
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.907 to complete
+---------------------------------------------------------
+The request #228
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #229
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.161 to complete
+---------------------------------------------------------
+The request #230
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.979 to complete
+---------------------------------------------------------
+The request #231
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.965 to complete
+---------------------------------------------------------
+---------------------------------------------------------
+The request #232
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+The request #233
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.97 to complete
+---------------------------------------------------------
+The request #234
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.967 to complete
+---------------------------------------------------------
+The request #235
+---------------------------------------------------------
+The request #236
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+Response: 200
+	This request took 0.029 to complete
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #237
+---------------------------------------------------------
+The request #238
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Url: GET /api/metadata/current-semester
+	This request took 0.019 to complete
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #239
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.964 to complete
+---------------------------------------------------------
+The request #240
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #241
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.969 to complete
+---------------------------------------------------------
+The request #242
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #243
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.976 to complete
+---------------------------------------------------------
+The request #244
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #245
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.982 to complete
+---------------------------------------------------------
+The request #246
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #247
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.91 to complete
+---------------------------------------------------------
+The request #248
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.041 to complete
+---------------------------------------------------------
+The request #249
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.895 to complete
+---------------------------------------------------------
+The request #250
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #251
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.918 to complete
+---------------------------------------------------------
+The request #252
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #253
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.927 to complete
+---------------------------------------------------------
+The request #254
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.937 to complete
+---------------------------------------------------------
+The request #255
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #256
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.935 to complete
+---------------------------------------------------------
+The request #257
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #258
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.026 to complete
+---------------------------------------------------------
+The request #259
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.004 to complete
+---------------------------------------------------------
+The request #260
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #261
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #262
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.875 to complete
+---------------------------------------------------------
+The request #263
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #264
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.86 to complete
+---------------------------------------------------------
+The request #265
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #266
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.435 to complete
+---------------------------------------------------------
+The request #267
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.848 to complete
+---------------------------------------------------------
+The request #268
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #269
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.819 to complete
+---------------------------------------------------------
+The request #270
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #271
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.871 to complete
+---------------------------------------------------------
+The request #272
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.822 to complete
+---------------------------------------------------------
+The request #273
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #274
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #275
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.925 to complete
+---------------------------------------------------------
+The request #276
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #277
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.908 to complete
+---------------------------------------------------------
+The request #278
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #279
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.849 to complete
+---------------------------------------------------------
+The request #280
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #281
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.94 to complete
+---------------------------------------------------------
+The request #282
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.859 to complete
+---------------------------------------------------------
+The request #283
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #284
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.828 to complete
+---------------------------------------------------------
+The request #285
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #286
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #287
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.891 to complete
+---------------------------------------------------------
+The request #288
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.815 to complete
+---------------------------------------------------------
+The request #289
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.803 to complete
+---------------------------------------------------------
+The request #290
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #291
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #292
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #293
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.778 to complete
+---------------------------------------------------------
+The request #294
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.732 to complete
+---------------------------------------------------------
+The request #295
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #296
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #297
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.746 to complete
+---------------------------------------------------------
+The request #298
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.739 to complete
+---------------------------------------------------------
+The request #299
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #300
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #301
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.078 to complete
+---------------------------------------------------------
+The request #302
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #303
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.693 to complete
+---------------------------------------------------------
+The request #304
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #305
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.75 to complete
+---------------------------------------------------------
+The request #306
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.737 to complete
+---------------------------------------------------------
+The request #307
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.713 to complete
+---------------------------------------------------------
+The request #308
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #309
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #310
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #311
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.733 to complete
+---------------------------------------------------------
+The request #312
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #313
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.772 to complete
+---------------------------------------------------------
+The request #314
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #315
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.823 to complete
+---------------------------------------------------------
+The request #316
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.756 to complete
+---------------------------------------------------------
+The request #317
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #318
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #319
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.912 to complete
+---------------------------------------------------------
+The request #320
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #321
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.918 to complete
+---------------------------------------------------------
+The request #322
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.8 to complete
+---------------------------------------------------------
+The request #323
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.865 to complete
+---------------------------------------------------------
+The request #324
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #325
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #326
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #327
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.85 to complete
+---------------------------------------------------------
+The request #328
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.857 to complete
+---------------------------------------------------------
+The request #329
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #330
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #331
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.832 to complete
+---------------------------------------------------------
+The request #332
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #333
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.897 to complete
+---------------------------------------------------------
+The request #334
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.958 to complete
+---------------------------------------------------------
+The request #335
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.906 to complete
+---------------------------------------------------------
+The request #336
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #337
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #338
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #339
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.909 to complete
+---------------------------------------------------------
+The request #340
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #341
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.852 to complete
+---------------------------------------------------------
+The request #342
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #343
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.874 to complete
+---------------------------------------------------------
+The request #344
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #345
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.837 to complete
+---------------------------------------------------------
+The request #346
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #347
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.636 to complete
+---------------------------------------------------------
+The request #348
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.629 to complete
+---------------------------------------------------------
+The request #349
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #350
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #351
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.692 to complete
+---------------------------------------------------------
+The request #352
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #353
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.558 to complete
+---------------------------------------------------------
+The request #354
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #355
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.681 to complete
+---------------------------------------------------------
+The request #356
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #357
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.727 to complete
+---------------------------------------------------------
+The request #358
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.683 to complete
+---------------------------------------------------------
+The request #359
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #360
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #361
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.634 to complete
+---------------------------------------------------------
+The request #362
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.61 to complete
+---------------------------------------------------------
+The request #363
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #364
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #365
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.691 to complete
+---------------------------------------------------------
+The request #366
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #367
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.68 to complete
+---------------------------------------------------------
+The request #368
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #369
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.705 to complete
+---------------------------------------------------------
+The request #370
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.649 to complete
+---------------------------------------------------------
+The request #371
+---------------------------------------------------------
+The request #372
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #373
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.689 to complete
+---------------------------------------------------------
+The request #374
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #375
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.651 to complete
+---------------------------------------------------------
+The request #376
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.632 to complete
+---------------------------------------------------------
+The request #377
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #378
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #379
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.721 to complete
+---------------------------------------------------------
+The request #380
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #381
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.659 to complete
+---------------------------------------------------------
+The request #382
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #383
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.666 to complete
+---------------------------------------------------------
+The request #384
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.717 to complete
+---------------------------------------------------------
+The request #385
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #386
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #387
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.732 to complete
+---------------------------------------------------------
+The request #388
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #389
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.716 to complete
+---------------------------------------------------------
+The request #390
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.74 to complete
+---------------------------------------------------------
+The request #391
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #392
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #393
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 3.351 to complete
+---------------------------------------------------------
+The request #394
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #395
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 3.387 to complete
+---------------------------------------------------------
+The request #396
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #397
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 3.4 to complete
+---------------------------------------------------------
+The request #398
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #399
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.745 to complete
+---------------------------------------------------------
+The request #400
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #401
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.84 to complete
+---------------------------------------------------------
+The request #402
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #403
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.734 to complete
+---------------------------------------------------------
+The request #404
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #405
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.792 to complete
+---------------------------------------------------------
+The request #406
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #407
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.905 to complete
+---------------------------------------------------------
+The request #408
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #409
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.957 to complete
+---------------------------------------------------------
+The request #410
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.961 to complete
+---------------------------------------------------------
+The request #411
+---------------------------------------------------------
+The request #412
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+	Url: GET /api/metadata/current-semester
+Response: 200
+Response: 200
+	This request took 0.02 to complete
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #413
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.952 to complete
+---------------------------------------------------------
+The request #414
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #415
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.902 to complete
+---------------------------------------------------------
+The request #416
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #417
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.941 to complete
+---------------------------------------------------------
+The request #418
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #419
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.91 to complete
+---------------------------------------------------------
+The request #420
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #421
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.829 to complete
+---------------------------------------------------------
+The request #422
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.501 to complete
+---------------------------------------------------------
+The request #423
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.509 to complete
+---------------------------------------------------------
+The request #424
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.525 to complete
+---------------------------------------------------------
+The request #425
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.508 to complete
+---------------------------------------------------------
+The request #426
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+---------------------------------------------------------
+The request #427
+	This request took 0.007 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #428
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #429
+---------------------------------------------------------
+The request #430
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #431
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.24 to complete
+---------------------------------------------------------
+The request #432
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.485 to complete
+---------------------------------------------------------
+The request #433
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #434
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #435
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.233 to complete
+---------------------------------------------------------
+The request #436
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #437
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.266 to complete
+---------------------------------------------------------
+The request #438
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #439
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.87 to complete
+---------------------------------------------------------
+The request #440
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #441
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.872 to complete
+---------------------------------------------------------
+The request #442
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.871 to complete
+---------------------------------------------------------
+The request #443
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #444
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.878 to complete
+---------------------------------------------------------
+The request #445
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #446
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #447
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.898 to complete
+---------------------------------------------------------
+The request #448
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #449
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.877 to complete
+---------------------------------------------------------
+The request #450
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #451
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.884 to complete
+---------------------------------------------------------
+The request #452
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.946 to complete
+---------------------------------------------------------
+The request #453
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #454
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #455
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.996 to complete
+---------------------------------------------------------
+The request #456
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.838 to complete
+---------------------------------------------------------
+The request #457
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #458
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #459
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.961 to complete
+---------------------------------------------------------
+The request #460
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.966 to complete
+---------------------------------------------------------
+The request #461
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #462
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.969 to complete
+---------------------------------------------------------
+The request #463
+---------------------------------------------------------
+The request #464
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #465
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.005 to complete
+---------------------------------------------------------
+The request #466
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.985 to complete
+---------------------------------------------------------
+The request #467
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #468
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.956 to complete
+---------------------------------------------------------
+The request #469
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.99 to complete
+---------------------------------------------------------
+The request #470
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #471
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #472
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.977 to complete
+---------------------------------------------------------
+The request #473
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #474
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #475
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.793 to complete
+---------------------------------------------------------
+The request #476
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.778 to complete
+---------------------------------------------------------
+The request #477
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #478
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #479
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.771 to complete
+---------------------------------------------------------
+The request #480
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #481
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.904 to complete
+---------------------------------------------------------
+The request #482
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #483
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.931 to complete
+---------------------------------------------------------
+The request #484
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #485
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.899 to complete
+---------------------------------------------------------
+The request #486
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #487
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.892 to complete
+---------------------------------------------------------
+The request #488
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.913 to complete
+---------------------------------------------------------
+The request #489
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #490
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #491
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.932 to complete
+---------------------------------------------------------
+The request #492
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.915 to complete
+---------------------------------------------------------
+The request #493
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #494
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.862 to complete
+---------------------------------------------------------
+The request #495
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #496
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #497
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.987 to complete
+---------------------------------------------------------
+The request #498
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #499
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.95 to complete
+---------------------------------------------------------
+The request #500
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #501
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.908 to complete
+---------------------------------------------------------
+The request #502
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #503
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.972 to complete
+---------------------------------------------------------
+The request #504
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.934 to complete
+---------------------------------------------------------
+The request #505
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #506
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #507
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #508
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.9 to complete
+---------------------------------------------------------
+The request #509
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #510
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #511
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.938 to complete
+---------------------------------------------------------
+The request #512
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.994 to complete
+---------------------------------------------------------
+The request #513
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #514
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #515
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.111 to complete
+---------------------------------------------------------
+The request #516
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #517
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.014 to complete
+---------------------------------------------------------
+The request #518
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #519
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.056 to complete
+---------------------------------------------------------
+The request #520
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #521
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.999 to complete
+---------------------------------------------------------
+The request #522
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.972 to complete
+---------------------------------------------------------
+The request #523
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.951 to complete
+---------------------------------------------------------
+The request #524
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #525
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #526
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #527
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.899 to complete
+---------------------------------------------------------
+The request #528
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #529
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.99 to complete
+---------------------------------------------------------
+The request #530
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.953 to complete
+---------------------------------------------------------
+The request #531
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.029 to complete
+---------------------------------------------------------
+The request #532
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #533
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #534
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #535
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.769 to complete
+---------------------------------------------------------
+The request #536
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #537
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.904 to complete
+---------------------------------------------------------
+The request #538
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #539
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.525 to complete
+---------------------------------------------------------
+The request #540
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #541
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.536 to complete
+---------------------------------------------------------
+The request #542
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #543
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.51 to complete
+---------------------------------------------------------
+The request #544
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #545
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.134 to complete
+---------------------------------------------------------
+The request #546
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #547
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.099 to complete
+---------------------------------------------------------
+The request #548
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #549
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.029 to complete
+---------------------------------------------------------
+The request #550
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #551
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.611 to complete
+---------------------------------------------------------
+The request #552
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.228 to complete
+---------------------------------------------------------
+The request #553
+---------------------------------------------------------
+The request #554
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+	This request took 0.019 to complete
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #555
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.679 to complete
+---------------------------------------------------------
+The request #556
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #557
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.675 to complete
+---------------------------------------------------------
+The request #558
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.662 to complete
+---------------------------------------------------------
+The request #559
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #560
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #561
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.605 to complete
+---------------------------------------------------------
+The request #562
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #563
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.639 to complete
+---------------------------------------------------------
+The request #564
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #565
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.656 to complete
+---------------------------------------------------------
+The request #566
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #567
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.626 to complete
+---------------------------------------------------------
+The request #568
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #569
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.584 to complete
+---------------------------------------------------------
+The request #570
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.599 to complete
+---------------------------------------------------------
+The request #571
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #572
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #573
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.623 to complete
+---------------------------------------------------------
+The request #574
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #575
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.585 to complete
+---------------------------------------------------------
+The request #576
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #577
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.712 to complete
+---------------------------------------------------------
+The request #578
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.626 to complete
+---------------------------------------------------------
+The request #579
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #580
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #581
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.713 to complete
+---------------------------------------------------------
+The request #582
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.361 to complete
+---------------------------------------------------------
+The request #583
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #584
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #585
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.817 to complete
+---------------------------------------------------------
+The request #586
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.836 to complete
+---------------------------------------------------------
+The request #587
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #588
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #589
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.797 to complete
+---------------------------------------------------------
+The request #590
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #591
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.784 to complete
+---------------------------------------------------------
+The request #592
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.763 to complete
+---------------------------------------------------------
+The request #593
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #594
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #595
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.811 to complete
+---------------------------------------------------------
+The request #596
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #597
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.782 to complete
+---------------------------------------------------------
+The request #598
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #599
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.789 to complete
+---------------------------------------------------------
+The request #600
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #601
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.73 to complete
+---------------------------------------------------------
+The request #602
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.751 to complete
+---------------------------------------------------------
+The request #603
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #604
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #605
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.781 to complete
+---------------------------------------------------------
+The request #606
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #607
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.698 to complete
+---------------------------------------------------------
+The request #608
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #609
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.722 to complete
+---------------------------------------------------------
+The request #610
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #611
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.817 to complete
+---------------------------------------------------------
+The request #612
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #613
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.675 to complete
+---------------------------------------------------------
+The request #614
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #615
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.694 to complete
+---------------------------------------------------------
+The request #616
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #617
+---------------------------------------------------------
+The request #618
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.659 to complete
+	This request took 0.749 to complete
+---------------------------------------------------------
+The request #619
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #620
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #621
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.763 to complete
+---------------------------------------------------------
+The request #622
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #623
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.724 to complete
+---------------------------------------------------------
+The request #624
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #625
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 3.095 to complete
+---------------------------------------------------------
+The request #626
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.699 to complete
+---------------------------------------------------------
+The request #627
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.727 to complete
+---------------------------------------------------------
+The request #628
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #629
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #630
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #631
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.616 to complete
+---------------------------------------------------------
+The request #632
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #633
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 3.139 to complete
+---------------------------------------------------------
+The request #634
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #635
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.678 to complete
+---------------------------------------------------------
+The request #636
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #637
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.658 to complete
+---------------------------------------------------------
+The request #638
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #639
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.613 to complete
+---------------------------------------------------------
+The request #640
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #641
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.636 to complete
+---------------------------------------------------------
+The request #642
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #643
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.659 to complete
+---------------------------------------------------------
+The request #644
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #645
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.754 to complete
+---------------------------------------------------------
+The request #646
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #647
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.76 to complete
+---------------------------------------------------------
+The request #648
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.673 to complete
+---------------------------------------------------------
+The request #649
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #650
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #651
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.95 to complete
+---------------------------------------------------------
+The request #652
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.89 to complete
+---------------------------------------------------------
+The request #653
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #654
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #655
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.683 to complete
+---------------------------------------------------------
+The request #656
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #657
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.851 to complete
+---------------------------------------------------------
+The request #658
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #659
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.607 to complete
+---------------------------------------------------------
+The request #660
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #661
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.673 to complete
+---------------------------------------------------------
+The request #662
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #663
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.654 to complete
+---------------------------------------------------------
+The request #664
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.616 to complete
+---------------------------------------------------------
+The request #665
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.619 to complete
+---------------------------------------------------------
+The request #666
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #667
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #668
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #669
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.615 to complete
+---------------------------------------------------------
+The request #670
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #671
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.813 to complete
+---------------------------------------------------------
+The request #672
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #673
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.633 to complete
+---------------------------------------------------------
+The request #674
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.638 to complete
+---------------------------------------------------------
+The request #675
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.083 to complete
+---------------------------------------------------------
+The request #676
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.002 to complete
+---------------------------------------------------------
+The request #677
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.03 to complete
+---------------------------------------------------------
+The request #678
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #679
+---------------------------------------------------------
+The request #680
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.026 to complete
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #681
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.781 to complete
+---------------------------------------------------------
+The request #682
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.724 to complete
+---------------------------------------------------------
+The request #683
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #684
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #685
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 2.028 to complete
+---------------------------------------------------------
+The request #686
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #687
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.91 to complete
+---------------------------------------------------------
+The request #688
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #689
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.949 to complete
+---------------------------------------------------------
+The request #690
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #691
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.931 to complete
+---------------------------------------------------------
+The request #692
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #693
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.913 to complete
+---------------------------------------------------------
+The request #694
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.913 to complete
+---------------------------------------------------------
+The request #695
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.91 to complete
+---------------------------------------------------------
+The request #696
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #697
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #698
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #699
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.932 to complete
+---------------------------------------------------------
+The request #700
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.872 to complete
+---------------------------------------------------------
+The request #701
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #702
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.861 to complete
+---------------------------------------------------------
+The request #703
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #704
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.893 to complete
+---------------------------------------------------------
+The request #705
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #706
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #707
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.805 to complete
+---------------------------------------------------------
+The request #708
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #709
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.835 to complete
+---------------------------------------------------------
+The request #710
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #711
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.923 to complete
+---------------------------------------------------------
+The request #712
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #713
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.825 to complete
+---------------------------------------------------------
+The request #714
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #715
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.889 to complete
+---------------------------------------------------------
+The request #716
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.897 to complete
+---------------------------------------------------------
+The request #717
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.898 to complete
+---------------------------------------------------------
+The request #718
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.859 to complete
+---------------------------------------------------------
+The request #719
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.876 to complete
+---------------------------------------------------------
+The request #720
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #721
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+---------------------------------------------------------
+The request #722
+	This request took 0.01 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #723
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #724
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #725
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.883 to complete
+---------------------------------------------------------
+The request #726
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #727
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.985 to complete
+---------------------------------------------------------
+The request #728
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #729
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.969 to complete
+---------------------------------------------------------
+The request #730
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #731
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.589 to complete
+---------------------------------------------------------
+The request #732
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.603 to complete
+---------------------------------------------------------
+The request #733
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #734
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #735
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.631 to complete
+---------------------------------------------------------
+The request #736
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.635 to complete
+---------------------------------------------------------
+The request #737
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #738
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #739
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.533 to complete
+---------------------------------------------------------
+The request #740
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #741
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.527 to complete
+---------------------------------------------------------
+The request #742
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #743
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.912 to complete
+---------------------------------------------------------
+The request #744
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.549 to complete
+---------------------------------------------------------
+The request #745
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #746
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #747
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.557 to complete
+---------------------------------------------------------
+The request #748
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #749
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.597 to complete
+---------------------------------------------------------
+The request #750
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #751
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.624 to complete
+---------------------------------------------------------
+The request #752
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #753
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.609 to complete
+---------------------------------------------------------
+The request #754
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.04 to complete
+---------------------------------------------------------
+The request #755
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.736 to complete
+---------------------------------------------------------
+The request #756
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #757
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.904 to complete
+---------------------------------------------------------
+The request #758
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #759
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.923 to complete
+---------------------------------------------------------
+The request #760
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #761
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.875 to complete
+---------------------------------------------------------
+The request #762
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.911 to complete
+---------------------------------------------------------
+The request #763
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #764
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.873 to complete
+---------------------------------------------------------
+The request #765
+---------------------------------------------------------
+The request #766
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #767
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.951 to complete
+---------------------------------------------------------
+The request #768
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #769
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.079 to complete
+---------------------------------------------------------
+The request #770
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #771
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.013 to complete
+---------------------------------------------------------
+The request #772
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #773
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.939 to complete
+---------------------------------------------------------
+The request #774
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.93 to complete
+---------------------------------------------------------
+The request #775
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #776
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #777
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.954 to complete
+---------------------------------------------------------
+The request #778
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #779
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.977 to complete
+---------------------------------------------------------
+The request #780
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.018 to complete
+---------------------------------------------------------
+The request #781
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #782
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #783
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.889 to complete
+---------------------------------------------------------
+The request #784
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.914 to complete
+---------------------------------------------------------
+The request #785
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #786
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #787
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.91 to complete
+---------------------------------------------------------
+The request #788
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #789
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.901 to complete
+---------------------------------------------------------
+The request #790
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #791
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.989 to complete
+---------------------------------------------------------
+The request #792
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #793
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.917 to complete
+---------------------------------------------------------
+The request #794
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.929 to complete
+---------------------------------------------------------
+The request #795
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #796
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #797
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.937 to complete
+---------------------------------------------------------
+The request #798
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #799
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.898 to complete
+---------------------------------------------------------
+The request #800
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #801
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.946 to complete
+---------------------------------------------------------
+The request #802
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.923 to complete
+---------------------------------------------------------
+The request #803
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #804
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #805
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.941 to complete
+---------------------------------------------------------
+The request #806
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.934 to complete
+---------------------------------------------------------
+The request #807
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #808
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #809
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.966 to complete
+---------------------------------------------------------
+The request #810
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #811
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.916 to complete
+---------------------------------------------------------
+The request #812
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #813
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.003 to complete
+---------------------------------------------------------
+The request #814
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #815
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.054 to complete
+---------------------------------------------------------
+The request #816
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #817
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.92 to complete
+---------------------------------------------------------
+The request #818
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #819
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.969 to complete
+---------------------------------------------------------
+The request #820
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #821
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.944 to complete
+---------------------------------------------------------
+The request #822
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.98 to complete
+---------------------------------------------------------
+The request #823
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #824
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.937 to complete
+---------------------------------------------------------
+The request #825
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #826
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.939 to complete
+---------------------------------------------------------
+The request #827
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #828
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #829
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.977 to complete
+---------------------------------------------------------
+The request #830
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #831
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.973 to complete
+---------------------------------------------------------
+The request #832
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #833
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.891 to complete
+---------------------------------------------------------
+The request #834
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #835
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.909 to complete
+---------------------------------------------------------
+The request #836
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.941 to complete
+---------------------------------------------------------
+The request #837
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #838
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.021 to complete
+---------------------------------------------------------
+The request #839
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.962 to complete
+---------------------------------------------------------
+The request #840
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.876 to complete
+---------------------------------------------------------
+The request #841
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #842
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #843
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.9 to complete
+---------------------------------------------------------
+The request #844
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.909 to complete
+---------------------------------------------------------
+The request #845
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #846
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #847
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.099 to complete
+---------------------------------------------------------
+The request #848
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #849
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.15 to complete
+---------------------------------------------------------
+The request #850
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.015 to complete
+---------------------------------------------------------
+The request #851
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.079 to complete
+---------------------------------------------------------
+The request #852
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #853
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.069 to complete
+---------------------------------------------------------
+The request #854
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #855
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.014 to complete
+---------------------------------------------------------
+The request #856
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #857
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.133 to complete
+---------------------------------------------------------
+The request #858
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #859
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.961 to complete
+---------------------------------------------------------
+The request #860
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.982 to complete
+---------------------------------------------------------
+The request #861
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.923 to complete
+---------------------------------------------------------
+The request #862
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #863
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #864
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.955 to complete
+---------------------------------------------------------
+The request #865
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #866
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #867
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.89 to complete
+---------------------------------------------------------
+The request #868
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #869
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.972 to complete
+---------------------------------------------------------
+The request #870
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #871
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.919 to complete
+---------------------------------------------------------
+The request #872
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #873
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.921 to complete
+---------------------------------------------------------
+The request #874
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.013 to complete
+---------------------------------------------------------
+The request #875
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.895 to complete
+---------------------------------------------------------
+The request #876
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.812 to complete
+---------------------------------------------------------
+The request #877
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #878
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #879
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.783 to complete
+---------------------------------------------------------
+The request #880
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #881
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.829 to complete
+---------------------------------------------------------
+The request #882
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #883
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.909 to complete
+---------------------------------------------------------
+The request #884
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.922 to complete
+---------------------------------------------------------
+The request #885
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #886
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.031 to complete
+---------------------------------------------------------
+The request #887
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.936 to complete
+---------------------------------------------------------
+The request #888
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #889
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.989 to complete
+---------------------------------------------------------
+The request #890
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #891
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.917 to complete
+---------------------------------------------------------
+The request #892
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.987 to complete
+---------------------------------------------------------
+The request #893
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #894
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.022 to complete
+---------------------------------------------------------
+The request #895
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.891 to complete
+---------------------------------------------------------
+The request #896
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.836 to complete
+---------------------------------------------------------
+The request #897
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.868 to complete
+---------------------------------------------------------
+The request #898
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #899
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.903 to complete
+---------------------------------------------------------
+The request #900
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #901
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #902
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #903
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.781 to complete
+---------------------------------------------------------
+The request #904
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.028 to complete
+---------------------------------------------------------
+The request #905
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 1.004 to complete
+---------------------------------------------------------
+The request #906
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #907
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.832 to complete
+---------------------------------------------------------
+The request #908
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #909
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.906 to complete
+---------------------------------------------------------
+The request #910
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.016 to complete
+---------------------------------------------------------
+The request #911
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.888 to complete
+---------------------------------------------------------
+The request #912
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.878 to complete
+---------------------------------------------------------
+The request #913
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.922 to complete
+---------------------------------------------------------
+The request #914
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #915
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #916
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.898 to complete
+---------------------------------------------------------
+The request #917
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.898 to complete
+---------------------------------------------------------
+The request #918
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.899 to complete
+---------------------------------------------------------
+The request #919
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #920
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.837 to complete
+---------------------------------------------------------
+The request #921
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #922
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.019 to complete
+---------------------------------------------------------
+The request #923
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #924
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #925
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.9 to complete
+---------------------------------------------------------
+The request #926
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.023 to complete
+---------------------------------------------------------
+The request #927
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.912 to complete
+---------------------------------------------------------
+The request #928
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.017 to complete
+---------------------------------------------------------
+The request #929
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.852 to complete
+---------------------------------------------------------
+The request #930
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #931
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.869 to complete
+---------------------------------------------------------
+The request #932
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.875 to complete
+---------------------------------------------------------
+The request #933
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.899 to complete
+---------------------------------------------------------
+The request #934
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.933 to complete
+---------------------------------------------------------
+The request #935
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.009 to complete
+---------------------------------------------------------
+The request #936
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #937
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #938
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.887 to complete
+---------------------------------------------------------
+The request #939
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #940
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #941
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.895 to complete
+---------------------------------------------------------
+The request #942
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.924 to complete
+---------------------------------------------------------
+The request #943
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #944
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #945
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.851 to complete
+---------------------------------------------------------
+The request #946
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.893 to complete
+---------------------------------------------------------
+The request #947
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #948
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.026 to complete
+---------------------------------------------------------
+The request #949
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.756 to complete
+---------------------------------------------------------
+The request #950
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.74 to complete
+---------------------------------------------------------
+The request #951
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.025 to complete
+---------------------------------------------------------
+The request #952
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.027 to complete
+---------------------------------------------------------
+The request #953
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.767 to complete
+---------------------------------------------------------
+The request #954
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.782 to complete
+---------------------------------------------------------
+The request #955
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #956
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #957
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.787 to complete
+---------------------------------------------------------
+The request #958
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #959
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.793 to complete
+---------------------------------------------------------
+The request #960
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.775 to complete
+---------------------------------------------------------
+The request #961
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #962
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.772 to complete
+---------------------------------------------------------
+The request #963
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #964
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #965
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.471 to complete
+---------------------------------------------------------
+The request #966
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.432 to complete
+---------------------------------------------------------
+The request #967
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.006 to complete
+---------------------------------------------------------
+The request #968
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #969
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.468 to complete
+---------------------------------------------------------
+The request #970
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #971
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.49 to complete
+---------------------------------------------------------
+The request #972
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.499 to complete
+---------------------------------------------------------
+The request #973
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.014 to complete
+---------------------------------------------------------
+The request #974
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.012 to complete
+---------------------------------------------------------
+The request #975
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.42 to complete
+---------------------------------------------------------
+The request #976
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.024 to complete
+---------------------------------------------------------
+The request #977
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.451 to complete
+---------------------------------------------------------
+The request #978
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #979
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.461 to complete
+---------------------------------------------------------
+The request #980
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #981
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.442 to complete
+---------------------------------------------------------
+The request #982
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.434 to complete
+---------------------------------------------------------
+The request #983
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #984
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #985
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.381 to complete
+---------------------------------------------------------
+The request #986
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #987
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.381 to complete
+---------------------------------------------------------
+The request #988
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #989
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.404 to complete
+---------------------------------------------------------
+The request #990
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #991
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.375 to complete
+---------------------------------------------------------
+The request #992
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #993
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.334 to complete
+---------------------------------------------------------
+The request #994
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #995
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.358 to complete
+---------------------------------------------------------
+The request #996
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #997
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.338 to complete
+---------------------------------------------------------
+The request #998
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #999
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.305 to complete
+---------------------------------------------------------
+The request #1000
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete

@@ -1,9 +1,11 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.ServletRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
@@ -18,6 +20,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserClassReposit
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.ExcelUtil;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
@@ -34,7 +37,6 @@ public class ClassService {
     private final ServletRequest httpServletRequest;
     private final CourseService courseService;
     private final UserService userService;
-
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester)).orElseThrow();
     }
@@ -322,6 +324,7 @@ public class ClassService {
         }
         return userClassRepository.saveAllAndFlush(registedWillSave);
     }
+
 
     public List<UserClassRegistration> registerClassByAdmin(AdminClassRegisterRequest rq) {
         User admin = (User) httpServletRequest.getAttribute("user");

@@ -10,6 +10,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import javax.sql.DataSource;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -27,14 +28,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     }
 
     private String getClientIpAddress(HttpServletRequest request) {
-//        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
-//        System.out.println(request.getRemotePort());
-//        System.out.println(request.getRemoteHost());
         return request.getRemoteHost() + ":" + request.getRemotePort();
-//        if (xForwardedForHeader != null) {
-//            return xForwardedForHeader.split(",")[0].trim();
-//        }
-//        return request.getRemoteAddr();
     }
 
     @Override
@@ -42,9 +36,10 @@ public class RateLimitInterceptor implements HandlerInterceptor {
         long currentTime = System.currentTimeMillis();
         String ip = getClientIpAddress(request);
 
-        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
+//        if (ip.startsWith("0:0:0:0:0:0:0:1")) return true;
+        if(1==1) return true;
         if (request.getRequestURI().startsWith("/swagger")) return true;
-        log.info("{}: {}",ip,request.getRequestURI());
+//        log.info("{}: {}",ip,request.getRequestURI());
         synchronized (requestSaved) {
             Queue<Long> requests = requestSaved.get(ip);
             if (requests != null) {
@@ -56,8 +51,6 @@ public class RateLimitInterceptor implements HandlerInterceptor {
                     requests.poll();
                 }
                 if (requests.size() >= MAX_REQUEST) {
-//                    response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-
                     @SuppressWarnings("DataFlowIssue")
                     String retry = String.valueOf((requests.peek() + intervalTime - currentTime) / 1000 + 1);
                     response.addHeader("Retry-After", retry);

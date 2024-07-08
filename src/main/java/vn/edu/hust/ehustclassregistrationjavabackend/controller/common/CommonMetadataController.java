@@ -13,7 +13,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.MetadataService;
 @RestController
 @RequestMapping("/api/metadata")
 @RequiredArgsConstructor
-public class PublicMetadataController {
+public class CommonMetadataController {
     final MetadataService metadataService;
 
     @GetMapping("")

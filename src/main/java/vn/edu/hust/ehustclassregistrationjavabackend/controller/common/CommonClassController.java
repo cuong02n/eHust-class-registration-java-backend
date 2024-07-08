@@ -12,7 +12,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/classes")
-public class PublicClassController {
+public class CommonClassController {
     final ClassService classService;
 
     @GetMapping()

@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.ChangeClassRequest;
@@ -16,6 +17,7 @@ import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
 @RequestMapping("/api/students/classes")
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyRole('STUDENT')")
+@EnableAsync
 public class ClassController {
     final ClassService classService;
     private final HttpServletRequest request;

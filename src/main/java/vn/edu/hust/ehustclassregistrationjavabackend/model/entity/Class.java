@@ -69,6 +69,8 @@ public class Class extends BaseEntity {
                 .teacherEmail(teacherEmail)
                 .theoryClassId(theoryClassId)
                 .classType(classType)
+                .needExperiment(course.needExperiment)
+                .credit(course.credit)
                 .build();
     }
 
