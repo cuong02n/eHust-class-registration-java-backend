@@ -2,7 +2,9 @@ package vn.edu.hust.ehustclassregistrationjavabackend.controller.student;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +14,8 @@ import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.S
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.ClassService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/students/classes")
@@ -32,6 +36,8 @@ public class ClassController {
         User user = (User) request.getAttribute("user");
         return BaseResponse.ok(classService.getStudentRegistered(user.getEmail(), semester));
     }
+
+
 
     @PostMapping("/change-class")
     public ResponseEntity<?> changeToSimilarClass(@RequestBody ChangeClassRequest changeClassRequest){

@@ -37,7 +37,12 @@ public class ClassService {
     private final ServletRequest httpServletRequest;
     private final CourseService courseService;
     private final UserService userService;
-    @Cacheable(key = "#id+'_'+#semester")
+
+    @CacheEvict(key = "#key")
+    public void evictCache(String key) {
+    }
+
+    @Cacheable(key = "#id + '_' + #semester")
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester)).orElseThrow();
     }
@@ -55,7 +60,7 @@ public class ClassService {
         return classRepository.findAllByClassPK_Semester(semester).stream().map(Class::toClassDto).toList();
     }
 
-//    @CacheEvict(key = )
+    //    @CacheEvict(key = )
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
         User superadmin = (User) httpServletRequest.getAttribute("user");
         return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(superadmin)).toList() // Make entity for update database
@@ -72,21 +77,19 @@ public class ClassService {
         return oldClass.toClassDto();
     }
 
-    public List<ClassDto> getClassByCourseId(String courseId, String semester, boolean countRegistered) {
-        List<ClassDto> result = new Vector<>();
-        classRepository.findAllByCourseIdAndClassPK_Semester(courseId, semester).forEach(c -> result.add(c.toClassDto()));
-        if (countRegistered) {
-            for (ClassDto classDto : result) {
-                classDto.setCurrentRegistered(userClassRepository.countRegisteredByClassIdAndSemester(classDto.getId(), semester));
-            }
+    public HashMap<String, Integer> countRegisteredOfClass(List<String> classIds, String semester) {
+        HashMap<String, Integer> result = new HashMap<>();
+        for (String classId : classIds) {
+            result.put(classId, userClassRepository.countRegisteredByClassIdAndSemester(classId, semester));
         }
         return result;
     }
 
+
     /**
      * @param student:  student
      * @param semester: semester
-     * @return Có trong thời gian được đăng kí lớp không
+     * @throws MessageException Có trong thời gian được đăng kí lớp không (của riêng sinh viên đó)
      */
     public void checkTimeOpenForStudent(User student, String semester, List<String> courseIdsRequest) {
         if (metadataService.isFreeClassRegister(semester)) {
@@ -264,7 +267,7 @@ public class ClassService {
         }
 
         // Các lớp muốn đk
-        List<Class> registeredClassRequests = findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
+        List<Class> registeredClassRequests = findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(rq.getSemester(), rq.getClassIds());
 
         /**
          * Không được đăng ký lớp LT
@@ -283,7 +286,7 @@ public class ClassService {
         /**
          * TODO: error: Tự động thêm lớp lý thuyết nếu có lớp bài tập
          */
-        registeredClassRequests.addAll(findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), registeredClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
+        registeredClassRequests.addAll(findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(rq.getSemester(), registeredClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
 
 
         /**
@@ -313,20 +316,8 @@ public class ClassService {
 
         checkFullSlotClass(registeredClassRequests);
 
-        List<UserClassRegistration> registeredWillSave = new Vector<>();
-        for (Class c : registeredClassRequests) {
-            UserClassRegistration entity = UserClassRegistration
-                    .builder()
-                    .classId(c.getClassPK().getId())
-                    .semester(c.getClassPK().getSemester())
-                    .email(student.getEmail())
-                    .build();
-            entity.setUserModified(student);
-            registeredWillSave.add(entity);
-        }
-        return userClassRepository.saveAllAndFlush(registeredWillSave);
+        return saveRegistered(student, registeredClassRequests);
     }
-
 
     public List<UserClassRegistration> registerClassByAdmin(AdminClassRegisterRequest rq) {
         User admin = (User) httpServletRequest.getAttribute("user");
@@ -346,7 +337,7 @@ public class ClassService {
         /**
          * Không cần check thời gian đăng kí hp
          */
-        List<Class> registeredClassRequests = findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), rq.getClassIds());
+        List<Class> registeredClassRequests = findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(rq.getSemester(), rq.getClassIds());
 
 
         /**
@@ -361,7 +352,7 @@ public class ClassService {
         /**
          * TODO: error: Tự động thêm lớp lý thuyết nếu có lớp bài tập, data từ excel có thể lỗi
          */
-        registeredClassRequests.addAll(findAllByClassPK_SemesterAndClassPK_IdIn(rq.getSemester(), registeredClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
+        registeredClassRequests.addAll(findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(rq.getSemester(), registeredClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
 
 
         /**
@@ -394,21 +385,7 @@ public class ClassService {
          * Không cần check lớp đầy
          */
 
-
-        List<UserClassRegistration> registeredWillSave = new Vector<>();
-        for (Class c : registeredClassRequests) {
-            UserClassRegistration entity = UserClassRegistration
-                    .builder()
-                    .classId(c.getClassPK().getId())
-                    .semester(c.getClassPK().getSemester())
-                    .email(student.getEmail())
-                    .build();
-            entity.setUserModified(admin);
-            registeredWillSave.add(entity);
-        }
-        System.out.println(registeredWillSave);
-
-        return userClassRepository.saveAllAndFlush(registeredWillSave);
+        return saveRegistered(student, registeredClassRequests);
     }
 
     public List<UserClassRegistration> unRegisterClassByStudent(StudentClassRegisterRequest rq) {
@@ -532,8 +509,13 @@ public class ClassService {
         return userClassRepository.deleteAllBySemesterAndClassIdIn(rq.getSemester(), allClassIdWillBeUnregistered);
     }
 
+    @Cacheable(key = "'count_'+#cls.classPK.id+#cls.classPK.semester")
+    public int countRegisteredInClass(Class cls) {
+        return userClassRepository.countRegisteredByClassIdAndSemester(cls.getClassPK().getId(), cls.getClassPK().getSemester());
+    }
+
     private void checkFullSlotClass(List<Class> registeredClasses) {
-        // TODO:  kiểm tra lớp đã đầy chưa
+        // TODO:  Kiểm tra lớp đã đầy chưa
     }
 
     public int getCreditRegistered(User user, String semester) {
@@ -657,15 +639,34 @@ public class ClassService {
 
     /**
      * Cached Method
+     *
      * @param semester: semester
      * @param classIds: list contains string
      * @return List classes
      */
-    public List<Class> findAllByClassPK_SemesterAndClassPK_IdIn(String semester,List<String> classIds){
+    public List<Class> findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(String semester, List<String> classIds) {
         List<Class> result = new ArrayList<>();
-        for(String classId : classIds){
-            result.add(classRepository.findByClassPK(new ClassPK(classId,semester)).orElseThrow());
+        for (String classId : classIds) {
+            result.add(classRepository.findByClassPK(new ClassPK(classId, semester)).orElseThrow());
         }
         return result;
     }
+
+    private List<UserClassRegistration> saveRegistered(User student, List<Class> classes) {
+        User audit = (User) httpServletRequest.getAttribute("user");
+        List<UserClassRegistration> registrations = new ArrayList<>();
+        for (Class c : classes) {
+            UserClassRegistration entity = UserClassRegistration
+                    .builder()
+                    .classId(c.getClassPK().getId())
+                    .semester(c.getClassPK().getSemester())
+                    .email(student.getEmail())
+                    .build();
+            entity.setUserModified(audit);
+            registrations.add(entity);
+
+        }
+        return userClassRepository.saveAll(registrations);
+    }
+
 }
