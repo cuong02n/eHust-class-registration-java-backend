@@ -23,7 +23,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
     Logger logger = LoggerFactory.getLogger(CustomExceptionResolver.class);
     @Override
     protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
-//        logger.error("{}: {}",request.getRequestURI(), ex.getMessage());
+        logger.error(ex.getMessage(), ex);
         try {
             if (ex instanceof ErrorResponse errorResponse) {
                 return this.handleErrorResponse(errorResponse, request, response, handler);

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.BaseResponse;
@@ -27,8 +28,9 @@ public class SuperAdminUserController {
     }
 
     @PostMapping("/update-user")
-    public ResponseEntity<?> updateStudents(@RequestBody List<@Valid User> students){
-        return BaseResponse.ok(userService.updateUsers(students));
+    @Transactional
+    public ResponseEntity<?> updateUsers(@RequestBody List<@Valid User> users){
+        return BaseResponse.ok(userService.updateUsers(users));
     }
 
     @PostMapping("/activate")

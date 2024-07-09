@@ -1,6 +1,0 @@
----------------------------------------------------------
-The request #1
-	Ip: 0:0:0:0:0:0:0:1, null
-	Url: POST /api/super-admin/user/update-user
-Response: 500
-	This request took 0.08 to complete

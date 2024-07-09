@@ -61,7 +61,8 @@ public class ClassDto implements Serializable {
     boolean needExperiment;
 
     public Class toClassEntity(User modified) {
-        Class entity = Class.builder()
+        //        entity.setUserModified(modified);
+        return Class.builder()
                 .classPK(new ClassPK(id, semester))
                 .semesterType(semesterType)
                 .maxStudent(maxStudent)
@@ -72,7 +73,5 @@ public class ClassDto implements Serializable {
                 .classType(classType)
                 .teacherEmail(teacherEmail)
                 .build();
-        entity.setUserModified(modified);
-        return entity;
     }
 }

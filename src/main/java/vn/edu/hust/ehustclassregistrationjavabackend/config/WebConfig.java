@@ -33,13 +33,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @EnableMethodSecurity
 
-@EnableJpaAuditing
 public class WebConfig implements WebMvcConfigurer {
     private static final Logger log = LoggerFactory.getLogger(WebConfig.class);
     final RateLimitInterceptor rateLimitInterceptor;
     final CustomExceptionResolver customExceptionResolver;
     final RestApiInterceptor restApiInterceptor;
-    final HttpServletRequest request;
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 //        converters.clear();
@@ -70,10 +68,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(restApiInterceptor);
     }
 
-    @Bean
-    public AuditorAware<String> auditorProvider() {
-        return new AuditorAwareImpl(request);
-    }
+//    @Bean
+//    public AuditorAware<String> auditorProvider() {
+//    }
 
 
 //    @Bean

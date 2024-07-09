@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserRepository;
@@ -54,6 +55,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmailContaining(id.substring(2)).orElseThrow();
     }
 
+    @Transactional
     public List<User> updateUsers( List<User> students) {
         List<User> existingStudents = userRepository.findAllByEmailIn(students.stream().map(User::getEmail).collect(Collectors.toList()));
         if(existingStudents.size()!=students.size())

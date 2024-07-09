@@ -79,12 +79,12 @@ public class ClassService {
         for (int i = 0; i < classes.size(); i++) {
             classes.set(i, classes.get(i).mergeWithDto(classDtos.get(i)));
         }
-        /**
-         * set audit
-         */
-        for (Class cls : classes) {
-            cls.setUserModified(superadmin);
-        }
+//        /**
+//         * set audit
+//         */
+//        for (Class cls : classes) {
+//            cls.setUserModified(superadmin);
+//        }
 
         return classRepository.saveAll(classes).stream().map(Class::toClassDto).toList();
     }
@@ -588,7 +588,7 @@ public class ClassService {
              */
             for (UserClassRegistration registration : existingClassRegistration) {
                 if (registration.getClassId().equals(oldClass.getClassPK().getId())) {
-                    registration.setUserModified(student);
+//                    registration.setUserModified(student);
                     registration.setClassId(rq.getNewClassId());
                     return List.of(userClassRepository.saveAndFlush(registration));
                 }
@@ -624,7 +624,7 @@ public class ClassService {
                  * Save lớp LT mới
                  */
                 if (registration.getClassId().equals(newTheoryClass.getClassPK().getId())) {
-                    registration.setUserModified(student);
+//                    registration.setUserModified(student);
                     registration.setClassId(newTheoryClass.getClassPK().getId());
                     listRegistrationToSave.add(registration);
                 }
@@ -632,7 +632,7 @@ public class ClassService {
                  * Save lớp BT mới
                  */
                 if (registration.getClassId().equals(newClass.getClassPK().getId())) {
-                    registration.setUserModified(student);
+//                    registration.setUserModified(student);
                     registration.setClassId(newClass.getClassPK().getId());
                     listRegistrationToSave.add(registration);
                 }
@@ -670,7 +670,7 @@ public class ClassService {
                     .semester(c.getClassPK().getSemester())
                     .email(student.getEmail())
                     .build();
-            entity.setUserModified(audit);
+//            entity.setUserModified(audit);
             registrations.add(entity);
 
         }

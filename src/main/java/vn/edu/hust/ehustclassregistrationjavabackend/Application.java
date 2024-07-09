@@ -15,7 +15,8 @@ import java.util.Random;
 import java.util.Vector;
 
 @SpringBootApplication
-@EnableJpaRepositories
+@EnableJpaAuditing
+
 public class Application {
     static ApplicationContext ctx;
 
