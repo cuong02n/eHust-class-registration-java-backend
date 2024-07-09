@@ -20,6 +20,7 @@ import java.util.Collections;
 public class User extends BaseEntity implements UserDetails {
     @Id
     @Expose
+    @NonNull
     String email;
 
     @Expose
@@ -28,23 +29,28 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Expose
     @Column(nullable = false)
+    @NonNull
     Role role;
 
     @Enumerated(EnumType.STRING)
     @Expose
-    StudentType studentType;
+    @Builder.Default
+    StudentType studentType = StudentType.STANDARD;
 
     @Expose
+    @NonNull
     String name;
 
-    @Expose(serialize = false,deserialize = false)
+    @Expose(serialize = false, deserialize = false)
     String password;
 
     @Expose
-    Integer maxCredit;
+    int maxCredit;
     @Expose
     @Column(columnDefinition = "BIT(1) default 1")
+    @Builder.Default
     boolean active = true;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

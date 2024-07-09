@@ -71,6 +71,11 @@ public class Course extends BaseEntity {
         return GsonUtil.gsonExpose.toJson(this);
     }
 
+    public Course mergeWithDto(Course other) {
+        other.setId(getId());
+        return other;
+    }
+
     public enum CourseType {
         STANDARD,
         ELITECH

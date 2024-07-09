@@ -3,7 +3,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -38,9 +37,6 @@ public class ClassService {
     private final CourseService courseService;
     private final UserService userService;
 
-    @CacheEvict(key = "#key")
-    public void evictCache(String key) {
-    }
 
     @Cacheable(key = "#id + '_' + #semester")
     public Class getClassByIdAndSemester(String id, String semester) {
@@ -65,16 +61,32 @@ public class ClassService {
         User superadmin = (User) httpServletRequest.getAttribute("user");
         return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(superadmin)).toList() // Make entity for update database
         ).stream().map(Class::toClassDto).toList();
-
     }
 
-    public ClassDto cancelClass(ClassPK classPK) {
-        User admin = (User) httpServletRequest.getAttribute("user");
-        Class oldClass = classRepository.findByClassPK(classPK).orElseThrow();
-        oldClass.setStatus(Class.Status.CANCEL);
-        oldClass.setUserModified(admin);
-        classRepository.saveAndFlush(oldClass);
-        return oldClass.toClassDto();
+    /**
+     * Use for small update
+     *
+     * @param classDtos: small size
+     * @return List DTOs
+     */
+
+    public List<ClassDto> updateClass(List<ClassDto> classDtos) {
+        User superadmin = (User) httpServletRequest.getAttribute("user");
+        List<Class> classes = findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(classDtos.get(0).getSemester(), classDtos.stream().map(ClassDto::getId).toList());
+        if (classes.size() != classDtos.size())
+            throw new MessageException("Chỉ tìm thấy những lớp sau: " + classes.stream().map(c -> c.getClassPK().getId()).toList());
+
+        for (int i = 0; i < classes.size(); i++) {
+            classes.set(i, classes.get(i).mergeWithDto(classDtos.get(i)));
+        }
+        /**
+         * set audit
+         */
+        for (Class cls : classes) {
+            cls.setUserModified(superadmin);
+        }
+
+        return classRepository.saveAll(classes).stream().map(Class::toClassDto).toList();
     }
 
     public HashMap<String, Integer> countRegisteredOfClass(List<String> classIds, String semester) {
@@ -516,10 +528,6 @@ public class ClassService {
 
     private void checkFullSlotClass(List<Class> registeredClasses) {
         // TODO:  Kiểm tra lớp đã đầy chưa
-    }
-
-    public int getCreditRegistered(User user, String semester) {
-        return userClassRepository.sumCreditByEmailAndSemester(user.getEmail(), semester);
     }
 
     private void checkTimetable(List<Class> registeredClasses) {

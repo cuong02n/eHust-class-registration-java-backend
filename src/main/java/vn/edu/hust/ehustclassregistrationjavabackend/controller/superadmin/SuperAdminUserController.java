@@ -1,5 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller.superadmin;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,9 +26,9 @@ public class SuperAdminUserController {
         return BaseResponse.ok(userService.getAllAdmin());
     }
 
-    @PostMapping("/update-students")
-    public ResponseEntity<?> updateStudents(@RequestBody List<User> students){
-        return BaseResponse.ok(userService.updateStudents(students));
+    @PostMapping("/update-user")
+    public ResponseEntity<?> updateStudents(@RequestBody List<@Valid User> students){
+        return BaseResponse.ok(userService.updateUsers(students));
     }
 
     @PostMapping("/activate")

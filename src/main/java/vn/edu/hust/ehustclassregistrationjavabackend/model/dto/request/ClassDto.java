@@ -20,10 +20,10 @@ public class ClassDto implements Serializable {
     @NonNull
     @Expose
     String id;
-    @Nullable
+    @NonNull
     @Expose
     String semester;
-    @Nullable
+    @NonNull
     @Expose
     String semesterType;
     @NonNull
@@ -32,31 +32,32 @@ public class ClassDto implements Serializable {
 
     @Expose
     @Nullable
-    Integer currentRegistered;
-
-    @Expose
     String theoryClassId;
 
     @Expose
+    @NonNull
     Class.ClassType classType;
 
     @Expose
-    int credit;
-    @Nullable
+    @NonNull
+    Integer credit;
+    @NonNull
     @Expose
     Class.Status status;
     @NonNull
     @Expose
     String courseId;
-    @NonNull
+    @Nullable
     @Expose
     @Singular
     List<Class.Timetable> timetables;
 
     @Expose
+    @Nullable
     String teacherEmail;
 
     @Expose
+    @NonNull
     boolean needExperiment;
 
     public Class toClassEntity(User modified) {

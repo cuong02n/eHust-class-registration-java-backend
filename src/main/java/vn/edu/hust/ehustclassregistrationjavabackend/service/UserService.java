@@ -1,12 +1,12 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -54,8 +54,11 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmailContaining(id.substring(2)).orElseThrow();
     }
 
-    public List<User> updateStudents(List<User> students) {
-        return null;
+    public List<User> updateUsers( List<User> students) {
+        List<User> existingStudents = userRepository.findAllByEmailIn(students.stream().map(User::getEmail).collect(Collectors.toList()));
+        if(existingStudents.size()!=students.size())
+            throw new MessageException("1 số USER không tìm thấy, hãy kiểm tra lại");
+        return userRepository.saveAll(students);
     }
 
     @CacheEvict(allEntries = true)

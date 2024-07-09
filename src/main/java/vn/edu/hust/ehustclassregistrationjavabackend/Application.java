@@ -3,6 +3,9 @@ package vn.edu.hust.ehustclassregistrationjavabackend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.service.UserService;
@@ -12,7 +15,7 @@ import java.util.Random;
 import java.util.Vector;
 
 @SpringBootApplication
-
+@EnableJpaRepositories
 public class Application {
     static ApplicationContext ctx;
 

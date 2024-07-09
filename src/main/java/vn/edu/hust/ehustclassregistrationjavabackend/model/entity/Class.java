@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
+import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.io.Serializable;
 import java.util.List;
@@ -72,6 +73,18 @@ public class Class extends BaseEntity {
                 .needExperiment(course.needExperiment)
                 .credit(course.credit)
                 .build();
+    }
+
+    public Class mergeWithDto(ClassDto classDto) {
+        setSemesterType(classDto.getSemesterType());
+        setMaxStudent(classDto.getMaxStudent());
+        setStatus(classDto.getStatus());
+        setCourseId(classDto.getCourseId());
+        setTimetable(TimetableUtil.toString(classDto.getTimetables()));
+        setTeacherEmail(classDto.getTeacherEmail());
+        setTheoryClassId(classDto.getTheoryClassId());
+        setClassType(classDto.getClassType());
+        return this;
     }
 
     public enum Status {

@@ -8,12 +8,16 @@ import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @MappedSuperclass
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable {
     @Column(name = "createdBy")
     @Expose
@@ -23,6 +27,8 @@ public abstract class BaseEntity implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @Expose(deserialize = false, serialize = false)
     @Nullable
+    @CreatedBy
+
     User createdBy;
 
     @Column(name = "updatedBy")
@@ -33,6 +39,8 @@ public abstract class BaseEntity implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @Expose(deserialize = false, serialize = false)
     @Nullable
+    @LastModifiedBy
+
     User updatedBy;
 
     @CreationTimestamp

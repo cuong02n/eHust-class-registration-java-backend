@@ -28,19 +28,21 @@ public class SuperAdminClassController {
         return BaseResponse.ok(classService.createClass(request.getClasses()));
     }
 
+    /**
+     * Create class by timetable
+     * @param file:
+     * @return BaseResponse
+     * @throws IOException: Interrupt
+     */
     @PostMapping("/post-class-by-file")
     public ResponseEntity<?> batchClassByExcel(@RequestBody MultipartFile file) throws IOException {
         return BaseResponse.ok(classService.updateClassesByFile(file));
     }
 
-    @PostMapping("/cancel-class")
-    public ResponseEntity<?> cancelClass(@RequestBody ClassPK classPK){
-        return BaseResponse.ok(classService.cancelClass(classPK));
-    }
 
     @PostMapping("/update-class")
     public ResponseEntity<?> updateClasses(@RequestBody List<ClassDto> classes){
-        return BaseResponse.ok(classService.createClass(classes));
+        return BaseResponse.ok(classService.updateClass(classes));
     }
 
 }

@@ -5,11 +5,14 @@ import com.zaxxer.hikari.HikariConfigMXBean;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
 import com.zaxxer.hikari.pool.HikariPool;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -29,12 +32,14 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @EnableMethodSecurity
+
+@EnableJpaAuditing
 public class WebConfig implements WebMvcConfigurer {
     private static final Logger log = LoggerFactory.getLogger(WebConfig.class);
     final RateLimitInterceptor rateLimitInterceptor;
     final CustomExceptionResolver customExceptionResolver;
     final RestApiInterceptor restApiInterceptor;
-
+    final HttpServletRequest request;
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 //        converters.clear();
@@ -63,6 +68,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(rateLimitInterceptor);
         registry.addInterceptor(restApiInterceptor);
+    }
+
+    @Bean
+    public AuditorAware<String> auditorProvider() {
+        return new AuditorAwareImpl(request);
     }
 
 
