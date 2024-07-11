@@ -50,27 +50,19 @@ public class TimetableUtil {
                 if (timetable1.getValue().equals(timetable2.getValue())) {
                     continue;
                 }
-                /**
-                 * Khác thứ -> ok luôn
-                 */
+                /** Khác thứ -> ok luôn */
                 if(!timetable2.getKey().getDayOfWeek().equals(timetable1.getKey().getDayOfWeek())){
                     continue;
                 }
-                /**
-                 * Không trùng tuần -> ok luôn
-                 */
+                /** Không trùng tuần -> ok luôn */
                 if(!conflictWeek(timetable1.getKey().getWeek(),timetable2.getKey().getWeek())){
                     continue;
                 }
-                /**
-                 * Không trùng giờ -> ok luôn
-                 */
+                /** Không trùng giờ -> ok luôn */
                 if (!conflictHour(timetable1.getKey().getFrom(), timetable1.getKey().getTo(), timetable2.getKey().getFrom(), timetable2.getKey().getTo())) {
                     continue;
                 }
-                /**
-                 * Trùng thứ, trùng tuần, trùng giờ -> ko hợp lệ
-                 */
+                /** Trùng thứ, trùng tuần, trùng giờ -> ko hợp lệ */
                 throw new MessageException("Trùng lịch học: "+timetable1.getValue()+", "+timetable2.getValue());
             }
         }

@@ -23,6 +23,7 @@ public class UserCourseRegistration extends BaseEntity {
     String semester;
 
     @Column(name = "email", nullable = false)
+    @Expose
     String email;
 
     @ManyToOne(fetch = FetchType.LAZY)

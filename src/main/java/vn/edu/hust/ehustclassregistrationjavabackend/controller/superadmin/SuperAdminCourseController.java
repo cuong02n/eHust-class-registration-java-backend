@@ -33,7 +33,7 @@ public class SuperAdminCourseController {
         return BaseResponse.ok(courseService.insertCourses(file));
     }
 
-    @PatchMapping("")
+    @PostMapping("/update")
     public ResponseEntity<?> updateCourse(@RequestBody List<Course> newCourse){
         return BaseResponse.ok(courseService.updateCourse(newCourse));
     }

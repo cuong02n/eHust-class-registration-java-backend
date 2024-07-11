@@ -28,9 +28,7 @@ public class AuthService {
         if (user == null) {
             throw new MessageException("Tài khoản không tồn tại", HttpStatus.UNAUTHORIZED);
         }
-//        System.out.println("start"+System.currentTimeMillis()%10000);
         if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-//            System.out.println("end"+System.currentTimeMillis()%10000);
 
             long expired = System.currentTimeMillis() + ACCESS_TOKEN_EXPIRED;
             return new AuthResponse(jwtUtils.generateAccessToken(user, expired), expired, user.getUsername(), user.getRole());

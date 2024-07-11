@@ -8,7 +8,6 @@ import lombok.NonNull;
 import lombok.Singular;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Class;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.ClassPK;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 
 import java.io.Serializable;
@@ -54,13 +53,16 @@ public class ClassDto implements Serializable {
 
     @Expose
     @Nullable
+    String courseName;
+    @Expose
+    @Nullable
     String teacherEmail;
 
     @Expose
     @NonNull
     boolean needExperiment;
 
-    public Class toClassEntity(User modified) {
+    public Class toClassEntity() {
         //        entity.setUserModified(modified);
         return Class.builder()
                 .classPK(new ClassPK(id, semester))

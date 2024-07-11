@@ -22,8 +22,8 @@ import java.nio.charset.StandardCharsets;
 public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
     Logger logger = LoggerFactory.getLogger(CustomExceptionResolver.class);
     @Override
-    protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler, Exception ex) {
-        logger.error(ex.getMessage(), ex);
+    protected ModelAndView doResolveException(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, Object handler,@NonNull Exception ex) {
+//        logger.error(ex.getMessage(), ex);
         try {
             if (ex instanceof ErrorResponse errorResponse) {
                 return this.handleErrorResponse(errorResponse, request, response, handler);
@@ -32,7 +32,7 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
             sendServerError(ex, request, response);
         } catch (Exception handlerEx) {
             if (logger.isWarnEnabled()) {
-                logger.warn("Failure while trying to resolve exception [" + ex.getClass().getName() + "]", handlerEx);
+                logger.warn("Failure while trying to resolve exception {}", ex.getClass().getName(), handlerEx);
             }
         }
 
@@ -59,10 +59,8 @@ public class CustomExceptionResolver extends DefaultHandlerExceptionResolver {
             statusCode = 403;
         }else if(ex instanceof NullPointerException n){
             message = "Yêu cầu không hợp lệ: "+n.getMessage();
-            statusCode = 400;
         }else if(ex instanceof HttpMessageNotReadableException hmne){
             message = hmne.getMessage();
-            statusCode = 400;
         }
 
 

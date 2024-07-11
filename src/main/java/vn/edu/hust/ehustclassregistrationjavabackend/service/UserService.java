@@ -1,17 +1,12 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.UserRepository;
@@ -20,13 +15,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
 @CacheConfig(cacheNames = {"users"})
 public class UserService implements UserDetailsService {
-    private static final Logger log = LoggerFactory.getLogger(UserService.class);
     final UserRepository userRepository;
-    private final HttpServletRequest httpServletRequest;
 
 
     public List<User> getAllStudent() {
@@ -35,10 +29,6 @@ public class UserService implements UserDetailsService {
 
     public List<User> getAllAdmin() {
         return userRepository.findAllByRole(User.Role.ROLE_ADMIN);
-    }
-
-    public List<User> getAllSuperAdmin() {
-        return userRepository.findAllByRole(User.Role.ROLE_SUPER_ADMIN);
     }
 
     @Override
@@ -55,10 +45,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmailContaining(id.substring(2)).orElseThrow();
     }
 
-    @Transactional
-    public List<User> updateUsers( List<User> students) {
+    public List<User> updateUsers(List<User> students) {
         List<User> existingStudents = userRepository.findAllByEmailIn(students.stream().map(User::getEmail).collect(Collectors.toList()));
-        if(existingStudents.size()!=students.size())
+        if (existingStudents.size() != students.size())
             throw new MessageException("1 số USER không tìm thấy, hãy kiểm tra lại");
         return userRepository.saveAll(students);
     }
@@ -68,19 +57,18 @@ public class UserService implements UserDetailsService {
         List<User> users = userRepository.findAllByEmailIn(emails);
         Set<String> userEmails = users.stream().map(User::getEmail).collect(Collectors.toSet());
 
-        if (users.size() != emails.size()){
+        if (users.size() != emails.size()) {
             /**
              * Lỗi không tìm thấy 1 hoặc nhiều
              */
-            List<String> emailsNotFound = emails.stream().filter(email->!userEmails.contains(email)).toList();
-            throw new MessageException("Email sau đây không tồn tại: "+emailsNotFound);
+            List<String> emailsNotFound = emails.stream().filter(email -> !userEmails.contains(email)).toList();
+            throw new MessageException("Email sau đây không tồn tại: " + emailsNotFound);
         }
         long activatedCount = userRepository.activateUserByEmailIn(emails);
-        return "Activated: "+activatedCount;
+        return "Activated: " + activatedCount;
     }
 
     /**
-     *
      * @param emails: List String
      * @return message
      */
@@ -88,14 +76,14 @@ public class UserService implements UserDetailsService {
     public String deActivate(List<String> emails) {
         List<User> users = userRepository.findAllByEmailIn(emails);
         Set<String> userEmails = users.stream().map(User::getEmail).collect(Collectors.toSet());
-        if (users.size() != emails.size()){
+        if (users.size() != emails.size()) {
             /**
              * Lỗi không tìm thấy 1 hoặc nhiều
              */
-            List<String> emailsNotFound = emails.stream().filter(email->!userEmails.contains(email)).toList();
-            throw new MessageException("Email sau đây không tồn tại: "+emailsNotFound);
+            List<String> emailsNotFound = emails.stream().filter(email -> !userEmails.contains(email)).toList();
+            throw new MessageException("Email sau đây không tồn tại: " + emailsNotFound);
         }
         long deActivateCount = userRepository.deActivateUserByEmailIn(emails);
-        return "Deactivated: "+deActivateCount;
+        return "Deactivated: " + deActivateCount;
     }
 }

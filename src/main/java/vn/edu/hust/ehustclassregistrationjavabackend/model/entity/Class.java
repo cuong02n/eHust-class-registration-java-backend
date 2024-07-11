@@ -44,7 +44,7 @@ public class Class extends BaseEntity {
     @Expose
     String semesterType;
     @ManyToOne(fetch = FetchType.EAGER)
-    @Expose()
+    @Expose
     @JoinColumn(name = "course_id", insertable = false, updatable = false)
     Course course;
     @Expose
@@ -72,6 +72,7 @@ public class Class extends BaseEntity {
                 .classType(classType)
                 .needExperiment(course.needExperiment)
                 .credit(course.credit)
+                .courseName(course.courseName)
                 .build();
     }
 

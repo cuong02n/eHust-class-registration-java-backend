@@ -1,23 +1,25 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.annotation.Nonnull;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
+import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.User;
 import vn.edu.hust.ehustclassregistrationjavabackend.repository.MetadataRepository;
 
+import java.time.DayOfWeek;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
 public class MetadataService {
     private final MetadataRepository metadataRepository;
-    private final HttpServletRequest httpServletRequest;
 
     /**
      * @param key:
@@ -47,10 +49,12 @@ public class MetadataService {
         return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_OFFICIAL_STANDARD, Metadata.MetadataKey.END_REGISTER_CLASS_OFFICIAL_STANDARD, semester, System.currentTimeMillis());
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isElitechUnofficialRegisterClass(String semester) {
         return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_UNOFFICIAL_ELITECH, Metadata.MetadataKey.END_REGISTER_CLASS_UNOFFICIAL_ELITECH, semester, System.currentTimeMillis());
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isStandardUnofficialRegisterClass(String semester) {
         return isTimeBetween(Metadata.MetadataKey.START_REGISTER_CLASS_UNOFFICIAL_STANDARD, Metadata.MetadataKey.END_REGISTER_CLASS_UNOFFICIAL_STANDARD, semester, System.currentTimeMillis());
     }
@@ -73,13 +77,13 @@ public class MetadataService {
     }
 
     public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
-        if(key== Metadata.MetadataKey.START_WEEK_1){
-            /**
-             * TODO: Ktra có phải t2 ko
-             */
-
+        /**
+         * Ktra thứ 2
+         */
+        if (key == Metadata.MetadataKey.START_WEEK_1) {
+            if(!LocalDate.parse(value, DateTimeFormatter.ISO_DATE).getDayOfWeek().equals(DayOfWeek.MONDAY))
+                throw new MessageException("Ngày bắt đầu năm học phải là thứ 2");
         }
-        User superAdmin = (User) httpServletRequest.getAttribute("user");
         Optional<Metadata> metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
         Metadata metadata;
         if (metadataDB.isPresent()) {
@@ -89,8 +93,7 @@ public class MetadataService {
             metadata.setMetadataPk(new Metadata.MetadataPk(key, semester == null ? "" : semester));
         }
         metadata.setValue(value);
-//        metadata.setUserModified(superAdmin);
-        return metadataRepository.saveAndFlush(metadata);
+        return metadataRepository.save(metadata);
     }
 
     @CachePut(value = "currentSemester")

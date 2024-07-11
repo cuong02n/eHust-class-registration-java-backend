@@ -1,6 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
-import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -33,10 +33,9 @@ public class ClassService {
     private final UserClassRepository userClassRepository;
     private final ClassRepository classRepository;
     private final MetadataService metadataService;
-    private final ServletRequest httpServletRequest;
     private final CourseService courseService;
     private final UserService userService;
-
+    private final HttpServletRequest httpServletRequest;
 
     @Cacheable(key = "#id + '_' + #semester")
     public Class getClassByIdAndSemester(String id, String semester) {
@@ -58,8 +57,7 @@ public class ClassService {
 
     //    @CacheEvict(key = )
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
-        User superadmin = (User) httpServletRequest.getAttribute("user");
-        return classRepository.saveAll(classDtos.stream().map(classDto -> classDto.toClassEntity(superadmin)).toList() // Make entity for update database
+        return classRepository.saveAll(classDtos.stream().map(ClassDto::toClassEntity).toList() // Make entity for update database
         ).stream().map(Class::toClassDto).toList();
     }
 
@@ -71,7 +69,6 @@ public class ClassService {
      */
 
     public List<ClassDto> updateClass(List<ClassDto> classDtos) {
-        User superadmin = (User) httpServletRequest.getAttribute("user");
         List<Class> classes = findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(classDtos.get(0).getSemester(), classDtos.stream().map(ClassDto::getId).toList());
         if (classes.size() != classDtos.size())
             throw new MessageException("Chỉ tìm thấy những lớp sau: " + classes.stream().map(c -> c.getClassPK().getId()).toList());
@@ -79,12 +76,6 @@ public class ClassService {
         for (int i = 0; i < classes.size(); i++) {
             classes.set(i, classes.get(i).mergeWithDto(classDtos.get(i)));
         }
-//        /**
-//         * set audit
-//         */
-//        for (Class cls : classes) {
-//            cls.setUserModified(superadmin);
-//        }
 
         return classRepository.saveAll(classes).stream().map(Class::toClassDto).toList();
     }
@@ -148,14 +139,14 @@ public class ClassService {
     private void checkSatisfyConstraintCourse(List<Class> newClassIfMerged) {
         // TODO Chưa check trùng học phần
         Set<Class> theoryClasses = new HashSet<>();
-        Set<Class> exersiseClasses = new HashSet<>();
+        Set<Class> exerciseClasses = new HashSet<>();
         Set<Class> theoryExerciseClasses = new HashSet<>();
         Set<Class> experimentClasses = new HashSet<>();
 
         for (Class c : newClassIfMerged) {
             switch (c.getClassType()) {
                 case THEORY -> theoryClasses.add(c);
-                case EXERCISE -> exersiseClasses.add(c);
+                case EXERCISE -> exerciseClasses.add(c);
                 case EXPERIMENT -> experimentClasses.add(c);
                 case THEORY_EXERCISE -> theoryExerciseClasses.add(c);
             }
@@ -168,7 +159,7 @@ public class ClassService {
             /**
              * Kiểm tra lớp bài tập
              */
-            if (exersiseClasses.stream().noneMatch(aClass -> aClass.getTheoryClassId().equals(c.getClassPK().getId()))) {
+            if (exerciseClasses.stream().noneMatch(aClass -> aClass.getTheoryClassId().equals(c.getClassPK().getId()))) {
                 throw new MessageException("Lớp " + c.getClassPK().getId() + ": " + c.getCourseId() + " cần đăng ký lớp bài tập");
             }
             /**
@@ -213,11 +204,11 @@ public class ClassService {
         /**
          * Xét lớp bài tập
          */
-        for (Class c : exersiseClasses) {
+        for (Class c : exerciseClasses) {
             /**
              * kiểm tra trùng lặp (khác lớp nhưng chung học phần)
              */
-            if (exersiseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
+            if (exerciseClasses.stream().anyMatch(cl -> cl.getCourseId().equals(c.getCourseId()) && !cl.getClassPK().getId().equals(c.getClassPK().getId()))) {
                 throw new MessageException("Học phần " + c.getCourseId() + " không thể có 2 lớp bài tập trùng nhau");
             }
             /**
@@ -332,7 +323,6 @@ public class ClassService {
     }
 
     public List<UserClassRegistration> registerClassByAdmin(AdminClassRegisterRequest rq) {
-        User admin = (User) httpServletRequest.getAttribute("user");
         User student = userService.findUserByEmail(rq.getStudentEmail());
         /**
          * Tìm class đã đăng ký
@@ -464,7 +454,6 @@ public class ClassService {
     }
 
     public List<UserClassRegistration> unRegisterClassByAdmin(AdminClassRegisterRequest rq) {
-        User admin = (User) httpServletRequest.getAttribute("user");
         User student = userService.findUserByEmail(rq.getStudentEmail());
 
         /**
@@ -661,7 +650,6 @@ public class ClassService {
     }
 
     private List<UserClassRegistration> saveRegistered(User student, List<Class> classes) {
-        User audit = (User) httpServletRequest.getAttribute("user");
         List<UserClassRegistration> registrations = new ArrayList<>();
         for (Class c : classes) {
             UserClassRegistration entity = UserClassRegistration
@@ -670,7 +658,6 @@ public class ClassService {
                     .semester(c.getClassPK().getSemester())
                     .email(student.getEmail())
                     .build();
-//            entity.setUserModified(audit);
             registrations.add(entity);
 
         }

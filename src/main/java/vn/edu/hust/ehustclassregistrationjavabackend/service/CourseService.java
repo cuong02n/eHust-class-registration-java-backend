@@ -78,22 +78,18 @@ public class CourseService {
         }
         throw new MessageException("Mã học phần này đã tồn tại " + duplicatedCourses.stream().map(Course::getId).toList());
     }
-    public Course updateCourse(List<Course> newCourse) {
-//        Course existingCourse = courseRepository.findById(newCourse.getId()).orElse(null);
-//        if (existingCourse == null) return null;
-//        ObjectUtil.mergeEntityWithoutNullFieldAndId(existingCourse, newCourse);
-        //TODO:
-//        return courseRepository.save(existingCourse);
-
-
-        return null;
+    public List<Course> updateCourse(List<Course> newCourse) {
+        List<Course> existingCourses = courseRepository.findAllByIdIn(newCourse.stream().map(Course::getId).toList());
+        if(existingCourses.size()!=newCourse.size())
+            throw new MessageException("Không tìm thấy 1 số HP, hãy kiểm tra lại");
+        return courseRepository.saveAll(newCourse);
     }
 
     public List<Course> insertCourses(List<Course> courses) {
-        List<Course> duplicateCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
-        if (!duplicateCourses.isEmpty()) {
-            throw new MessageException("There is duplicated course, please take attention: " + duplicateCourses.stream().map(Course::getId).toList());
-        }
+        List<Course> existingCourses = courseRepository.findAllByIdIn(courses.stream().map(Course::getId).distinct().toList());
+        if (!existingCourses.isEmpty())
+            throw new MessageException("Học phần đã tồn tại: " + existingCourses.stream().map(Course::getId).toList());
+
         return courseRepository.saveAll(courses);
     }
 
@@ -124,14 +120,13 @@ public class CourseService {
     }
 
     public CourseRelationship deleteCourseRelationShip(CourseRelationshipRequest request) {
-
+        // TODO
         return null;
-        //TODO
     }
 
 
-    public void insertUserCourseRegistration(List<UserCourseRegistration> registrations) {
-        userCourseRepository.saveAll(registrations);
+    public List<UserCourseRegistration> insertUserCourseRegistration(List<UserCourseRegistration> registrations) {
+        return userCourseRepository.saveAll(registrations);
     }
 
     public void addRelationship(List<CourseRelationship> relationships) {
