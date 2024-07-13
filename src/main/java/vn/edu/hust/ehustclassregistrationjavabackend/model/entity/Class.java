@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.GsonUtil;
 import vn.edu.hust.ehustclassregistrationjavabackend.utils.TimetableUtil;
 

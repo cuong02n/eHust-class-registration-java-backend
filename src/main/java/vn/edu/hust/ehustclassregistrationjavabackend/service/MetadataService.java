@@ -2,6 +2,7 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.annotation.Nonnull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = "metadata")
 public class MetadataService {
     private final MetadataRepository metadataRepository;
 
@@ -27,13 +29,7 @@ public class MetadataService {
      * @return String
      */
     public String getMetadata(Metadata.MetadataKey key, String semester) {
-        Metadata metadata = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester).orElseThrow();
-        return metadata.getValue();
-    }
-
-    public String getMetadata(Metadata.MetadataKey key) {
-        Metadata metadata = metadataRepository.findByMetadataPk_MetadataKey(key).orElseThrow();
-        return metadata.getValue();
+        return metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester).getValue();
     }
 
 
@@ -84,11 +80,12 @@ public class MetadataService {
             if(!LocalDate.parse(value, DateTimeFormatter.ISO_DATE).getDayOfWeek().equals(DayOfWeek.MONDAY))
                 throw new MessageException("Ngày bắt đầu năm học phải là thứ 2");
         }
-        Optional<Metadata> metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
+        Metadata metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
         Metadata metadata;
-        if (metadataDB.isPresent()) {
-            metadata = metadataDB.get();
+        if (metadataDB!=null) {
+            metadata = metadataDB;
         } else {
+            /** create new*/
             metadata = new Metadata();
             metadata.setMetadataPk(new Metadata.MetadataPk(key, semester == null ? "" : semester));
         }
@@ -96,8 +93,7 @@ public class MetadataService {
         return metadataRepository.save(metadata);
     }
 
-    @CachePut(value = "currentSemester")
     public String getCurrentSemester() {
-        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER);
+        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER,"");
     }
 }

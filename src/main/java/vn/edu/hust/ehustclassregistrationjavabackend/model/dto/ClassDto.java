@@ -1,4 +1,4 @@
-package vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request;
+package vn.edu.hust.ehustclassregistrationjavabackend.model.dto;
 
 import com.google.gson.annotations.Expose;
 import jakarta.annotation.Nullable;

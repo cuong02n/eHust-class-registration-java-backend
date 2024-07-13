@@ -2,13 +2,13 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
-import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.ClassDto;
+import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.ClassDto;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.admin.AdminClassRegisterRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.ChangeClassRequest;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.dto.request.student.StudentClassRegisterRequest;
@@ -27,9 +27,9 @@ import java.util.stream.Collectors;
 @SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
-@CacheConfig(cacheNames = {"classes"})
 public class ClassService {
 
+    private static final Logger log = LoggerFactory.getLogger(ClassService.class);
     private final UserClassRepository userClassRepository;
     private final ClassRepository classRepository;
     private final MetadataService metadataService;
@@ -37,25 +37,22 @@ public class ClassService {
     private final UserService userService;
     private final HttpServletRequest httpServletRequest;
 
-    @Cacheable(key = "#id + '_' + #semester")
     public Class getClassByIdAndSemester(String id, String semester) {
         return classRepository.findByClassPK(new ClassPK(id, semester)).orElseThrow();
     }
 
     public Collection<UserClassRegistration> getStudentRegistered(String email, String semester) {
-        return userClassRepository.findAllByEmailAndSemester(email, semester);
+        return userClassRepository.getStudentRegistered(email, semester);
     }
 
     public List<ClassDto> updateClassesByFile(MultipartFile file) throws IOException {
         return createClass(ExcelUtil.getClassDtoRequest(file.getInputStream()));
     }
 
-    @Cacheable(key = "#semester")
     public List<ClassDto> getClassBySemester(String semester) {
         return classRepository.findAllByClassPK_Semester(semester).stream().map(Class::toClassDto).toList();
     }
 
-    //    @CacheEvict(key = )
     public List<ClassDto> createClass(List<ClassDto> classDtos) {
         return classRepository.saveAll(classDtos.stream().map(ClassDto::toClassEntity).toList() // Make entity for update database
         ).stream().map(Class::toClassDto).toList();
@@ -69,7 +66,8 @@ public class ClassService {
      */
 
     public List<ClassDto> updateClass(List<ClassDto> classDtos) {
-        List<Class> classes = findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(classDtos.get(0).getSemester(), classDtos.stream().map(ClassDto::getId).toList());
+        List<Class> classes =
+                findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(classDtos.get(0).getSemester(), classDtos.stream().map(ClassDto::getId).toList());
         if (classes.size() != classDtos.size())
             throw new MessageException("Chỉ tìm thấy những lớp sau: " + classes.stream().map(c -> c.getClassPK().getId()).toList());
 
@@ -83,7 +81,7 @@ public class ClassService {
     public HashMap<String, Integer> countRegisteredOfClass(List<String> classIds, String semester) {
         HashMap<String, Integer> result = new HashMap<>();
         for (String classId : classIds) {
-            result.put(classId, userClassRepository.countRegisteredByClassIdAndSemester(classId, semester));
+            result.put(classId, userClassRepository.countRegisteredClass(classId, semester));
         }
         return result;
     }
@@ -256,7 +254,7 @@ public class ClassService {
         /**
          * Tìm class đã đăng ký
          */
-        List<UserClassRegistration> existingRegistrations = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<UserClassRegistration> existingRegistrations = userClassRepository.getStudentRegistered(student.getEmail(), rq.getSemester());
         Set<String> existingRegistrationIds = existingRegistrations.stream().map(UserClassRegistration::getClassId).collect(Collectors.toSet());
 
         List<String> duplicatedClassIds = rq.getClassIds().stream().filter(existingRegistrationIds::contains).toList();
@@ -289,7 +287,15 @@ public class ClassService {
         /**
          * TODO: error: Tự động thêm lớp lý thuyết nếu có lớp bài tập
          */
-        registeredClassRequests.addAll(findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(rq.getSemester(), registeredClassRequests.stream().filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId())).map(Class::getTheoryClassId).toList()));
+        registeredClassRequests.addAll(
+                findAllByClassPK_SemesterAndClassPK_IdIn_with_cache(
+                        rq.getSemester(),
+                        registeredClassRequests
+                                .stream()
+                                .filter(r -> !r.getClassPK().getId().equals(r.getTheoryClassId()))
+                                .map(Class::getTheoryClassId).toList()
+                )
+        );
 
 
         /**
@@ -327,7 +333,7 @@ public class ClassService {
         /**
          * Tìm class đã đăng ký
          */
-        List<UserClassRegistration> existingRegistrations = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<UserClassRegistration> existingRegistrations = userClassRepository.getStudentRegistered(student.getEmail(), rq.getSemester());
         Set<String> existingRegistrationIds = existingRegistrations.stream().map(UserClassRegistration::getClassId).collect(Collectors.toSet());
 
         List<String> duplicatedClassIds = rq.getClassIds().stream().filter(existingRegistrationIds::contains).toList();
@@ -396,7 +402,7 @@ public class ClassService {
         /**
          * Tìm class đã đăng ký
          */
-        List<UserClassRegistration> existingClassRegistration = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<UserClassRegistration> existingClassRegistration = userClassRepository.getStudentRegistered(student.getEmail(), rq.getSemester());
         List<Class> registeredClass = existingClassRegistration.stream().map(UserClassRegistration::getAClass).toList();
 
         // TODO:  kiểm tra xem có phải thời điểm cho phép không
@@ -416,7 +422,11 @@ public class ClassService {
         /**
          * Kiểm tra xem có lớp nào do admin đăng kí không (không phải do mình đăng kí)
          */
-        List<String> classRegisteredByAdmin = existingClassRegistration.stream().map(BaseEntity::getCreatedById).filter(s -> !s.equals(student.getEmail())).toList();
+        List<String> classRegisteredByAdmin =
+                existingClassRegistration
+                        .stream()
+                        .map(BaseEntity::getCreatedById).filter(s -> !s.equals(student.getEmail()))
+                        .toList();
         if (rq.getClassIds().stream().anyMatch(classRegisteredByAdmin::contains)) {
             throw new MessageException("Bạn không thể hủy lớp do quản trị viên đã đăng kí");
         }
@@ -424,7 +434,11 @@ public class ClassService {
         /**
          * Các lớp sẽ bị xóa (chưa bao gồm lớp LT)
          */
-        List<Class> classWillBeUnregistered = registeredClass.stream().filter(c -> rq.getClassIds().contains(c.getClassPK().getId())).toList();
+        List<Class> classWillBeUnregistered =
+                registeredClass
+                        .stream()
+                        .filter(c -> rq.getClassIds().contains(c.getClassPK().getId()))
+                        .toList();
         /**
          * Không được tự xóa lớp LT
          */
@@ -434,7 +448,12 @@ public class ClassService {
                 throw new MessageException("Không được đăng ký lớp LT: " + cl.getClassPK().getId());
         }
 
-        List<String> theoryClassIdWillBeUnregistered = classWillBeUnregistered.stream().filter(c -> !c.getClassPK().getId().equals(c.getTheoryClassId())).map(Class::getTheoryClassId).toList();
+        List<String> theoryClassIdWillBeUnregistered =
+                classWillBeUnregistered
+                        .stream()
+                        .filter(c -> !c.getClassPK().getId().equals(c.getTheoryClassId()))
+                        .map(Class::getTheoryClassId)
+                        .toList();
         /**
          * Xóa thêm lớp LT nếu có mã lớp kèm khác với mã lớp
          */
@@ -444,13 +463,22 @@ public class ClassService {
         /**
          * Các lớp sau khi xóa, giả sử xóa thành công
          */
-        List<Class> newClassIfDeletedSuccess = registeredClass.stream().filter(c -> !allClassIdWillBeUnregistered.contains(c.getClassPK().getId())).toList();
+        List<Class> newClassIfDeletedSuccess =
+                registeredClass
+                        .stream()
+                        .filter(c -> !allClassIdWillBeUnregistered.contains(c.getClassPK().getId()))
+                        .toList();
         /**
          * Kiểm tra xem sau khi xóa thì có thỏa mãn điều kiện của các lớp thí nghiệm, thực hành hay ko
          */
         checkSatisfyConstraintCourse(newClassIfDeletedSuccess);
 
+        /** evict cache */
+        for (String classId : allClassIdWillBeUnregistered) {
+            userClassRepository.evictCache(classId, rq.getSemester());
+        }
         return userClassRepository.deleteAllBySemesterAndClassIdIn(rq.getSemester(), allClassIdWillBeUnregistered);
+
     }
 
     public List<UserClassRegistration> unRegisterClassByAdmin(AdminClassRegisterRequest rq) {
@@ -459,7 +487,7 @@ public class ClassService {
         /**
          * Tìm class đã đăng ký
          */
-        List<UserClassRegistration> existingClassRegistration = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<UserClassRegistration> existingClassRegistration = userClassRepository.getStudentRegistered(student.getEmail(), rq.getSemester());
         List<Class> registeredClass = existingClassRegistration.stream().map(UserClassRegistration::getAClass).toList();
 
         // Ko cần kiểm tra xem có phải thời điểm cho phép không
@@ -507,22 +535,29 @@ public class ClassService {
          */
         checkSatisfyConstraintCourse(newClassIfDeletedSuccess);
 
+        /** evict cache */
+        for (String classId : allClassIdWillBeUnregistered) {
+            userClassRepository.evictCache(classId, rq.getSemester());
+        }
         return userClassRepository.deleteAllBySemesterAndClassIdIn(rq.getSemester(), allClassIdWillBeUnregistered);
     }
 
-    @Cacheable(key = "'count_'+#cls.classPK.id+#cls.classPK.semester")
     public int countRegisteredInClass(Class cls) {
-        return userClassRepository.countRegisteredByClassIdAndSemester(cls.getClassPK().getId(), cls.getClassPK().getSemester());
+        return userClassRepository.countRegisteredClass(cls.getClassPK().getId(), cls.getClassPK().getSemester());
     }
 
     private void checkFullSlotClass(List<Class> registeredClasses) {
-        // TODO:  Kiểm tra lớp đã đầy chưa
+        for (Class cls : registeredClasses) {
+            log.info("{}", cls);
+            log.info("registered: {}", countRegisteredInClass(cls));
+            if (countRegisteredInClass(cls) >= cls.getMaxStudent())
+                throw new MessageException("Lớp " + cls.getClassPK().getId() + " đã đầy");
+        }
     }
 
     private void checkTimetable(List<Class> registeredClasses) {
         TimetableUtil.checkValidTimetableClass(registeredClasses);
     }
-
 
     public void checkClassExceedStudentMaximumCredit(User student, List<Class> newClassIfActionSuccess) {
         int totalCredit = newClassIfActionSuccess
@@ -541,7 +576,7 @@ public class ClassService {
     public List<UserClassRegistration> changeToSimilarClass(ChangeClassRequest rq) {
         User student = (User) httpServletRequest.getAttribute("user");
         // TODO: kiểm tra thỏa mãn thời điểm đăng ký
-        List<UserClassRegistration> existingClassRegistration = userClassRepository.findAllByEmailAndSemester(student.getEmail(), rq.getSemester());
+        List<UserClassRegistration> existingClassRegistration = userClassRepository.getStudentRegistered(student.getEmail(), rq.getSemester());
         List<Class> registeredClass = existingClassRegistration.stream().map(UserClassRegistration::getAClass).collect(Collectors.toCollection(ArrayList::new));
         List<Class> tmpOldClass = registeredClass.stream().filter(c -> c.getClassPK().getId().equals(rq.getOldClassId())).toList();
         if (tmpOldClass.isEmpty()) {
@@ -560,7 +595,7 @@ public class ClassService {
          * TODO: Kiểm tra xem có lớp nào do admin đăng kí không (không phải do mình đăng kí)
          */
 
-        if (userClassRepository.countRegisteredByClassIdAndSemester(rq.getNewClassId(), rq.getSemester()) >= newClass.getMaxStudent())
+        if (userClassRepository.countRegisteredClass(rq.getNewClassId(), rq.getSemester()) >= newClass.getMaxStudent())
             throw new MessageException("Lớp đã đầy: " + rq.getNewClassId());
 
         // TODO: Kiem tra tkb cho case này
@@ -570,16 +605,19 @@ public class ClassService {
              * TN: same
              */
             registeredClass.set(registeredClass.indexOf(oldClass), newClass);
-
-
             /**
              * Thay đổi data ->
              */
             for (UserClassRegistration registration : existingClassRegistration) {
                 if (registration.getClassId().equals(oldClass.getClassPK().getId())) {
-//                    registration.setUserModified(student);
+                    /** evict cache cho lớp cũ và mới*/
+
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
                     registration.setClassId(rq.getNewClassId());
-                    return List.of(userClassRepository.saveAndFlush(registration));
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
+
+                    /** save change*/
+                    return userClassRepository.saveAll(List.of(registration));
                 }
             }
             throw new MessageException("lỗi xử lý server, không tìm thấy lớp trong danh sách đã đăng kí: " + rq.getOldClassId());
@@ -603,7 +641,8 @@ public class ClassService {
                 }
             }
             if (i == registeredClass.size())
-                throw new MessageException("lỗi xử lý server, không tìm thấy lớp lý thuyết trong danh sách đã đăng kí: " + rq.getOldClassId(), HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new MessageException("lỗi xử lý server, không tìm thấy lớp lý thuyết trong danh sách đã đăng kí: " + rq.getOldClassId()
+                        , HttpStatus.INTERNAL_SERVER_ERROR);
             /**
              * Save data cho cả lớp LT + BT
              */
@@ -613,20 +652,26 @@ public class ClassService {
                  * Save lớp LT mới
                  */
                 if (registration.getClassId().equals(newTheoryClass.getClassPK().getId())) {
-//                    registration.setUserModified(student);
+                    /** evict cache lớp cũ và mới*/
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
                     registration.setClassId(newTheoryClass.getClassPK().getId());
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
+
                     listRegistrationToSave.add(registration);
                 }
                 /**
                  * Save lớp BT mới
                  */
                 if (registration.getClassId().equals(newClass.getClassPK().getId())) {
-//                    registration.setUserModified(student);
+                    /** evict cache lớp cũ và mới*/
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
                     registration.setClassId(newClass.getClassPK().getId());
+                    userClassRepository.evictCache(registration.getClassId(), rq.getSemester());
+
                     listRegistrationToSave.add(registration);
                 }
             }
-            return userClassRepository.saveAllAndFlush(listRegistrationToSave);
+            return userClassRepository.saveAll(listRegistrationToSave);
         }
         /**
          * LT: false
@@ -659,8 +704,9 @@ public class ClassService {
                     .email(student.getEmail())
                     .build();
             registrations.add(entity);
-
         }
+        /** evict cache */
+        registrations.forEach(reg -> userClassRepository.evictCache(reg.getClassId(), reg.getSemester()));
         return userClassRepository.saveAll(registrations);
     }
 
