@@ -28,6 +28,12 @@ public class CommonClassController {
         return BaseResponse.ok(classService.countRegisteredOfClass(classIds,semester));
     }
 
+    @GetMapping("/count-all")
+    public ResponseEntity<?> getCountRegisteredClass(@RequestParam String semester){
+        return BaseResponse.ok(classService.countAllRegisteredOfSemester(semester));
+    }
+
+
     @GetMapping("/get-by-semester")
     public ResponseEntity<?> getClassBySemester(@RequestParam String semester) {
         return BaseResponse.ok(classService.getClassBySemester(semester));

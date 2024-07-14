@@ -4,7 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
@@ -27,6 +31,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("DanglingJavadoc")
 @Service
 @RequiredArgsConstructor
+@EnableScheduling
 public class ClassService {
 
     private static final Logger log = LoggerFactory.getLogger(ClassService.class);
@@ -84,6 +89,24 @@ public class ClassService {
             result.put(classId, userClassRepository.countRegisteredClass(classId, semester));
         }
         return result;
+    }
+
+    @Cacheable(cacheNames = "count_all_registered", key = "#semester")
+    public HashMap<String, Integer> countAllRegisteredOfSemester(String semester) {
+        List<Object[]> result = userClassRepository.getAllCountRegistered(semester);
+        HashMap<String, Integer> countAllRegistered = new HashMap<>();
+        for (Object[] obj : result) {
+            countAllRegistered.put((String) obj[0], ((Number) obj[1]).intValue());
+        }
+        return countAllRegistered;
+    }
+
+    /**
+     * Evict for above class
+     */
+    @CacheEvict(cacheNames = "count_all_registered", allEntries = true)
+    @Scheduled(initialDelay = 5 * 60 * 1000, fixedDelay = 5 * 60 * 1000)
+    public void evictAllRegisteredOfSemester() {
     }
 
 

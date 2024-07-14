@@ -1,5 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.repository;
 
+import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.UserClassRegistration;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +35,17 @@ public interface UserClassRepository extends JpaRepository<UserClassRegistration
 
     @Query("select u from UserClassRegistration u where u.email = :email and u.semester = :semester")
     List<UserClassRegistration> getStudentRegistered(String email, String semester);
+
+    @Query(
+            """
+                        SELECT c.classPK.id,COUNT(u.classId) AS cnt
+                        FROM UserClassRegistration u
+                        JOIN Class c
+                        ON c.classPK.id = u.classId AND c.classPK.semester = u.semester AND u.semester=:semester
+                        GROUP BY c.classPK.id,c.classPK.semester
+                    """
+    )
+    List<Object[]> getAllCountRegistered(String semester);
 
     /**
      * Should evict cache at service layer, this method does not contain cache handle

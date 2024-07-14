@@ -1,0 +1,900 @@
+---------------------------------------------------------
+The request #1
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.126 to complete
+---------------------------------------------------------
+The request #2
+	Ip: 45.148.10.202, null
+	Url: GET /error
+Response: 400
+	This request took 0.007 to complete
+---------------------------------------------------------
+The request #3
+	Ip: 45.148.10.202, null
+	Url: GET /error
+Response: 400
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #4
+	Ip: 147.185.132.195, null
+	Url: GET /
+Response: 404
+	This request took 0.01 to complete
+---------------------------------------------------------
+The request #5
+	Ip: 188.60.187.39, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #6
+	Ip: 45.156.129.48, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #7
+	Ip: 94.156.10.164, null
+	Url: POST /goform/set_LimitClient_cfg
+Response: 404
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #8
+	Ip: 94.156.10.164, null
+	Url: POST /goform/set_LimitClient_cfg
+Response: 404
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #9
+	Ip: 83.97.73.245, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #10
+	Ip: 77.90.22.10, null
+	Url: POST /goform/set_LimitClient_cfg
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #11
+	Ip: 159.89.21.205, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #12
+	Ip: 159.89.21.205, null
+	Url: OPTIONS /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #13
+---------------------------------------------------------
+The request #14
+	Ip: 134.122.86.43, null
+	Ip: 159.89.109.217, null
+	Url: GET /cgi-bin/authLogin.cgi
+Response: 404
+	Url: GET /solr/admin/info/system
+Response: 404
+	This request took 0.002 to complete
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #15
+	Ip: 46.101.103.175, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #16
+	Ip: 159.89.109.217, null
+	Url: GET /v2/_catalog
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #17
+	Ip: 206.81.30.27, null
+	Url: GET /query
+Response: 404
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #18
+	Ip: 159.89.109.217, null
+	Url: GET /solr/admin/cores
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #19
+	Ip: 83.97.73.245, null
+	Url: GET /actuator/gateway/routes
+Response: 404
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #20
+	Ip: 167.94.146.49, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #21
+	Ip: 167.94.146.49, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #22
+	Ip: 192.140.253.179, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #23
+	Ip: 52.76.71.100, null
+	Url: GET /favicon.ico
+Response: 200
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #24
+	Ip: 77.234.44.177, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #25
+	Ip: 167.94.138.48, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #26
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: POST /api/v1/auth/login
+Response: 200
+	This request took 0.517 to complete
+---------------------------------------------------------
+The request #27
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #28
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #29
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.081 to complete
+---------------------------------------------------------
+The request #30
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #31
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.112 to complete
+---------------------------------------------------------
+The request #32
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #33
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.069 to complete
+---------------------------------------------------------
+The request #34
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.223 to complete
+---------------------------------------------------------
+The request #35
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #36
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.02 to complete
+---------------------------------------------------------
+The request #37
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #38
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #39
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #40
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #41
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.065 to complete
+---------------------------------------------------------
+The request #42
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.216 to complete
+---------------------------------------------------------
+The request #43
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 37.774 to complete
+---------------------------------------------------------
+The request #44
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+---------------------------------------------------------
+The request #45
+	This request took 0.001 to complete
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #46
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #47
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #48
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #49
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #50
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.071 to complete
+---------------------------------------------------------
+The request #51
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.301 to complete
+---------------------------------------------------------
+The request #52
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.26 to complete
+---------------------------------------------------------
+The request #53
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.04 to complete
+---------------------------------------------------------
+The request #54
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.203 to complete
+---------------------------------------------------------
+The request #55
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #56
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 37.686 to complete
+---------------------------------------------------------
+The request #57
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 38.218 to complete
+---------------------------------------------------------
+The request #58
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #59
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #60
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #61
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #62
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #63
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.005 to complete
+---------------------------------------------------------
+The request #64
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.084 to complete
+---------------------------------------------------------
+The request #65
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.371 to complete
+---------------------------------------------------------
+The request #66
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.225 to complete
+---------------------------------------------------------
+The request #67
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.329 to complete
+---------------------------------------------------------
+The request #68
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #69
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #70
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #71
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #72
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.008 to complete
+---------------------------------------------------------
+The request #73
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.323 to complete
+---------------------------------------------------------
+The request #74
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.066 to complete
+---------------------------------------------------------
+The request #75
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #76
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.24 to complete
+---------------------------------------------------------
+The request #77
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #78
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #79
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #80
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #81
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #82
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #83
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.063 to complete
+---------------------------------------------------------
+The request #84
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.341 to complete
+---------------------------------------------------------
+The request #85
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #86
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.272 to complete
+---------------------------------------------------------
+The request #87
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.2 to complete
+---------------------------------------------------------
+The request #88
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #89
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #90
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #91
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #92
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.232 to complete
+---------------------------------------------------------
+The request #93
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.055 to complete
+---------------------------------------------------------
+The request #94
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.07 to complete
+---------------------------------------------------------
+The request #95
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.212 to complete
+---------------------------------------------------------
+The request #96
+	Ip: 45.148.10.202, null
+	Url: GET /error
+Response: 400
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #97
+	Ip: 45.148.10.202, null
+	Url: GET /error
+Response: 400
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #98
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #99
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #100
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #101
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.291 to complete
+---------------------------------------------------------
+The request #102
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.07 to complete
+---------------------------------------------------------
+The request #103
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #104
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.212 to complete
+---------------------------------------------------------
+The request #105
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #106
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #107
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #108
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.004 to complete
+---------------------------------------------------------
+The request #109
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #110
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #111
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.364 to complete
+---------------------------------------------------------
+The request #112
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.089 to complete
+---------------------------------------------------------
+The request #113
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.324 to complete
+---------------------------------------------------------
+The request #114
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #115
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #116
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.23 to complete
+---------------------------------------------------------
+The request #117
+	Ip: 40.118.212.131, null
+	Url: GET /
+Response: 404
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #118
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+---------------------------------------------------------
+The request #120
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+The request #119
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.038 to complete
+---------------------------------------------------------
+The request #121
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.037 to complete
+---------------------------------------------------------
+The request #122
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.4 to complete
+---------------------------------------------------------
+The request #123
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.187 to complete
+---------------------------------------------------------
+The request #124
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.065 to complete
+---------------------------------------------------------
+The request #125
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.003 to complete
+---------------------------------------------------------
+The request #126
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #127
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #128
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #129
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.002 to complete
+---------------------------------------------------------
+The request #130
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #131
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.067 to complete
+---------------------------------------------------------
+The request #132
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.36 to complete
+---------------------------------------------------------
+The request #133
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.064 to complete
+---------------------------------------------------------
+The request #134
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.213 to complete
+---------------------------------------------------------
+The request #135
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.327 to complete
+---------------------------------------------------------
+The request #136
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.074 to complete
+---------------------------------------------------------
+The request #137
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.0 to complete
+---------------------------------------------------------
+The request #138
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.179 to complete
+---------------------------------------------------------
+The request #139
+	Ip: 154.212.141.161, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #140
+---------------------------------------------------------
+The request #141
+	Ip: 0:0:0:0:0:0:0:1, null
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/user/get-info
+Response: 200
+	Url: GET /api/metadata/current-semester
+Response: 200
+	This request took 0.001 to complete
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #142
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/metadata/get-by-semester
+Response: 200
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #143
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/courses/register-courses
+Response: 200
+	This request took 0.029 to complete
+---------------------------------------------------------
+The request #144
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/get-by-semester
+Response: 200
+	This request took 0.22 to complete
+---------------------------------------------------------
+The request #145
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/classes/count-all
+Response: 200
+	This request took 0.036 to complete
+---------------------------------------------------------
+The request #146
+	Ip: 0:0:0:0:0:0:0:1, null
+	Url: GET /api/students/classes/register-class
+Response: 200
+	This request took 0.218 to complete
+---------------------------------------------------------
+The request #147
+	Ip: 185.191.126.213, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #148
+	Ip: 78.108.177.54, null
+	Url: GET /
+Response: 404
+	This request took 0.001 to complete
+---------------------------------------------------------
+The request #149
+	Ip: 94.156.10.163, null
+	Url: POST /goform/set_LimitClient_cfg
+Response: 404
+	This request took 0.011 to complete
+---------------------------------------------------------
+The request #150
+	Ip: 94.156.10.163, null
+	Url: POST /goform/set_LimitClient_cfg
+Response: 404
+	This request took 0.003 to complete
