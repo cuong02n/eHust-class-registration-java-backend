@@ -20,7 +20,7 @@
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/controller/superadmin/SuperAdminCourseController.java
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/controller/superadmin/SuperAdminMetadataController.java
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/controller/superadmin/SuperAdminUserController.java
-/code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/model/dto/request/ClassDto.java
+/code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/model/dto/ClassDto.java
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/model/dto/request/admin/AdminClassRegisterRequest.java
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/model/dto/request/admin/ClassCreateRequest.java
 /code/src/main/java/vn/edu/hust/ehustclassregistrationjavabackend/model/dto/request/admin/CourseRelationshipRequest.java

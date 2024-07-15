@@ -1,5 +1,6 @@
 package vn.edu.hust.ehustclassregistrationjavabackend.controller.superadmin;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +20,7 @@ public class SuperAdminMetadataController {
     private final MetadataService metadataService;
 
     @PostMapping("")
-    public ResponseEntity<?> updateMetadata(@RequestBody SuperAdminMetadataRequest rq){
+    public ResponseEntity<?> updateMetadata(@RequestBody  @Valid SuperAdminMetadataRequest rq){
         return BaseResponse.ok(metadataService.updateMetadata(rq.getMetadataKey(),rq.getSemester(),rq.getValue()));
     }
 

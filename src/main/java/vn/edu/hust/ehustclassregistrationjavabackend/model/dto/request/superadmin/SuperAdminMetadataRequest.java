@@ -12,5 +12,6 @@ public class SuperAdminMetadataRequest {
     Metadata.MetadataKey metadataKey;
     @Size(min = 4,max = 5)
     String semester;
+    @Nonnull
     String value;
 }

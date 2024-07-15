@@ -3,7 +3,6 @@ package vn.edu.hust.ehustclassregistrationjavabackend.service;
 import jakarta.annotation.Nonnull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import vn.edu.hust.ehustclassregistrationjavabackend.config.MessageException;
 import vn.edu.hust.ehustclassregistrationjavabackend.model.entity.Metadata;
@@ -14,7 +13,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @SuppressWarnings("DanglingJavadoc")
 @Service
@@ -73,27 +71,28 @@ public class MetadataService {
     }
 
     public Metadata updateMetadata(Metadata.MetadataKey key, String semester, String value) {
+        if (semester == null) semester = "";
         /**
          * Ktra thứ 2
          */
         if (key == Metadata.MetadataKey.START_WEEK_1) {
-            if(!LocalDate.parse(value, DateTimeFormatter.ISO_DATE).getDayOfWeek().equals(DayOfWeek.MONDAY))
+            if (!LocalDate.parse(value, DateTimeFormatter.ISO_DATE_TIME).getDayOfWeek().equals(DayOfWeek.MONDAY))
                 throw new MessageException("Ngày bắt đầu năm học phải là thứ 2");
         }
         Metadata metadataDB = metadataRepository.findByMetadataPk_MetadataKeyAndMetadataPk_Semester(key, semester);
         Metadata metadata;
-        if (metadataDB!=null) {
+        if (metadataDB != null) {
             metadata = metadataDB;
         } else {
             /** create new*/
             metadata = new Metadata();
-            metadata.setMetadataPk(new Metadata.MetadataPk(key, semester == null ? "" : semester));
+            metadata.setMetadataPk(new Metadata.MetadataPk(key, semester));
         }
         metadata.setValue(value);
         return metadataRepository.save(metadata);
     }
 
     public String getCurrentSemester() {
-        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER,"");
+        return getMetadata(Metadata.MetadataKey.CURRENT_SEMESTER, "");
     }
 }
